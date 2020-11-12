@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FunctionalUnits/.idea/modules/FunctionalUnits.iml" filepath="$PROJECT_DIR$/FunctionalUnits/.idea/modules/FunctionalUnits.iml" />
       <module fileurl="file://$PROJECT_DIR$/FunctionalUnits/.idea/modules/FunctionalUnits-build.iml" filepath="$PROJECT_DIR$/FunctionalUnits/.idea/modules/FunctionalUnits-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testScalaModule/testScalaModule.iml" filepath="$PROJECT_DIR$/testScalaModule/testScalaModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/.idea/modules/utils.iml" filepath="$PROJECT_DIR$/utils/.idea/modules/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/.idea/modules/utils-build.iml" filepath="$PROJECT_DIR$/utils/.idea/modules/utils-build.iml" />
     </modules>
