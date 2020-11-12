@@ -1,8 +1,8 @@
 package generators
 
 import java.io.File
+
 import chisel3.stage.ChiselStage
-import modules.FunctionalUnit
 
 object ModuleGenerator extends App {
     def generate(unit: FunctionalUnit, targetDir : String) {
