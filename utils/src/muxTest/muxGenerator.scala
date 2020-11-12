@@ -8,7 +8,7 @@ object muxGenerator extends App {
     // (new ChiselStage).execute(args, Seq(ChiselGeneratorAnnotation(() => new Mux(16))))
     // (new ChiselStage).execute(args, Seq(ChiselGeneratorAnnotation(() => new Mux(32))))
 
-    val targetDirName = "./output"
+    val targetDirName = "./utils/output"
     val path1 = new File(targetDirName)
     val cs = new ChiselStage
     cs.emitVerilog(new MultiMux(16),
