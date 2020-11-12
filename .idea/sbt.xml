@@ -3,6 +3,16 @@
   <component name="ScalaSbtSettings">
     <option name="linkedExternalProjectsSettings">
       <SbtProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/FunctionalUnits" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/FunctionalUnits" />
+            <option value="$PROJECT_DIR$/FunctionalUnits/project" />
+          </set>
+        </option>
+        <option name="sbtVersion" value="1.3.13" />
+      </SbtProjectSettings>
+      <SbtProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/utils" />
         <option name="modules">
           <set>
