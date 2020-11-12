@@ -22,8 +22,9 @@ class testScalaClass(bits: Int) extends Module {
 
 object testScalaClass extends App {
 
-    val path1 = new File("./output/")
+    val path1 = new File("./testScalaModule/output/")
     val cs = new ChiselStage
-    cs.emitVerilog(new testScalaClass(32),
+    var unit = Module(new testScalaClass(32))
+    cs.emitVerilog(unit,
         Array("--target-dir", path1.getAbsolutePath, "-o", "testName"))
 }
