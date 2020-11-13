@@ -3,7 +3,6 @@ package generators
 import java.io.File
 
 import chisel3.stage.ChiselStage
-import modules.MultiShift
 
 object ModuleGenerator extends App {
 
