@@ -2,7 +2,6 @@ package muxTest
 
 import java.io.File
 
-import chisel3.Module
 import chisel3.stage.ChiselStage
 
 object muxGenerator extends App {

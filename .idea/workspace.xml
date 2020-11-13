@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="57d1c26b-94e2-4ec6-b2df-37e941416ff4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_10_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/FunctionalUnits.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/FunctionalUnits.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testScalaModule/testScalaModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/testScalaModule/testScalaModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/src/muxTest/muxGenerator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/utils/src/muxTest/muxGenerator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/FunctionalUnits">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/utils">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FunctionalUnits" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="utils" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="nmcp88 &lt;nmcp88@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="MyScope" pattern="file[*]:output//*||file[*]:src//*||file[*]:test//*" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1kBp6XDyXui8vhuTtZNiTJJxROP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.36461127" />
+    <property name="scala_project_settings_configurable.last_selected_tab_index" value="6" />
+    <property name="settings.editor.selected.configurable" value="Scala Compiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/FunctionalUnits" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.muxGenerator">
+    <configuration name="ModuleGenerator" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="generators.ModuleGenerator" />
+      <module name="FunctionalUnits" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="generators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="utils" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="muxGenerator" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="muxTest.muxGenerator" />
+      <module name="utils" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="muxTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testScalaClass" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="testPack.testScalaClass" />
+      <module name="testScalaModule" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testPack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ModuleGenerator" />
+      <item itemvalue="Application.muxGenerator" />
+      <item itemvalue="Application.testScalaClass" />
+    </list>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="scala3DisclaimerShown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="57d1c26b-94e2-4ec6-b2df-37e941416ff4" name="Default Changelist" comment="" />
+      <created>1605183663882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605183663882</updated>
+      <workItem from="1605183665456" duration="9723000" />
+      <workItem from="1605193447340" duration="1052000" />
+      <workItem from="1605194517664" duration="4236000" />
+      <workItem from="1605198918182" duration="2376000" />
+      <workItem from="1605257990388" duration="1659000" />
+      <workItem from="1605260080430" duration="1610000" />
+    </task>
+    <task id="LOCAL-00001" summary="[utils] basic utils module; first commit">
+      <created>1605188401172</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605188401172</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[specs-chisel] top level workspace reworking">
+      <created>1605195602547</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605195602547</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[specs-chisel] top level workspace reworking">
+      <created>1605196263561</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605196263561</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[specs-chisel] top level workspace restructure (still testing config)">
+      <created>1605199755146</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605199755146</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[utils] basic utils module; first commit" />
+    <MESSAGE value="[specs-chisel] top level workspace reworking" />
+    <MESSAGE value="[specs-chisel] top level workspace restructure (still testing config)" />
+    <option name="LAST_COMMIT_MESSAGE" value="[specs-chisel] top level workspace restructure (still testing config)" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="479" y="131" width="1041" height="852" key="#Project_Structure" timestamp="1605261238012">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="479" y="131" width="1041" height="852" key="#Project_Structure/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261238012" />
+    <state x="525" y="415" width="1088" height="403" key="#Scopes" timestamp="1605196787578">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="525" y="415" width="1088" height="403" key="#Scopes/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605196787578" />
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605191201669">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605191201669" />
+    <state x="454" y="211" width="1107" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605261689527">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="454" y="211" width="1107" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261689527" />
+    <state x="740" y="345" width="525" height="422" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605186337279">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="740" y="345" width="525" height="422" key="#com.intellij.ide.util.TreeClassChooserDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605186337279" />
+    <state x="778" y="279" width="414" height="570" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1605184028556">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="778" y="279" width="414" height="570" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605184028556" />
+    <state x="748" y="479" width="1064" height="155" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605196205572">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="748" y="479" width="1064" height="155" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605196205572" />
+    <state x="715" y="436" width="551" height="241" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1605195989379">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="715" y="436" width="551" height="241" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605195989379" />
+    <state x="691" y="361" width="599" height="392" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605190696074">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="691" y="361" width="599" height="392" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605190696074" />
+    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605189237484">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605189237484" />
+    <state x="724" y="315" width="524" height="491" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1605184246619">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="724" y="315" width="524" height="491" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605184246619" />
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2" timestamp="1605199754884">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605199754884" />
+    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl" timestamp="1605198990332">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605198990332" />
+    <state width="1804" height="276" key="GridCell.Tab.0.bottom" timestamp="1605261446201">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1804" height="276" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
+    <state width="1804" height="276" key="GridCell.Tab.0.center" timestamp="1605261446201">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1804" height="276" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
+    <state width="1804" height="276" key="GridCell.Tab.0.left" timestamp="1605261446201">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1804" height="276" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
+    <state width="1804" height="276" key="GridCell.Tab.0.right" timestamp="1605261446201">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1804" height="276" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
+    <state x="479" y="131" width="1318" height="852" key="SettingsEditor" timestamp="1605261383143">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="479" y="131" width="1318" height="852" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261383143" />
+    <state x="591" y="276" width="800" height="562" key="Vcs.Push.Dialog.v2" timestamp="1605199757349">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="591" y="276" width="800" height="562" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605199757349" />
+    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605260860494">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605260860494" />
+    <state x="380" y="284" width="1540" height="553" key="new project wizard" timestamp="1605199691130">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="380" y="284" width="1540" height="553" key="new project wizard/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605199691130" />
+  </component>
+</project>
