@@ -3,6 +3,7 @@
   <component name="ScalaCompilerConfiguration">
     <option name="reflectiveCalls" value="true" />
     <option name="macros" value="true" />
+    <option name="experimental" value="true" />
     <parameters>
       <parameter value="-Xsource:2.11" />
     </parameters>

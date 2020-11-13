@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57d1c26b-94e2-4ec6-b2df-37e941416ff4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_10_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/FunctionalUnits.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/FunctionalUnits.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testScalaModule/testScalaModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/testScalaModule/testScalaModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/src/muxTest/muxGenerator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/utils/src/muxTest/muxGenerator.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FunctionalUnits/src/modules/FunctionalUnitPorts.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FunctionalUnits/src/modules/package.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/LeftShift.anno.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/LeftShift.fir" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/SimpleLeftShift.anno.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/SimpleLeftShift.fir" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/testName.v" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/src/generators/ModuleGenerator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/src/generators/ModuleGenerator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/src/modules/FunctionalUnit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/src/modules/FunctionalUnit.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/src/modules/FunctionalUnitProperties.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/src/modules/FunctionalUnitProperties.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/src/modules/LeftShift.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/src/modules/LeftShift.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +55,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Package Object" />
+      </list>
+    </option>
   </component>
   <component name="Git.Pull.Settings">
     <option name="BRANCH" value="main" />
@@ -88,7 +102,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/org/scalamacros/paradise_2.12.10/2.1.1/paradise_2.12.10-2.1.1.jar" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36461127" />
     <property name="scala_project_settings_configurable.last_selected_tab_index" value="6" />
@@ -100,7 +115,7 @@
       <recent name="$PROJECT_DIR$/FunctionalUnits" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.muxGenerator">
+  <component name="RunManager" selected="Application.ModuleGenerator">
     <configuration name="ModuleGenerator" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="generators.ModuleGenerator" />
       <module name="FunctionalUnits" />
@@ -182,7 +197,7 @@
       <workItem from="1605194517664" duration="4236000" />
       <workItem from="1605198918182" duration="2376000" />
       <workItem from="1605257990388" duration="1659000" />
-      <workItem from="1605260080430" duration="1610000" />
+      <workItem from="1605260080430" duration="18083000" />
     </task>
     <task id="LOCAL-00001" summary="[utils] basic utils module; first commit">
       <created>1605188401172</created>
@@ -215,6 +230,9 @@
     <option name="localTasksCounter" value="5" />
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.v" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -226,22 +244,26 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="479" y="131" width="1041" height="852" key="#Project_Structure" timestamp="1605261238012">
+    <state x="479" y="131" width="1041" height="852" key="#Project_Structure" timestamp="1605263353991">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="479" y="131" width="1041" height="852" key="#Project_Structure/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261238012" />
+    <state x="479" y="131" width="1041" height="852" key="#Project_Structure/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605263353991" />
     <state x="525" y="415" width="1088" height="403" key="#Scopes" timestamp="1605196787578">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="525" y="415" width="1088" height="403" key="#Scopes/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605196787578" />
-    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605191201669">
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605279324449">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605191201669" />
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605279324449" />
     <state x="454" y="211" width="1107" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605261689527">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="454" y="211" width="1107" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261689527" />
+    <state x="795" y="248" width="392" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1605276993695">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="795" y="248" width="392" height="624" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605276993695" />
     <state x="740" y="345" width="525" height="422" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605186337279">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -274,38 +296,38 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605199754884" />
-    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl" timestamp="1605198990332">
+    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl" timestamp="1605263388068">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605198990332" />
-    <state width="1804" height="276" key="GridCell.Tab.0.bottom" timestamp="1605261446201">
+    <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605263388068" />
+    <state width="1804" height="375" key="GridCell.Tab.0.bottom" timestamp="1605279486618">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="276" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
-    <state width="1804" height="276" key="GridCell.Tab.0.center" timestamp="1605261446201">
+    <state width="1804" height="375" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605279486618" />
+    <state width="1804" height="375" key="GridCell.Tab.0.center" timestamp="1605279486618">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="276" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
-    <state width="1804" height="276" key="GridCell.Tab.0.left" timestamp="1605261446201">
+    <state width="1804" height="375" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605279486618" />
+    <state width="1804" height="375" key="GridCell.Tab.0.left" timestamp="1605279486618">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="276" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
-    <state width="1804" height="276" key="GridCell.Tab.0.right" timestamp="1605261446201">
+    <state width="1804" height="375" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605279486618" />
+    <state width="1804" height="375" key="GridCell.Tab.0.right" timestamp="1605279486618">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="276" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261446201" />
-    <state x="479" y="131" width="1318" height="852" key="SettingsEditor" timestamp="1605261383143">
+    <state width="1804" height="375" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605279486618" />
+    <state x="479" y="131" width="1318" height="852" key="SettingsEditor" timestamp="1605263625372">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="479" y="131" width="1318" height="852" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605261383143" />
+    <state x="479" y="131" width="1318" height="852" key="SettingsEditor/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605263625372" />
     <state x="591" y="276" width="800" height="562" key="Vcs.Push.Dialog.v2" timestamp="1605199757349">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="591" y="276" width="800" height="562" key="Vcs.Push.Dialog.v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605199757349" />
-    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605260860494">
+    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605263099794">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605260860494" />
+    <state x="585" y="451" width="801" height="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605263099794" />
     <state x="380" y="284" width="1540" height="553" key="new project wizard" timestamp="1605199691130">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

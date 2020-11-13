@@ -1,6 +1,16 @@
 package modules
 
+import chisel3.Bundle
+
 trait FunctionalUnitProperties {
 
-    def getName() : String;
+    /*
+     * Get Name of instantiated module
+     */
+    def getName(): String;
+
+    /*
+     *
+     */
+    def getIO(): Bundle;
 }
