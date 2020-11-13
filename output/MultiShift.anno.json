@@ -1,0 +1,29 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~MultiShift|MultiShift>io_b",
+    "sources":[
+      "~MultiShift|MultiShift>io_a"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~MultiShift|LeftShift",
+    "duplicate":"~MultiShift|MultiShift/LeftShift:LeftShift",
+    "index":0.0
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~MultiShift|LeftShift_1",
+    "duplicate":"~MultiShift|MultiShift/LeftShift_1:LeftShift",
+    "index":0.5
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"/media/nuno/HDD/work/projects/specs-chisel/./output"
+  }
+]
