@@ -1,4 +1,5 @@
 import chisel3._
+import modules.functionalUnit.FunctionalUnitPorts
 
 package object modules {
 

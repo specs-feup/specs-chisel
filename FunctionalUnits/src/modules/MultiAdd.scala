@@ -2,13 +2,13 @@ package modules
 
 import chisel3.core.fromIntToWidth
 import chisel3.{Bundle, Input, Module, Output, UInt, fromIntToLiteral}
-import modules.singleOperation.LeftShift
+import modules.singleOperation.twoInputUnit.Add
 
-class MultiShift extends Module {
+class MultiAdd extends Module {
   val io = IO(new Bundle {
     val a = Input(UInt(32.W))
     val b = Output(UInt(32.W))
   })
 
-  io.b := singleOperation.LeftShift(LeftShift(io.a, 2.U), 2.U)
+  io.b := Add(Add(io.a, 2.U), 2.U)
 }

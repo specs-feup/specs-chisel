@@ -1,4 +1,4 @@
-package modules
+package modules.functionalUnit
 
 import chisel3.Bundle
 
@@ -7,7 +7,9 @@ trait FunctionalUnitProperties {
     /*
      * Get Name of instantiated module
      */
-    def getName(): String;
+    final def getName() = {
+        this.getClass.getSimpleName
+    }
 
     /*
      *
