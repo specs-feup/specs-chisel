@@ -1,4 +1,4 @@
-package generators
+package pt.inesctec.generators
 
 object ModuleGeneratorTest {
 
