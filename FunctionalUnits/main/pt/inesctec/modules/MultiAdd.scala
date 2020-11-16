@@ -1,8 +1,8 @@
-package modules
+package pt.inesctec.modules
 
 import chisel3.core.fromIntToWidth
 import chisel3.{Bundle, Input, Module, Output, UInt, fromIntToLiteral}
-import modules.singleOperation.twoInputUnit.Add
+import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.Add
 
 class MultiAdd extends Module {
   val io = IO(new Bundle {

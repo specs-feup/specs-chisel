@@ -1,5 +1,7 @@
+package pt.inesctec
+
 import chisel3._
-import modules.functionalUnit.FunctionalUnitPorts
+import pt.inesctec.modules.functionalUnit.FunctionalUnitPorts
 
 package object modules {
 

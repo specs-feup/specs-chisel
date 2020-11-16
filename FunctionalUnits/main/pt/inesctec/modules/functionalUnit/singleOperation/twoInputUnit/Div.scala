@@ -1,7 +1,6 @@
-package modules.singleOperation.twoInputUnit
+package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
-import modules.functionalUnit.{FunctionalUnitPorts, LambdaUnit}
-import modules.singleOperation.InlineApply
+import pt.inesctec.modules.functionalUnit.{FunctionalUnitPorts, InlineApply, LambdaUnit}
 
 class Div(bits: Int) extends LambdaUnit(bits, (ports: FunctionalUnitPorts) => ports.out := ports.ina + ports.inb)
 
