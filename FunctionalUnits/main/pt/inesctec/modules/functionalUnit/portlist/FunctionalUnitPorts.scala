@@ -1,4 +1,4 @@
-package pt.inesctec.modules.functionalUnit
+package pt.inesctec.modules.functionalUnit.portlist
 
 import chisel3.{Bundle, Input, Output, UInt}
 import pt.inesctec.modules.Data
