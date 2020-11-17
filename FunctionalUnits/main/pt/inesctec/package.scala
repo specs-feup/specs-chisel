@@ -1,7 +1,6 @@
 package pt.inesctec
 
 import chisel3._
-import pt.inesctec.modules.functionalUnit.portlist.FunctionalUnitPorts
 
 package object modules {
 
@@ -17,11 +16,4 @@ package object modules {
   def Data32 = UInt(32.W)
 
   def Data64 = UInt(64.W)
-
-  /*
-   *
-   */
-  def FunctionalUnitPorts(bitWidth: Int) = {
-    new FunctionalUnitPorts(bitWidth)
-  }
 }
