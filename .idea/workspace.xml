@@ -5,22 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57d1c26b-94e2-4ec6-b2df-37e941416ff4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/Data16.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/Data8.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/PortData.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/Port.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/PortDirection.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/PortList.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortListProperties.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FunctionalUnits/test/pt/inesctec/functionalUnit/ports/PortTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortPreset.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/FunctionalUnitPorts.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/FunctionalUnitPorts.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/LambdaUnit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/LambdaUnit.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/InlineApply.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/InlineApply.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/LambdaUnit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/AFunctionalUnit.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/Data16.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/Data8.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/data/PortData.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/PortDirection.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/PortDirection.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/PortList.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortList.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/FunctionalUnitPorts.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortListProperties.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortListProperties.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Add.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Add.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Div.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Div.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Mul.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Mul.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Sub.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Sub.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/package.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FunctionalUnits/test/pt/inesctec/functionalUnit/ports/PortTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/test/pt/inesctec/functionalUnit/ports/PortTest.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,19 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PortTest" />
@@ -186,7 +174,9 @@
       <workItem from="1605282190488" duration="22590000" />
       <workItem from="1605545553254" duration="300000" />
       <workItem from="1605545867664" duration="1930000" />
-      <workItem from="1605611015757" duration="5595000" />
+      <workItem from="1605611015757" duration="6421000" />
+      <workItem from="1605618507575" duration="1818000" />
+      <workItem from="1605624428352" duration="3923000" />
     </task>
     <task id="LOCAL-00001" summary="[utils] basic utils module; first commit">
       <created>1605188401172</created>
@@ -244,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605546596712</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[FunctionalUnits] wip on port data types">
+      <created>1605617680190</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605617680190</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -258,7 +255,8 @@
     <MESSAGE value="[specs-chisel] top level workspace restructure (still testing config)" />
     <MESSAGE value="[FunctionalUnits] experimenting with language constructs" />
     <MESSAGE value="[FunctionalUnits] first version of some kind of approach for listing of single op FUs" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FunctionalUnits] first version of some kind of approach for listing of single op FUs" />
+    <MESSAGE value="[FunctionalUnits] wip on port data types" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FunctionalUnits] wip on port data types" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -271,10 +269,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="525" y="415" width="1088" height="403" key="#Scopes/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605196787578" />
-    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605616918632">
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605626160548">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605616918632" />
+    <state x="729" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605626160548" />
     <state x="454" y="171" width="1107" height="909" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605616100462">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -307,10 +305,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="691" y="361" width="599" height="392" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605190696074" />
-    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605525237007">
+    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605624158392">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605525237007" />
+    <state x="729" y="303" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605624158392" />
     <state x="724" y="315" width="524" height="491" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1605184246619">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -319,30 +317,30 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="726" y="398" width="529" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605282621636" />
-    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2" timestamp="1605546596600">
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2" timestamp="1605617680071">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605546596600" />
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605617680071" />
     <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl" timestamp="1605263388068">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605263388068" />
-    <state width="1804" height="375" key="GridCell.Tab.0.bottom" timestamp="1605616223175">
+    <state width="1804" height="375" key="GridCell.Tab.0.bottom" timestamp="1605618493895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="375" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605616223175" />
-    <state width="1804" height="375" key="GridCell.Tab.0.center" timestamp="1605616223175">
+    <state width="1804" height="375" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605618493895" />
+    <state width="1804" height="375" key="GridCell.Tab.0.center" timestamp="1605618493895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="375" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605616223175" />
-    <state width="1804" height="375" key="GridCell.Tab.0.left" timestamp="1605616223175">
+    <state width="1804" height="375" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605618493895" />
+    <state width="1804" height="375" key="GridCell.Tab.0.left" timestamp="1605618493895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="375" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605616223175" />
-    <state width="1804" height="375" key="GridCell.Tab.0.right" timestamp="1605616223175">
+    <state width="1804" height="375" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605618493895" />
+    <state width="1804" height="375" key="GridCell.Tab.0.right" timestamp="1605618493895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1804" height="375" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605616223175" />
+    <state width="1804" height="375" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605618493895" />
     <state width="1804" height="341" key="GridCell.Tab.1.bottom" timestamp="1605544867846">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

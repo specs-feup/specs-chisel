@@ -2,7 +2,7 @@ package pt.inesctec.modules.functionalUnit
 
 import chisel3.{Module, UInt}
 
-trait InlineApply[T <: LambdaUnit] {
+trait InlineApply[T <: AFunctionalUnit] {
 
   /*
   Must be overridden by companion objects of children
