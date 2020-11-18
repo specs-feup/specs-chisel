@@ -10,6 +10,6 @@ class MultiAdd extends Module {
     val b = Output(UInt(32.W))
   })
 
-  io.b := Add(Add(io.a, 2.U), 2.U)
+  io.b := Add(Add(io.a, UConst(2.U), UConst(2.U))
   //io.b := Add(8.U, 2.U)
 }

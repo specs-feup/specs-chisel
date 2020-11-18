@@ -7,12 +7,7 @@
     <list default="true" id="57d1c26b-94e2-4ec6-b2df-37e941416ff4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/MultiAdd.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/MultiAdd.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/AFunctionalUnit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/AFunctionalUnit.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/FunctionalUnitProperties.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/FunctionalUnitProperties.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/InlineApply.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/InlineApply.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/Port.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/port/Port.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortList.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortListProperties.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortListProperties.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortPreset.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/portlist/PortPreset.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Add.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/modules/functionalUnit/singleOperation/twoInputUnit/Add.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/package.scala" beforeDir="false" afterPath="$PROJECT_DIR$/FunctionalUnits/main/pt/inesctec/package.scala" afterDir="false" />
@@ -202,7 +197,7 @@
       <workItem from="1605611015757" duration="6421000" />
       <workItem from="1605618507575" duration="1818000" />
       <workItem from="1605624428352" duration="3923000" />
-      <workItem from="1605629726083" duration="17934000" />
+      <workItem from="1605629726083" duration="21695000" />
     </task>
     <task id="LOCAL-00001" summary="[utils] basic utils module; first commit">
       <created>1605188401172</created>
@@ -281,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605693678745</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[FunctionalUnits] wip on port data types and structure of Port family of classes">
+      <created>1605703969907</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605703969907</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -357,10 +359,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="726" y="398" width="529" height="318" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605282621636" />
-    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2" timestamp="1605693678700">
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2" timestamp="1605703969838">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605693678700" />
+    <state x="416" y="114" width="1150" height="886" key="CommitChangelistDialog2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605703969838" />
     <state x="742" y="263" width="498" height="587" key="FileChooserDialogImpl" timestamp="1605263388068">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
