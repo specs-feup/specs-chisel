@@ -1,6 +1,6 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.{Bundle, UInt}
+import pt.inesctec.modules.functionalUnit.port.Port
 
 trait FunctionalUnitProperties {
 
@@ -11,13 +11,9 @@ trait FunctionalUnitProperties {
     this.getClass.getSimpleName
   }
 
-  /*
-   *
-   */
-  def getIO(): Bundle
+  def getNumPorts(): Int;
 
-  /*
+  def getPortByName(name: String): Option[Port]
 
-   */
-  def getPort(idx: Int): Option[UInt]
+  def getPortByIndex(idx: Int): Option[Port]
 }
