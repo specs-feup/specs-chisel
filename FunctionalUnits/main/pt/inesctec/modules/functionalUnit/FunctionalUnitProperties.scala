@@ -1,6 +1,6 @@
 package pt.inesctec.modules.functionalUnit
 
-import pt.inesctec.modules.functionalUnit.port.Port
+import pt.inesctec.modules.GPort
 
 trait FunctionalUnitProperties {
 
@@ -13,7 +13,7 @@ trait FunctionalUnitProperties {
 
   def getNumPorts(): Int;
 
-  def getPortByName(name: String): Option[Port]
+  def getPortByName(name: String): GPort
 
-  def getPortByIndex(idx: Int): Option[Port]
+  def getPortByIndex(idx: Int): GPort
 }

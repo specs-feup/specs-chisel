@@ -1,6 +1,7 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.{Module, UInt}
+import chisel3.{Data, Module, SInt, UInt}
+import pt.inesctec.modules.GPort
 
 trait InlineApply[T <: AFunctionalUnit] {
 
@@ -12,28 +13,32 @@ trait InlineApply[T <: AFunctionalUnit] {
   /*
   Applies operands to ports in order in which they are passed, relative to port declaration;
   returns the last port in the port list (assumed to be single result of operation)
-
-  final def apply(operands: Port*) = {
-    val opa = operands(0).portData
-    val m = Module(newInstance(opa.getWidth))
+  */
+  final def apply(operands: GPort*) = {
+    val opa = operands(0)
+    val m = Module(newInstance(opa.width))
     var i = 0;
     for (op <- operands) {
-      val port = m.getPortList.getPortByIndex(i).get
-      port.portData := op.portData
+      m.getPortByIndex(i) := op
       i = i + 1
     }
-    m.getPortList.getPortByIndex(m.getPorts.size - 1).get // return last port
-  }*/
+    m.getPortByIndex(m.getNumPorts - 1) // return last port
+  }
 
-  final def apply(operands: UInt*) = {
+  final def apply(operands: Data*) = {
     val opa = operands(0)
     val m = Module(newInstance(opa.getWidth))
     var i = 0;
     for (op <- operands) {
-      val port = m.getPortList.getPortByIndex(i).get
-      port.portData := op
+      val port = m.io.ports(i)
+      op match {
+        case uint: UInt => port := uint;
+        case sint: SInt => port := sint;
+        //case uint: UInt => this.portData := uint;
+      }
+      port := op
       i = i + 1
     }
-    m.getPortList.getPortByIndex(m.getPorts.size - 1).get.portData // return last port
+    m.io.ports(m.getPorts.size - 1)
   }
 }

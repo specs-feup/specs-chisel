@@ -1,13 +1,17 @@
 package pt.inesctec
 
 import chisel3._
+import pt.inesctec.modules.functionalUnit.port.Port
 
 package object modules {
 
   /*
 
    */
-  type PortList = List[Data]
+  type GPort = Port[_ <: Data]
+  type PortList = List[GPort]
+  def PortList(ports : GPort*) = List[GPort](ports: _*)
+  //def PortList(list : List[Data]) = list
 
   /*
    * Short-handles
