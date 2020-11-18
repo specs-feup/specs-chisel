@@ -1,9 +1,9 @@
 package pt.inesctec.modules.functionalUnit.port
 
-import chisel3.Data
+import chisel3.UInt
 
-class Port(name: String, data: Data, direction: PortDirection.Value) {
+class Port(name: String, data: UInt, direction: PortDirection.Value) {
   val portName: String = name;
-  val portData: Data = data;
+  val portData: UInt = data;
   var portDir: PortDirection.Value = direction
 }

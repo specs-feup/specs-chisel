@@ -5,6 +5,11 @@ import chisel3._
 package object modules {
 
   /*
+
+   */
+  type PortList = List[Data]
+
+  /*
    * Short-handles
    */
   def Data(bits: Int) = UInt(bits.W)

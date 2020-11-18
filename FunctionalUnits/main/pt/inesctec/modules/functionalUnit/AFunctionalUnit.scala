@@ -1,22 +1,26 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.{Bundle, Data, Input, Module, Output, UInt}
-import pt.inesctec.modules.functionalUnit.port.{Port, PortDirection}
+import chisel3.util.MixedVec
+import chisel3.{Bundle, Input, Module, Output, UInt}
+import pt.inesctec.modules.functionalUnit.port.PortDirection
 import pt.inesctec.modules.functionalUnit.portlist.PortList
 
-abstract class AFunctionalUnit(plist: PortList) extends Module with FunctionalUnitProperties {
+import scala.collection.mutable.ListBuffer
 
-  //val bundle: Bundle = ListToBundle(plist.ports)
-  val io = IO(plist.bundle) // wrap in IO for proper Chisel scoping
-  //this.func(this.io)
+abstract class AFunctionalUnit(plist: PortList) extends Module {
+
+  private var iolist = ListBuffer[UInt]()
+  for(p <- plist.ports) {
+    p.portDir match {
+      case PortDirection.Input => iolist += Input(p.portData)
+      case PortDirection.Output => iolist += Output(p.portData)
+    }
+  }
+
+  val io = IO(new Bundle {val ports = MixedVec(iolist.toList)}) // wrap in IO for proper Chisel scoping
 
   /*
 
    */
-  override def getPort(idx: Int): Option[UInt] = this.io.getPort(idx)
-
-  /*
-
-   */
-  override def getIO(): Bundle = this.io
+  override def getPortList: PortList = this.plist
 }
