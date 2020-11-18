@@ -8,6 +8,8 @@ class Add(bits: Int) extends AFunctionalUnit(BiFunctionPorts(bits)) {
   val inb = this.getPortByIndex(1)
   val out = this.getPortByIndex(2)
   out := ina// + inb //  WARNING: requires explict cast here... TODO how to fix?
+
+  //this.ports(2) := this.ports(1) + this.ports(0)
 }
 //, plist => plist.ports(2) := plist.ports(1) + plist.ports(0))
 

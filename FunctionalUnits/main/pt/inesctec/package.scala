@@ -1,7 +1,7 @@
 package pt.inesctec
 
 import chisel3._
-import pt.inesctec.modules.functionalUnit.port.Port
+import pt.inesctec.modules.functionalUnit.port.{Port, PortDirection}
 
 package object modules {
 
@@ -11,12 +11,18 @@ package object modules {
   type GPort = Port[_ <: Data]
   type PortList = List[GPort]
   def PortList(ports : GPort*) = List[GPort](ports: _*)
-  //def PortList(list : List[Data]) = list
+  def PortList(list : List[GPort]) = list
+
+  /*
+
+   */
+  def UConst(uint : UInt) = new Port(uint.toString(), uint, PortDirection.Input)
+  def SConst(sint : SInt) = new Port(sint.toString(), sint, PortDirection.Input)
 
   /*
    * Short-handles
    */
-  def Data(bits: Int) = UInt(bits.W)
+  def DataN(bits: Int) = UInt(bits.W)
 
   def Data8 = UInt(8.W)
 
