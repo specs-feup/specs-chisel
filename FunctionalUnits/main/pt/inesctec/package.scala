@@ -20,6 +20,14 @@ package object modules {
   def SConst(sint : SInt) = new Port(sint.toString(), sint, PortDirection.Input)
 
   /*
+
+   */
+  def UInput(bits : Int) = new Port(bits.toString, UInt(bits.W), PortDirection.Input)
+  def UOutput(bits : Int) = new Port(bits.toString, UInt(bits.W), PortDirection.Output)
+  def SInput(bits : Int) = new Port(bits.toString, SInt(bits.W), PortDirection.Input)
+  def SOutput(bits : Int) = new Port(bits.toString, SInt(bits.W), PortDirection.Output)
+
+  /*
    * Short-handles
    */
   def DataN(bits: Int) = UInt(bits.W)

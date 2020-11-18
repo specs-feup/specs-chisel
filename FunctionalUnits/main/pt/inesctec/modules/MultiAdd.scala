@@ -1,15 +1,11 @@
 package pt.inesctec.modules
 
-import chisel3.core.fromIntToWidth
-import chisel3.{Bundle, Input, Module, Output, UInt, fromIntToLiteral}
+import Chisel.fromtIntToLiteral
+import pt.inesctec.modules.functionalUnit.AFunctionalUnit
 import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.Add
 
-class MultiAdd extends Module {
-  val io = IO(new Bundle {
-    val a = Input(UInt(32.W))
-    val b = Output(UInt(32.W))
-  })
-
-  io.b := Add(Add(io.a, UConst(2.U), UConst(2.U))
-  //io.b := Add(8.U, 2.U)
+class MultiAdd extends AFunctionalUnit(List(UInput(32), UOutput(32))) {
+  val a = this.getPortByIndex(0)
+  val b = this.getPortByIndex(1)
+  b := Add(Add(a, UConst(2.U), UConst(2.U)))
 }
