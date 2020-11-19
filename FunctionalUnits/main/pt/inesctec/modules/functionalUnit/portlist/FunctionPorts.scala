@@ -4,11 +4,11 @@ import chisel3.{Bundle, Data}
 
 abstract class FunctionPorts extends Bundle {
 
-  def portlist = this.getElements
+  def portlist = this.getElements.to[collection.mutable.Seq]
 
-  def getNumPorts: Int = portlist.size
+  def getNumPorts: Int = this.portlist.size
 
   def getPortByIndex(idx: Int): Data = this.portlist(idx)
 
-  def getPortByName(name: String): Data = this.portlist.filter(p => p.toString == name)(0)
+  def getPortByName(name: String): Data = this.elements(name) //this.portlist.filter(p => p.toString == name)(0)
 }

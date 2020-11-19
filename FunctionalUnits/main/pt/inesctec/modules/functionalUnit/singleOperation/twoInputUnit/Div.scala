@@ -15,5 +15,5 @@ object Div extends InlineApply[Div] {
     new Div(new BiFunctionPorts(bits))
   }
 
-  override def newInstance(bits: Int): Div = Div(32)
+  override def newInstance(bits: Int): Div = Div(bits)
 }

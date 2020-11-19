@@ -15,5 +15,5 @@ object Mul extends InlineApply[Mul] {
     new Mul(new BiFunctionPorts(bits))
   }
 
-  override def newInstance(bits: Int): Mul = Mul(32)
+  override def newInstance(bits: Int): Mul = Mul(bits)
 }

@@ -15,5 +15,5 @@ object Sub extends InlineApply[Sub] {
     new Sub(new BiFunctionPorts(bits))
   }
 
-  override def newInstance(bits: Int): Sub = Sub(32)
+  override def newInstance(bits: Int): Sub = Sub(bits)
 }
