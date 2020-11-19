@@ -2,10 +2,10 @@ package pt.inesctec.modules
 
 import Chisel.fromtIntToLiteral
 import pt.inesctec.modules.functionalUnit.AFunctionalUnit
+import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
 import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.Add
 
-class MultiAdd extends AFunctionalUnit(List(UInput(32), UOutput(32))) {
-  val a = this.getPortByIndex(0)
-  val b = this.getPortByIndex(1)
-  b := Add(Add(a, UConst(2.U), UConst(2.U)))
+class MultiAdd extends AFunctionalUnit(new BiFunctionPorts(32)) {
+  val mio = this.io.asInstanceOf[BiFunctionPorts]
+  mio.outa := Add(Add(mio.ina, 2.U), 2.U)
 }

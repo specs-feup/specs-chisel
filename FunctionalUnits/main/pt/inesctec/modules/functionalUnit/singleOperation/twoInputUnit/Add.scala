@@ -1,15 +1,19 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
-import pt.inesctec.modules.functionalUnit.portlist.PortPreset.BiFunctionPorts
-import pt.inesctec.modules.functionalUnit.{InlineApply, AFunctionalUnit}
+import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
+import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, InlineApply}
 
-class Add(bits: Int) extends AFunctionalUnit(BiFunctionPorts(bits)) {
-  val ina = this.getPortByIndex(0)
-  val inb = this.getPortByIndex(1)
-  val out = this.getPortByIndex(2)
-  out := ina + inb
+protected class Add(ports: BiFunctionPorts) extends AFunctionalUnit(ports) {
+  //val mio = this.io.asInstanceOf[BiFunctionPorts]
+  //mio.outa := mio.ina + mio.inb
 }
 
 object Add extends InlineApply[Add] {
-  override final def newInstance(bits: Int): Add = new Add(bits)
+
+  // public constructor
+  def apply(bits: Int) = {
+    new Add(new BiFunctionPorts(bits))
+  }
+
+  override def newInstance(bits: Int): Add = Add(32)
 }
