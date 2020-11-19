@@ -7,4 +7,6 @@ class BiFunctionPorts(bits: Int) extends FunctionPorts {
   val ina = Input(DataN(bits))
   val inb = Input(DataN(bits))
   val outa = Output(DataN(bits))
+
+  override def cloneType: this.type = new BiFunctionPorts(bits).asInstanceOf[this.type]
 }

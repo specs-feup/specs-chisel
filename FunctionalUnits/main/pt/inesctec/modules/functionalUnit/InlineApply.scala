@@ -13,14 +13,14 @@ trait InlineApply[T <: AFunctionalUnit] {
   Applies operands to ports in order in which they are passed, relative to port declaration;
   returns the last port in the port list (assumed to be single result of operation)
   */
-  final def apply(operands: Data*) = {
+  def apply(operands: Data*) = {
     val opa = operands(0)
     val m = Module(newInstance(opa.getWidth))
-    var i = 0;
+    var i = 0
     for (op <- operands) {
-        m.io.portlist(i) := op
+      m.io.portlist(i) := op
       i = i + 1
     }
-    m.io.portlist(m.io.portlist.size - 1)
+    m.io.portlist.last
   }
 }
