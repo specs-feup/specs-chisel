@@ -1,7 +1,6 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.Module
-import pt.inesctec.modules.GPort
+import chisel3.{Data, Module}
 
 trait InlineApply[T <: AFunctionalUnit] {
 
@@ -13,33 +12,15 @@ trait InlineApply[T <: AFunctionalUnit] {
   /*
   Applies operands to ports in order in which they are passed, relative to port declaration;
   returns the last port in the port list (assumed to be single result of operation)
-*/
-  final def apply(operands: GPort*) = {
-    val opa = operands(0)
-    val m = Module(newInstance(opa.width))
-    var i = 0;
-    for (op <- operands) {
-      m.getPortByIndex(i) := op
-      i = i + 1
-    }
-    m.getPortByIndex(m.getNumPorts - 1) // return last port
-  }
-/*
+  */
   final def apply(operands: Data*) = {
     val opa = operands(0)
     val m = Module(newInstance(opa.getWidth))
     var i = 0;
     for (op <- operands) {
-      val port = m.io.ports(i)
-      op match {
-        case uint: UInt => port := uint;
-        case sint: SInt => port := sint;
-        case bits: Bits => port := bits;
-        case fp: FixedPoint => port := fp;
-      }
-      port := op
+        m.io.portlist(i) := op
       i = i + 1
     }
-    m.io.ports(m.getPorts.size - 1)
-  }*/
+    m.io.portlist(m.io.portlist.size - 1)
+  }
 }
