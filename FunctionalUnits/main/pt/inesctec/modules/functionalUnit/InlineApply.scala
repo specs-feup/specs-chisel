@@ -16,11 +16,12 @@ trait InlineApply[T <: AFunctionalUnit] {
   def apply(operands: Data*) = {
     val opa = operands(0)
     val m = Module(newInstance(opa.getWidth))
+    val portlist = m.io.portlist
     var i = 0
     for (op <- operands) {
-      m.io.portlist(i) := op
+      portlist(i) := op
       i = i + 1
     }
-    m.io.portlist.last
+    portlist.last
   }
 }
