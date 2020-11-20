@@ -4,7 +4,8 @@ import chisel3.{Bundle, Data}
 
 abstract class FunctionPorts extends Bundle {
 
-  def portlist = this.getElements.to[collection.mutable.Seq]
+  def portlist = this.getElements.reverse.to[collection.mutable.Seq]
+  // reverse since things declared in bundles are stored in reverse?
 
   def getNumPorts: Int = this.portlist.size
 
