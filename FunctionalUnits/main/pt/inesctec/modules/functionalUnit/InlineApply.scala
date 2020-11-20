@@ -1,8 +1,16 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.{Data, Module}
+import chisel3.{Data, Module, SInt, UInt}
 
-trait InlineApply[T <: AFunctionalUnit] {
+trait UInlineApply[T] extends InlineApply[T] {
+  def apply(operands: Data*) = super.apply(operands).asInstanceOf[UInt]
+}
+
+trait SInlineApply[T] extends InlineApply[T] {
+  def apply(operands: Data*) = super.apply(operands).asInstanceOf[SInt]
+}
+
+sealed trait InlineApply[T <: AFunctionalUnit] {
 
   /*
   Must be overridden by companion objects of children
@@ -16,7 +24,7 @@ trait InlineApply[T <: AFunctionalUnit] {
   def apply(operands: Seq[Data]) = {
     val opa = operands(0)
     val m = Module(newInstance(opa.getWidth))
-    val portlist = m.io.portlist
+    val portlist = m.io.portlist  // list comes out reversed here, relative to declaration order in FunctionPorts
     var i = 0
     for (op <- operands) {
       portlist(i) := op

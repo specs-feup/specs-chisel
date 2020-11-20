@@ -9,4 +9,6 @@ abstract class AFunctionalUnit(ports: FunctionPorts) extends Module {
     //.ports.portlist // ordered list
 
     //PortList(ina, inb, outa)
+
+  def getName: String = this.getClass.getSimpleName
 }

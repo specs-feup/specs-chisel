@@ -1,5 +1,6 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
+import chisel3.Data
 import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
 import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, InlineApply}
 
@@ -14,6 +15,8 @@ object Sub extends InlineApply[Sub] {
   def apply(bits: Int) = {
     new Sub(bits)
   }
+
+  def apply(operands: Data*) = super.apply(operands).asUInt()
 
   override def newInstance(bits: Int): Sub = Sub(bits)
 }

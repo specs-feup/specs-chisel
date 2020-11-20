@@ -1,22 +1,30 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
 import chisel3.Data
-import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
-import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, InlineApply}
+import pt.inesctec.modules.functionalUnit.portlist.{BiFunctionPorts, FunctionPorts}
+import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, UInlineApply}
 
-class Add(bits: Int) extends AFunctionalUnit(new BiFunctionPorts(bits)) {
+protected class Add(ports: BiFunctionPorts) extends AFunctionalUnit(ports) {
   val mio = this.io.asInstanceOf[BiFunctionPorts]
   mio.outa := mio.ina + mio.inb
 }
 
-object Add extends InlineApply[Add] {
+object UAdd extends UInlineApply[Add] {
 
   // public constructor
   def apply(bits: Int) = {
-    new Add(bits)
+    new Add(new BiFunctionPorts(false, bits))
   }
 
-  def apply(operands: Data*) = super.apply(operands).asUInt()
+  override def newInstance(bits: Int): Add = UAdd(bits)
+}
 
-  override def newInstance(bits: Int): Add = Add(bits)
+object SAdd extends UInlineApply[Add] {
+
+  // public constructor
+  def apply(bits: Int) = {
+    new Add(new BiFunctionPorts(true, bits))
+  }
+
+  override def newInstance(bits: Int): Add = SAdd(bits)
 }
