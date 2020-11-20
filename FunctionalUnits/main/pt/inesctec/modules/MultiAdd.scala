@@ -2,11 +2,11 @@ package pt.inesctec.modules
 
 import chisel3.fromIntToLiteral
 import pt.inesctec.modules.functionalUnit.AFunctionalUnit
-import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
-import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.UAdd
+import pt.inesctec.modules.functionalUnit.portlist.SBiFunctionPorts
+import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.SAdd
 
-class MultiAdd extends AFunctionalUnit(new BiFunctionPorts(32)) {
-  val mio = this.io.asInstanceOf[BiFunctionPorts]
+class MultiAdd extends AFunctionalUnit(new SBiFunctionPorts(32)) {
+  val mio = this.io.asInstanceOf[SBiFunctionPorts]
 
   // method 1
   /*
@@ -27,5 +27,5 @@ class MultiAdd extends AFunctionalUnit(new BiFunctionPorts(32)) {
   //mio.elements("outa") := add1.mio.outa + mio.inb
   //mio.outa := add1.mio.outa + mio.inb
 
-  mio.outa := UAdd(mio.ina, 2.U) + mio.inb
+  mio.outa := SAdd(mio.ina, 2.S) + mio.inb
 }

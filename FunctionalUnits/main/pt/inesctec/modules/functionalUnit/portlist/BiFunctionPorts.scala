@@ -1,17 +1,26 @@
 package pt.inesctec.modules.functionalUnit.portlist
 
-import chisel3.{Input, Output}
+import chisel3.{Data, Input, Output, SInt, UInt}
 import pt.inesctec.modules.{DataN, SDataN}
 
-class BiFunctionPorts(signed: Boolean, bits: Int) extends FunctionPorts {
-  val ina = Input(if(signed) SDataN(bits) else DataN(bits))
-  val inb = Input(if(signed) SDataN(bits) else DataN(bits))
-  val outa = Output(if(signed) SDataN(bits) else DataN(bits))
+abstract class BiFunctionPorts[T <: Data](bits: Int) extends FunctionPorts {
+  def ina: T
+  def inb: T
+  def outa: T
+}
 
-  override def cloneType: this.type = new BiFunctionPorts(this.signed, this.bits).asInstanceOf[this.type]
+class UBiFunctionPorts(bits: Int) extends BiFunctionPorts[UInt](bits) {
+  val ina = Input(DataN(bits))
+  val inb = Input(DataN(bits))
+  val outa = Output(DataN(bits))
 
-  def this(bits: Int) = {
-    this(false, bits)
-  }
+  override def cloneType: this.type = new UBiFunctionPorts(this.bits).asInstanceOf[this.type]
+}
 
+class SBiFunctionPorts(bits: Int) extends BiFunctionPorts[SInt](bits) {
+  val ina = Input(SDataN(bits))
+  val inb = Input(SDataN(bits))
+  val outa = Output(SDataN(bits))
+
+  override def cloneType: this.type = new SBiFunctionPorts(this.bits).asInstanceOf[this.type]
 }

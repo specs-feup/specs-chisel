@@ -1,30 +1,34 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
-import chisel3.Data
-import pt.inesctec.modules.functionalUnit.portlist.{BiFunctionPorts, FunctionPorts}
-import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, UInlineApply}
+import pt.inesctec.modules.functionalUnit.portlist.{SBiFunctionPorts, UBiFunctionPorts}
+import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, SInlineApply, UInlineApply}
 
-protected class Add(ports: BiFunctionPorts) extends AFunctionalUnit(ports) {
-  val mio = this.io.asInstanceOf[BiFunctionPorts]
+protected class UAdd(ports: UBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[UBiFunctionPorts]
   mio.outa := mio.ina + mio.inb
 }
 
-object UAdd extends UInlineApply[Add] {
-
-  // public constructor
-  def apply(bits: Int) = {
-    new Add(new BiFunctionPorts(false, bits))
-  }
-
-  override def newInstance(bits: Int): Add = UAdd(bits)
+protected class SAdd(ports: SBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[SBiFunctionPorts]
+  mio.outa := mio.ina + mio.inb
 }
 
-object SAdd extends UInlineApply[Add] {
+object UAdd extends UInlineApply[UAdd] {
 
   // public constructor
   def apply(bits: Int) = {
-    new Add(new BiFunctionPorts(true, bits))
+    new UAdd(new UBiFunctionPorts(bits))
   }
 
-  override def newInstance(bits: Int): Add = SAdd(bits)
+  override def newInstance(bits: Int): UAdd = UAdd(bits)
+}
+
+object SAdd extends SInlineApply[SAdd] {
+
+  // public constructor
+  def apply(bits: Int) = {
+    new SAdd(new SBiFunctionPorts(bits))
+  }
+
+  override def newInstance(bits: Int): SAdd = SAdd(bits)
 }

@@ -1,22 +1,34 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
-import chisel3.Data
-import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
-import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, InlineApply}
+import pt.inesctec.modules.functionalUnit.portlist.{SBiFunctionPorts, UBiFunctionPorts}
+import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, SInlineApply, UInlineApply}
 
-protected class Div(bits: Int) extends AFunctionalUnit(new BiFunctionPorts(bits)) {
-  val mio = this.io.asInstanceOf[BiFunctionPorts]
+protected class UDiv(ports: UBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[UBiFunctionPorts]
   mio.outa := mio.ina / mio.inb
 }
 
-object Div extends InlineApply[Div] {
+protected class SDiv(ports: SBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[SBiFunctionPorts]
+  mio.outa := mio.ina / mio.inb
+}
+
+object UDiv extends UInlineApply[UDiv] {
 
   // public constructor
   def apply(bits: Int) = {
-    new Div(bits)
+    new UDiv(new UBiFunctionPorts(bits))
   }
 
-  def apply(operands: Data*) = super.apply(operands).asUInt()
+  override def newInstance(bits: Int): UDiv = UDiv(bits)
+}
 
-  override def newInstance(bits: Int): Div = Div(bits)
+object SDiv extends SInlineApply[SDiv] {
+
+  // public constructor
+  def apply(bits: Int) = {
+    new SDiv(new SBiFunctionPorts(bits))
+  }
+
+  override def newInstance(bits: Int): SDiv = SDiv(bits)
 }

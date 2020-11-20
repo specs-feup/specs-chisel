@@ -1,13 +1,13 @@
 package pt.inesctec.modules.functionalUnit
 
-import chisel3.{Data, Module, SInt, UInt}
+import chisel3.{Data, Module}
 
-trait UInlineApply[T] extends InlineApply[T] {
-  def apply(operands: Data*) = super.apply(operands).asInstanceOf[UInt]
+trait UInlineApply[T <: AFunctionalUnit] extends InlineApply[T] {
+  def apply(operands: Data*) = super.apply(operands).asUInt()
 }
 
-trait SInlineApply[T] extends InlineApply[T] {
-  def apply(operands: Data*) = super.apply(operands).asInstanceOf[SInt]
+trait SInlineApply[T <: AFunctionalUnit] extends InlineApply[T] {
+  def apply(operands: Data*) = super.apply(operands).asUInt().asSInt() // lol?
 }
 
 sealed trait InlineApply[T <: AFunctionalUnit] {

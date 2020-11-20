@@ -1,22 +1,34 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
-import chisel3.Data
-import pt.inesctec.modules.functionalUnit.portlist.BiFunctionPorts
-import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, InlineApply}
+import pt.inesctec.modules.functionalUnit.portlist.{SBiFunctionPorts, UBiFunctionPorts}
+import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, SInlineApply, UInlineApply}
 
-protected class Mul(bits: Int) extends AFunctionalUnit(new BiFunctionPorts(bits)) {
-  val mio = this.io.asInstanceOf[BiFunctionPorts]
+protected class UMul(ports: UBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[UBiFunctionPorts]
   mio.outa := mio.ina * mio.inb
 }
 
-object Mul extends InlineApply[Mul] {
+protected class SMul(ports: SBiFunctionPorts) extends AFunctionalUnit(ports) {
+  val mio = this.io.asInstanceOf[SBiFunctionPorts]
+  mio.outa := mio.ina * mio.inb
+}
+
+object UMul extends UInlineApply[UMul] {
 
   // public constructor
   def apply(bits: Int) = {
-    new Mul(bits)
+    new UMul(new UBiFunctionPorts(bits))
   }
 
-  def apply(operands: Data*) = super.apply(operands).asUInt()
+  override def newInstance(bits: Int): UMul = UMul(bits)
+}
 
-  override def newInstance(bits: Int): Mul = Mul(bits)
+object SMul extends SInlineApply[SMul] {
+
+  // public constructor
+  def apply(bits: Int) = {
+    new SMul(new SBiFunctionPorts(bits))
+  }
+
+  override def newInstance(bits: Int): SMul = SMul(bits)
 }
