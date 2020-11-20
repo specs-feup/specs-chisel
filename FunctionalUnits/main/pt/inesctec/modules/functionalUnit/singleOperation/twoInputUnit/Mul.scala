@@ -4,13 +4,11 @@ import pt.inesctec.modules.functionalUnit.portlist.{SBiFunctionPorts, UBiFunctio
 import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, SInlineApply, UInlineApply}
 
 protected class UMul(ports: UBiFunctionPorts) extends AFunctionalUnit(ports) {
-  val mio = this.io.asInstanceOf[UBiFunctionPorts]
-  mio.outa := mio.ina * mio.inb
+  io.outa := io.ina * io.inb
 }
 
 protected class SMul(ports: SBiFunctionPorts) extends AFunctionalUnit(ports) {
-  val mio = this.io.asInstanceOf[SBiFunctionPorts]
-  mio.outa := mio.ina * mio.inb
+  io.outa := io.ina * io.inb
 }
 
 object UMul extends UInlineApply[UMul] {

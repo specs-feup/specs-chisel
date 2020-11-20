@@ -5,7 +5,9 @@ import pt.inesctec.modules.{DataN, SDataN}
 
 abstract class BiFunctionPorts[T <: Data](bits: Int) extends FunctionPorts {
   def ina: T
+
   def inb: T
+
   def outa: T
 }
 
