@@ -27,5 +27,5 @@ class MultiAdd extends AFunctionalUnit(new BiFunctionPorts(32)) {
   //mio.elements("outa") := add1.mio.outa + mio.inb
   //mio.outa := add1.mio.outa + mio.inb
 
-  mio.outa := Add(mio.ina, 2.U) //+ mio.inb
+  mio.outa := Add(mio.ina, 2.U) + mio.inb
 }
