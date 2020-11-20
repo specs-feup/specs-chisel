@@ -1,4 +1,4 @@
-package pt.inesctec.modules.functionalUnit
+package pt.inesctec.functionalUnit.singleOperation.twoInputUnit
 
 import chisel3.{Bundle, Module}
 import pt.inesctec.modules.functionalUnit.portlist.UBiFunctionPorts

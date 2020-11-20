@@ -7,14 +7,14 @@ import pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit.UAdd
 
 class TestDataMirror extends MultiIOModule {
   val add = Module(UAdd(32))
-  add.mio.ina := DontCare
-  add.mio.inb := DontCare
+  add.io.ina := DontCare
+  add.io.inb := DontCare
 
   DataMirror.fullModulePorts(add).foreach { case (name, port) =>
     println(s"Found port $name: $port")
   }
 
-  add.mio.portlist.foreach { case (port) =>
+  add.io.portlist.foreach { case (port) =>
     println(s"Found (reverse order) port: $port")
   }
 }
