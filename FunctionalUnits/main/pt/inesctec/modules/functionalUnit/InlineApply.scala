@@ -1,17 +1,16 @@
 package pt.inesctec.modules.functionalUnit
 
 import chisel3.{Data, Module}
-import pt.inesctec.modules.functionalUnit.portlist.FunctionPorts
 
-trait UInlineApply[T <: AFunctionalUnit[_ <: FunctionPorts]] extends InlineApply[T] {
+trait UInlineApply[T <: AFunctionalUnit] extends InlineApply[T] {
   def apply(operands: Data*) = super.apply(operands).asUInt()
 }
 
-trait SInlineApply[T <: AFunctionalUnit[_ <: FunctionPorts]] extends InlineApply[T] {
+trait SInlineApply[T <: AFunctionalUnit] extends InlineApply[T] {
   def apply(operands: Data*) = super.apply(operands).asUInt().asSInt() // lol?
 }
 
-sealed trait InlineApply[T <: AFunctionalUnit[_ <: FunctionPorts]] {
+sealed trait InlineApply[T <: AFunctionalUnit] {
 
   /*
   Must be overridden by companion objects of children

@@ -1,4 +1,4 @@
-package muxTest
+package pt.inesctec.muxTest
 
 import java.io.File
 

@@ -1,13 +1,13 @@
 package pt.inesctec.modules.functionalUnit.singleOperation.twoInputUnit
 
 import pt.inesctec.modules.functionalUnit.portlist.{SBiFunctionPorts, UBiFunctionPorts}
-import pt.inesctec.modules.functionalUnit.{AFunctionalUnit, SInlineApply, UInlineApply}
+import pt.inesctec.modules.functionalUnit.{SInlineApply, TwoInputUnit, UInlineApply}
 
-protected class UAdd(ports: UBiFunctionPorts) extends AFunctionalUnit(ports) {
+protected class UAdd(ports: UBiFunctionPorts) extends TwoInputUnit[UBiFunctionPorts](ports) {
   io.outa := io.ina + io.inb
 }
 
-protected class SAdd(ports: SBiFunctionPorts) extends AFunctionalUnit(ports) {
+protected class SAdd(ports: SBiFunctionPorts) extends TwoInputUnit[SBiFunctionPorts](ports) {
   io.outa := io.ina + io.inb
 }
 
