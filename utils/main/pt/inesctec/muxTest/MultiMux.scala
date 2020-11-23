@@ -1,4 +1,4 @@
-package muxTest
+package pt.inesctec.muxTest
 
 import chisel3.core.Module
 import chisel3.{Bundle, Input, Output, UInt, fromIntToWidth}
