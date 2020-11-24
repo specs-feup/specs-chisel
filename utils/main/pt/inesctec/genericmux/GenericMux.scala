@@ -1,8 +1,8 @@
 package pt.inesctec.genericmux
 
-import Chisel.{MuxCase, when}
+import Chisel.{Mux1H, MuxCase}
 import chisel3.core.fromIntToWidth
-import chisel3.{Bundle, DontCare, Flipped, Input, Output, RawModule, UInt, Vec, fromBooleanToLiteral, fromIntToLiteral}
+import chisel3.{Bundle, Flipped, Input, Output, RawModule, UInt, Vec, fromIntToLiteral}
 
 class Test extends Bundle {
   val valuein = Input(UInt(32.W))
@@ -29,15 +29,9 @@ protected class GenericMux(muxio: MuxIO) extends RawModule {
   //val arraySel = (io.inputs.indices map { i => io.select(i) -> io.inputs(i) })
   //io.output := MuxCase(0.U.asTypeOf(io.output), arraySel)
 
-  for (i <- io.inputs.indices) {
-    when(io.select(i) === true.B) {
-      io.output <> io.inputs(i)
+  //(io.select.asBools() zip io.inputs).map{ case (sel, in) => if(sel == true.B) io.output <> in }
 
-    }.elsewhen(io.select.asUInt().orR === false.B) {
-      io.output := 0.U.asTypeOf(io.output)
-      io.output <> DontCare
-    }
-  }
+  io.output <> Mux1H(io.select.asBools() zip io.inputs)
 }
 
 class UIntMux(nins: Int) extends RawModule {
