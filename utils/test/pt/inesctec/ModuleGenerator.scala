@@ -9,7 +9,7 @@ object ModuleGenerator extends App {
 
   val path1 = new File("./utils/output/")
   val cs = new ChiselStage
-  cs.emitVerilog(GenericCrossBar(2),
+  cs.emitVerilog(GenericCrossBar(3),
     Array("--target-dir", path1.getAbsolutePath, "-o", "GenericCrossBar"))
 
   //(new ChiselStage).execute(Array[String](), Seq(ChiselGeneratorAnnotation(() => new TestDataMirror)))

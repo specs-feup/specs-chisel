@@ -2,7 +2,7 @@ package pt.inesctec.genericmux
 
 import Chisel.{Cat, Mux1H, MuxCase}
 import chisel3.core.fromIntToWidth
-import chisel3.{Bundle, Flipped, Input, Module, Output, RawModule, UInt, Vec, fromIntToLiteral}
+import chisel3.{Bundle, Flipped, Input, Output, RawModule, UInt, Vec, fromIntToLiteral}
 
 class Test extends Bundle {
   val valuein = Input(UInt(8.W))
@@ -17,23 +17,55 @@ class MuxIO(nins: Int) extends Bundle {
   override def cloneType: MuxIO.this.type = new MuxIO(nins).asInstanceOf[this.type]
 }
 
-class CrossbarIO(nins: Int) extends Bundle {
-  val select = Input(UInt((nins * nins).W))
+class CrossbarIO(nins: Int, nouts: Int) extends Bundle {
+  val select = Input(UInt((nins * nouts).W))
   val inputs = Vec(nins, new Test)
-  val output = Flipped(Vec(nins, new Test))
+  val output = Flipped(Vec(nouts, new Test))
 
-  override def cloneType: CrossbarIO.this.type = new CrossbarIO(nins).asInstanceOf[this.type]
+  override def cloneType: CrossbarIO.this.type = new CrossbarIO(nins, nouts).asInstanceOf[this.type]
 }
 
 object GenericCrossBar {
   // default mux of 2 UInts
   def apply(nins: Int) = {
-    new GenericCrossBar(new CrossbarIO(nins))
+    new GenericCrossBar(new CrossbarIO(nins, 2))
   }
 }
 
 protected class GenericCrossBar(crossio: CrossbarIO) extends RawModule {
   val io = IO(crossio)
+
+  //This works!
+  for (i <- io.inputs.indices) {
+    var bitsel = io.select(i).asUInt()
+    for (j <- 1 until io.output.size)
+      bitsel = Cat(bitsel, io.select(i + (io.inputs.size * j) - 1))
+    io.inputs(i) <> Mux1H(bitsel.asBools() zip io.output)
+  }
+  for (i <- io.output.indices) {
+    val bitrange = io.select(io.inputs.size * (i + 1) - 1, io.inputs.size * i)
+    io.output(i) <> Mux1H(bitrange.asBools() zip io.inputs)
+  }
+
+  /*
+    for (i <- io.output.indices) {
+      val bitrange = io.select(io.inputs.size * (i + 1) - 1, io.inputs.size * i).asBools()
+      io.output(i) <> Mux1H(bitrange zip io.inputs)
+    }
+
+    for (i <- io.inputs.indices) {
+      var bitsel = io.select(i).asUInt()
+      for (j <- 1 until io.output.size)
+        bitsel = Cat(bitsel, io.select(i + (io.inputs.size * j) - 1))
+      io.inputs(i) <> Mux1H(bitsel.asBools() zip io.output)
+    }
+    // NOTE: doesnt work... the last io.inputs(i) is the only one that takes effects
+    // and generates hardware; this is functional programming, meaning the description is generated
+    // based on the evaluation of the sequential code (i.e., previous assigns to io.output are discarded
+    // one I do io.inputs(i) <> i.output
+  */
+
+  /*
   for (i <- io.output.indices) {
     val mux = Module(GenericMux(io.inputs.size))
     mux.io.inputs <> io.inputs
@@ -49,7 +81,7 @@ protected class GenericCrossBar(crossio: CrossbarIO) extends RawModule {
       bitsel = Cat(bitsel, io.select((i + 1) * io.inputs.size))
     mux.io.select := bitsel
     io.inputs(i) <> mux.io.output
-  }
+  }*/
 }
 
 object GenericMux {
