@@ -2,7 +2,7 @@ package pt.inesctec.genericmux
 
 import Chisel.{Cat, Mux1H, MuxCase}
 import chisel3.core.fromIntToWidth
-import chisel3.{Bundle, Flipped, Input, Output, RawModule, UInt, Vec, fromIntToLiteral}
+import chisel3.{Bundle, Flipped, Input, Output, RawModule, UInt, Vec, fromBooleanToLiteral, fromIntToLiteral, when}
 
 class Test extends Bundle {
   val valuein = Input(UInt(8.W))
@@ -35,17 +35,41 @@ object GenericCrossBar {
 protected class GenericCrossBar(crossio: CrossbarIO) extends RawModule {
   val io = IO(crossio)
 
-  //This works!
-  for (i <- io.inputs.indices) {
+  for (i <- io.output.indices) {
+
+    val outsel = io.select(io.inputs.size * (i + 1) - 1, io.inputs.size * i)
+    var insel =  io.select(i).asUInt()
+    for (j <- 1 until io.output.size)
+      insel = Cat(insel, io.select(i + (io.inputs.size * j) - 1))
+
+    // no input selected for output
+    when(outsel.orR() === false.B) {
+      io.output(i) <> 0.U.asTypeOf(io.output(i))
+    }
+
+
+    for (j <- io.inputs.indices) {
+      when(io.select((i * io.inputs.size) + j) === true.B) {
+        io.output(i) <> io.inputs(j)
+      }
+    }
+  }
+    /*
+    // reverse selection
     var bitsel = io.select(i).asUInt()
     for (j <- 1 until io.output.size)
       bitsel = Cat(bitsel, io.select(i + (io.inputs.size * j) - 1))
-    io.inputs(i) <> Mux1H(bitsel.asBools() zip io.output)
-  }
+
+    when(bitsel.orR() === true.B) {
+      io.inputs(i) <> Mux1H(bitsel.asBools() zip io.output)
+    }
+  }  */
+
+  /*
   for (i <- io.output.indices) {
     val bitrange = io.select(io.inputs.size * (i + 1) - 1, io.inputs.size * i)
     io.output(i) <> Mux1H(bitrange.asBools() zip io.inputs)
-  }
+  }*/
 
   /*
     for (i <- io.output.indices) {
