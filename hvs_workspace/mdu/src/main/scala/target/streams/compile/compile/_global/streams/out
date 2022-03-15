@@ -1,0 +1,244 @@
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:1:8: not found: object chisel3[0m
+[0m[[0m[31merror[0m] [0m[0mimport chisel3._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:2:8: not found: object chisel3[0m
+[0m[[0m[31merror[0m] [0m[0mimport chisel3.util._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:3:8: not found: object chiseltest[0m
+[0m[[0m[31merror[0m] [0m[0mimport chiseltest._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:4:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.flatspec.AnyFlatSpec[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:7:8: not found: value chisel3[0m
+[0m[[0m[31merror[0m] [0m[0m  (new chisel3.stage.ChiselStage).emitVerilog(new MDU, args)[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:11:15: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MUL = 0.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:11:19: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MUL = 0.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:12:16: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULH = 1.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:12:20: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULH = 1.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:13:18: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULHSU = 2.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:13:22: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULHSU = 2.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:14:17: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULHU = 3.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:14:21: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val MULHU = 3.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:15:15: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val DIV = 4.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:15:19: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val DIV = 4.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:16:16: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val DIVU = 5.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:16:20: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val DIVU = 5.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:17:15: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val REM = 6.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:17:19: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val REM = 6.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:18:16: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val REMU = 7.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:18:20: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val REMU = 7.U(3.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:19:54: class java.lang.Enum is not a value[0m
+[0m[[0m[31merror[0m] [0m[0m  val init_state :: mult_state :: div_state :: Nil = Enum(3)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:23:35: not found: type Bundle[0m
+[0m[[0m[31merror[0m] [0m[0mclass MDU_IO(width : Int) extends Bundle{[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:24:11: not found: value Input[0m
+[0m[[0m[31merror[0m] [0m[0m  val A = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:24:17: not found: value Bits[0m
+[0m[[0m[31merror[0m] [0m[0m  val A = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:24:28: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val A = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:25:11: not found: value Input[0m
+[0m[[0m[31merror[0m] [0m[0m  val B = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:25:17: not found: value Bits[0m
+[0m[[0m[31merror[0m] [0m[0m  val B = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:25:28: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val B = Input(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:26:12: not found: value Input[0m
+[0m[[0m[31merror[0m] [0m[0m  val fn = Input(UInt(3.W))[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:26:18: not found: value UInt[0m
+[0m[[0m[31merror[0m] [0m[0m  val fn = Input(UInt(3.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:26:25: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val fn = Input(UInt(3.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:27:12: not found: value Input[0m
+[0m[[0m[31merror[0m] [0m[0m  val en = Input(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:27:18: not found: value Bool[0m
+[0m[[0m[31merror[0m] [0m[0m  val en = Input(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:29:13: not found: value Output[0m
+[0m[[0m[31merror[0m] [0m[0m  val out = Output(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:29:20: not found: value Bits[0m
+[0m[[0m[31merror[0m] [0m[0m  val out = Output(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:29:31: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val out = Output(Bits(width.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:30:19: not found: value Output[0m
+[0m[[0m[31merror[0m] [0m[0m  val sys_stall = Output(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:30:26: not found: value Bool[0m
+[0m[[0m[31merror[0m] [0m[0m  val sys_stall = Output(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:34:19: illegal inheritance from final class Module[0m
+[0m[[0m[31merror[0m] [0m[0mclass MDU extends Module{[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:35:12: not found: value IO[0m
+[0m[[0m[31merror[0m] [0m[0m  val io = IO(new MDU_IO(32))[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:36:17: not found: value Wire[0m
+[0m[[0m[31merror[0m] [0m[0m  val is_mult = Wire(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:36:22: not found: value Bool[0m
+[0m[[0m[31merror[0m] [0m[0m  val is_mult = Wire(Bool())[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:37:20: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_A = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:37:30: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_A = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:37:35: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_A = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:38:20: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_B = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:38:30: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_B = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:38:35: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg_B = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:39:22: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_S = RegInit(0.S(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:39:32: value S is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_S = RegInit(0.S(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:39:37: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_S = RegInit(0.S(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:40:22: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_U = RegInit(0.U(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:40:32: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_U = RegInit(0.U(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:40:37: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val storeReg64_U = RegInit(0.U(64.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:41:18: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val stateReg = RegInit(0.U(2.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:41:28: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val stateReg = RegInit(0.U(2.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:41:32: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val stateReg = RegInit(0.U(2.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:42:19: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val remainder = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:42:29: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val remainder = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:42:34: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val remainder = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:43:17: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val divisor = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:43:27: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val divisor = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:43:32: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val divisor = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:44:21: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val coefficient = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:44:31: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val coefficient = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:44:36: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val coefficient = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:45:16: not found: value RegInit[0m
+[0m[[0m[31merror[0m] [0m[0m  val result = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:45:26: value U is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val result = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:45:31: value W is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m  val result = RegInit(0.U(32.W))[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:51:3: not found: value switch[0m
+[0m[[0m[31merror[0m] [0m[0m  switch(stateReg){[0m
+[0m[[0m[31merror[0m] [0m[0m  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:52:5: not found: value is[0m
+[0m[[0m[31merror[0m] [0m[0m    is(MDU.init_state){[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:53:7: not found: value when[0m
+[0m[[0m[31merror[0m] [0m[0m      when(io.en){[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:61:5: not found: value is[0m
+[0m[[0m[31merror[0m] [0m[0m    is(MDU.mult_state){[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:62:7: not found: value when[0m
+[0m[[0m[31merror[0m] [0m[0m      when(io.fn === MDU.MUL || io.fn === MDU.MULH) {[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:76:5: not found: value is[0m
+[0m[[0m[31merror[0m] [0m[0m    is(MDU.div_state){[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:77:7: not found: value when[0m
+[0m[[0m[31merror[0m] [0m[0m      when(remainder >= divisor){[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:89:25: not found: type AnyFlatSpec[0m
+[0m[[0m[31merror[0m] [0m[0mclass BasicTest extends AnyFlatSpec with ChiselScalatestTester {[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:89:42: not found: type ChiselScalatestTester[0m
+[0m[[0m[31merror[0m] [0m[0mclass BasicTest extends AnyFlatSpec with ChiselScalatestTester {[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:90:9: value should is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m  "MDU" should "pass" in {[0m
+[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/mdu/src/main/scala/mdu.scala:91:5: not found: value test[0m
+[0m[[0m[31merror[0m] [0m[0m    test(new MDU()) { m =>[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m81 errors found[0m
