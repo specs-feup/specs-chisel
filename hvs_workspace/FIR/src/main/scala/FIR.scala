@@ -89,6 +89,34 @@ class test extends AnyFlatSpec with ChiselScalatestTester{
       f.io.rs1.poke(43.U)
       f.io.recv_signal.poke(true.B)
       f.clock.step(1)
+      //f.io.recv_signal.poke(false.B)
+
+      f.io.data.poke(32.U)
+     // f.io.recv_signal.poke(true.B)
+      f.clock.step(1)
+      //f.io.recv_signal.poke(false.B)
+
+      f.io.data.poke(17.U)
+      //f.io.recv_signal.poke(true.B)
+      f.clock.step(1)
+      //f.io.recv_signal.poke(false.B)
+
+      f.io.data.poke(79.U)
+      //f.io.recv_signal.poke(true.B)
+      f.clock.step(1)
+      //f.io.recv_signal.poke(false.B)
+
+      f.io.data.poke(12.U)
+     // f.io.recv_signal.poke(true.B)
+      f.clock.step(1)
+      f.io.recv_signal.poke(false.B)
+
+      f.io.exec_signal.poke(true.B)
+      f.clock.step(1)
+      f.io.exec_signal.poke(false.B)
+      f.io.out.expect(516.U)
+
+      f.io.data.poke(21.U)
       f.io.valid.poke(false.B)
 
       f.io.valid.poke(true.B)
@@ -116,6 +144,12 @@ class test extends AnyFlatSpec with ChiselScalatestTester{
       f.io.valid.poke(false.B)
       f.io.recv_signal.poke(false.B)
 
+      f.io.exec_signal.poke(true.B)
+      f.clock.step(1)
+      f.io.exec_signal.poke(false.B)
+      f.io.out.expect(1287.U)
+
+      f.io.data.poke(33.U)
       f.io.valid.poke(true.B)
       f.io.exec_signal.poke(true.B)
       f.clock.step(4)
@@ -133,6 +167,9 @@ class test extends AnyFlatSpec with ChiselScalatestTester{
       f.io.valid.poke(true.B)
       f.io.exec_signal.poke(true.B)
       f.clock.step(1)
+      f.io.exec_signal.poke(false.B)
+      f.io.out.expect(2295.U)
+
       f.io.valid.poke(false.B)
       f.clock.step(4)
       f.io.valid.poke(false.B)
