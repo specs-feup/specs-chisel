@@ -1,5 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/specs-chisel/hvs_workspace/fir/src/main/scala/params.scala:28:5: not enough arguments for constructor ShellOption: (longOption: String, toAnnotationSeq: Map[String,String] => firrtl.AnnotationSeq, helpText: String, shortOption: Option[String], helpValueName: Option[String])(implicit evidence$1: scopt.Read[Map[String,String]]): firrtl.options.ShellOption[Map[String,String]].[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameter helpText.[0m
-[0m[[0m[31merror[0m] [0m[0m    new ShellOption[Map[String, String]]([0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m

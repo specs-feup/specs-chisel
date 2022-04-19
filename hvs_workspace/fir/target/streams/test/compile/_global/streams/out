@@ -1,4 +1,0 @@
-[0m[[0m[33mwarn[0m] [0m[0m/home/henrique/Desktop/specs-chisel/hvs_workspace/fir/src/test/scala/scieTest.scala:13:97: type ChiselScalatestTester in package tester is deprecated (since chiseltest 0.5): Please import from chiseltest._ instead of chisel3.tester._![0m
-[0m[[0m[33mwarn[0m] [0m[0mclass SCIESpec(params: TestParams, annotations: AnnotationSeq = Seq()) extends AnyFreeSpec with ChiselScalatestTester {[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                                                                                ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m

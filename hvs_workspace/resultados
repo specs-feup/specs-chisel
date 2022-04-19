@@ -1,0 +1,8 @@
+Bitwidth -> 32 bits
+--> ordem 2 -> 78 vs 141 (speedup 1.8);
+--> ordem 4 -> 190 vs 267 (speedup 1.4);
+--> ordem 6 -> 211 vs 299 (speedup 1.41);
+--> ordem 8 -> 281 vs 423 (speedup 1.5);
+--> ordem 16 -> 344 vs 454 (speedup 1.31);
+
+
