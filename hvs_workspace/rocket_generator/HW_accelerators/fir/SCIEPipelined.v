@@ -1,4 +1,4 @@
-module SCIEPipelined #(parameter XLEN = 32)(
+module SCIEPipelined #(parameter XLEN = 32) #(parameter XLEN = 32) #(parameter XLEN = 32)(
   input         clock,
 
   input         valid,
@@ -6,7 +6,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
   input  [31:0] rs1,
   input  [31:0] rs2,
   output [31:0] rd
-); reg reset = 0;
+); reg reset = 0; reg reset = 0; reg reset = 0;
   reg [31:0] coeffs_0;
   reg [31:0] coeffs_1;
   reg [31:0] coeffs_2;

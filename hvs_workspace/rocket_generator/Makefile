@@ -5,13 +5,14 @@ emu_dir = $(base_dir)/rocket-chip/emulator
 bench_dir = $(base_dir)/benchmarks
 hw_dir = $(base_dir)/HW_accelerators/fir
 
-export RISCV=$(base_dir)/rocket-chip/rocket-tools
+export RISCV=$(abspath .)/rocket-chip/rocket-tools
 
 base_name = freechips.rocketchip.system
 
 ### Calls vsim Makefile ###
 verilog:
-	make -C $(vsim_dir) verilog CONFIG=$(base_name)$(CONFIG)
+	make -C $(hw_dir) verilog order=$(order) width=$(width)
+	make -C $(vsim_dir) verilog CONFIG=$(base_name).$(config)
 
 .PHONY:verilog-clean
 verilog-clean:
@@ -20,24 +21,29 @@ verilog-clean:
 ### Calls emulator and benchmark Makefile ###
 build:
 	make -C $(bench_dir) order=$(order)
-	make -C	 $(hw_dir) Verilog order=$(order) width=$(width)
+	make -C $(hw_dir) verilog order=$(order) width=$(width)
 	make -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 build-debug:
 	make -C $(bench_dir) order=$(order)
-	make -C	 $(hw_dir) Verilog order=$(order) width=$(width)
+	make -C $(hw_dir) verilog order=$(order) width=$(width)
 	make debug -C $(emu_dir) CONFIG=$(base_name).$(config)
 
-.PHONY:build-clean
-build-clean:	
+.PHONY:clean
+clean:	
 	make -C $(emu_dir) clean
 	make -C $(bench_dir) clean
-	make -C $(hw_dir) clean
-
+	make -C $(hw_dir) clean	
+	
 simulate:
-	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) +verbose $(emu_dir)/$(binary)
+	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary)
 
 simulate-debug:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug +verbose -v output.vcd $(emu_dir)/$(binary)
+ 	
+	
+
+
+	
 	
 

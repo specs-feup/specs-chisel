@@ -3,7 +3,7 @@ MODULE:=SCIEPipelined
 base_dir = .
 vrsc_dir = $(base_dir)/../../rocket-chip/src/main/resources/vsrc
 
-Verilog:
+verilog:
 	@echo "\n### GENERATING VERILOG ###\n"
 	sbt 'runMain scie.SCIEPipelinedGen --params "order=$(order),width=$(width)"'
 	sbt 'runMain scie.SCIEUnpipelinedGen --params "width=$(width)"'
