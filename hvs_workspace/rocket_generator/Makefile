@@ -36,7 +36,7 @@ clean:
 	make -C $(hw_dir) clean	
 	
 simulate:
-	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary)
+	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> results.txt
 
 simulate-debug:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug +verbose -v output.vcd $(emu_dir)/$(binary)

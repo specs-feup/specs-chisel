@@ -4,19 +4,21 @@ circuit SCIEPipelined :
     input reset : UInt<1>
     output io : { flip valid : UInt<1>, flip insn : UInt<32>, flip rs1 : UInt<32>, flip rs2 : UInt<32>, rd : UInt<32>}
 
-    wire _coeffs_WIRE : UInt<32>[4] @[SCIEPipelined.scala 19:31]
+    wire _coeffs_WIRE : UInt<32>[5] @[SCIEPipelined.scala 19:31]
     _coeffs_WIRE[0] <= UInt<32>("h0") @[SCIEPipelined.scala 19:31]
     _coeffs_WIRE[1] <= UInt<32>("h0") @[SCIEPipelined.scala 19:31]
     _coeffs_WIRE[2] <= UInt<32>("h0") @[SCIEPipelined.scala 19:31]
     _coeffs_WIRE[3] <= UInt<32>("h0") @[SCIEPipelined.scala 19:31]
-    reg coeffs : UInt<32>[4], clock with :
+    _coeffs_WIRE[4] <= UInt<32>("h0") @[SCIEPipelined.scala 19:31]
+    reg coeffs : UInt<32>[5], clock with :
       reset => (reset, _coeffs_WIRE) @[SCIEPipelined.scala 19:23]
-    wire _data_WIRE : UInt<32>[4] @[SCIEPipelined.scala 20:29]
+    wire _data_WIRE : UInt<32>[5] @[SCIEPipelined.scala 20:29]
     _data_WIRE[0] <= UInt<32>("h0") @[SCIEPipelined.scala 20:29]
     _data_WIRE[1] <= UInt<32>("h0") @[SCIEPipelined.scala 20:29]
     _data_WIRE[2] <= UInt<32>("h0") @[SCIEPipelined.scala 20:29]
     _data_WIRE[3] <= UInt<32>("h0") @[SCIEPipelined.scala 20:29]
-    reg data : UInt<32>[4], clock with :
+    _data_WIRE[4] <= UInt<32>("h0") @[SCIEPipelined.scala 20:29]
+    reg data : UInt<32>[5], clock with :
       reset => (reset, _data_WIRE) @[SCIEPipelined.scala 20:21]
     reg result : UInt<32>, clock with :
       reset => (reset, UInt<32>("h0")) @[SCIEPipelined.scala 21:23]
@@ -24,7 +26,7 @@ circuit SCIEPipelined :
       node _T = bits(io.insn, 6, 0) @[SCIEPipelined.scala 24:17]
       node _T_1 = eq(_T, UInt<4>("hb")) @[SCIEPipelined.scala 24:24]
       when _T_1 : @[SCIEPipelined.scala 24:42]
-        node _T_2 = bits(io.rs2, 1, 0)
+        node _T_2 = bits(io.rs2, 2, 0)
         coeffs[_T_2] <= io.rs1 @[SCIEPipelined.scala 25:22]
         result <= UInt<1>("h1") @[SCIEPipelined.scala 26:14]
       else :
@@ -34,6 +36,7 @@ circuit SCIEPipelined :
           data[1] <= data[0] @[SCIEPipelined.scala 28:54]
           data[2] <= data[1] @[SCIEPipelined.scala 28:54]
           data[3] <= data[2] @[SCIEPipelined.scala 28:54]
+          data[4] <= data[3] @[SCIEPipelined.scala 28:54]
           data[0] <= io.rs1 @[SCIEPipelined.scala 29:15]
           result <= UInt<1>("h1") @[SCIEPipelined.scala 30:14]
         else :
@@ -44,12 +47,15 @@ circuit SCIEPipelined :
             node _result_T_1 = mul(data[1], coeffs[1]) @[SCIEPipelined.scala 32:57]
             node _result_T_2 = mul(data[2], coeffs[2]) @[SCIEPipelined.scala 32:57]
             node _result_T_3 = mul(data[3], coeffs[3]) @[SCIEPipelined.scala 32:57]
-            node _result_T_4 = add(_result_T, _result_T_1) @[SCIEPipelined.scala 32:72]
-            node _result_T_5 = tail(_result_T_4, 1) @[SCIEPipelined.scala 32:72]
-            node _result_T_6 = add(_result_T_5, _result_T_2) @[SCIEPipelined.scala 32:72]
-            node _result_T_7 = tail(_result_T_6, 1) @[SCIEPipelined.scala 32:72]
-            node _result_T_8 = add(_result_T_7, _result_T_3) @[SCIEPipelined.scala 32:72]
-            node _result_T_9 = tail(_result_T_8, 1) @[SCIEPipelined.scala 32:72]
-            result <= _result_T_9 @[SCIEPipelined.scala 32:14]
+            node _result_T_4 = mul(data[4], coeffs[4]) @[SCIEPipelined.scala 32:57]
+            node _result_T_5 = add(_result_T, _result_T_1) @[SCIEPipelined.scala 32:72]
+            node _result_T_6 = tail(_result_T_5, 1) @[SCIEPipelined.scala 32:72]
+            node _result_T_7 = add(_result_T_6, _result_T_2) @[SCIEPipelined.scala 32:72]
+            node _result_T_8 = tail(_result_T_7, 1) @[SCIEPipelined.scala 32:72]
+            node _result_T_9 = add(_result_T_8, _result_T_3) @[SCIEPipelined.scala 32:72]
+            node _result_T_10 = tail(_result_T_9, 1) @[SCIEPipelined.scala 32:72]
+            node _result_T_11 = add(_result_T_10, _result_T_4) @[SCIEPipelined.scala 32:72]
+            node _result_T_12 = tail(_result_T_11, 1) @[SCIEPipelined.scala 32:72]
+            result <= _result_T_12 @[SCIEPipelined.scala 32:14]
     io.rd <= result @[SCIEPipelined.scala 35:9]
 

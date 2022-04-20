@@ -9,7 +9,8 @@ em_dir = ../rocket-chip/emulator
 # Sources
 #--------------------------------------------------------------------
 
-bmarks = test_benchmark \
+bmarks = fir_benchmark \
+	baseline \
 
 #--------------------------------------------------------------------
 # Build rules
