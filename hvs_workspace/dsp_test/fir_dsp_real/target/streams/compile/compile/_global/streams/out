@@ -1,0 +1,11 @@
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/fir/src/main/scala/scie/SCIEPipelined.scala:30:21: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : (width: chisel3.internal.firrtl.Width, binaryPoint: chisel3.internal.firrtl.BinaryPoint): chisel3.experimental.FixedPoint <and> (binaryPoint: chisel3.internal.firrtl.BinaryPoint): chisel3.experimental.FixedPoint[0m
+[0m[[0m[31merror[0m] [0m[0m required: chisel3.Data[0m
+[0m[[0m[31merror[0m] [0m[0m      result := 1.0.F[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/fir/src/main/scala/scie/SCIEPipelined.scala:34:21: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : (width: chisel3.internal.firrtl.Width, binaryPoint: chisel3.internal.firrtl.BinaryPoint): chisel3.experimental.FixedPoint <and> (binaryPoint: chisel3.internal.firrtl.BinaryPoint): chisel3.experimental.FixedPoint[0m
+[0m[[0m[31merror[0m] [0m[0m required: chisel3.Data[0m
+[0m[[0m[31merror[0m] [0m[0m      result := 1.0.F[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

@@ -28,7 +28,7 @@ object TesterParameterAnnotation extends HasShellOptions {
     new ShellOption[Map[String, String]](
       longOption = "params",
       toAnnotationSeq = (a: Map[String, String]) => Seq(TesterParameterAnnotation(TestParams(a))),
-      helpText = """e.g. --params "order=7,width=16" """
+      helpText = """e.g. --params "order=7,data=200,width=16,type='DspReal',binarypoint=12""""
     )
   )
 }

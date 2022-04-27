@@ -1,0 +1,28 @@
+[
+  {
+    "class":"firrtl.stage.FirrtlFileAnnotation",
+    "file":"test_run_dir/SimpleDspModuleSpec533044611/FIRModule.lo.fir"
+  },
+  {
+    "class":"logger.LogLevelAnnotation",
+    "globalLogLevel":{
+      
+    }
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.LowFirrtlEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/SimpleDspModuleSpec533044611"
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~FIRModule|FIRModule>io_rd",
+    "sources":[
+      "~FIRModule|FIRModule>io_rs1",
+      "~FIRModule|FIRModule>io_rs2"
+    ]
+  }
+]

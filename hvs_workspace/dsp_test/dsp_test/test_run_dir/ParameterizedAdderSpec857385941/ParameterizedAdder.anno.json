@@ -1,0 +1,26 @@
+[
+  {
+    "class":"firrtl.stage.FirrtlFileAnnotation",
+    "file":"test_run_dir/ParameterizedAdderSpec857385941/ParameterizedAdder.lo.fir"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.LowFirrtlEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"ParameterizedAdder.BBFAdd",
+    "name":"BBFAdd.v",
+    "text":"// SPDX-License-Identifier: Apache-2.0\n\nmodule BBFAdd(\n    input  [63:0] in1,\n    input  [63:0] in2,\n    output reg [63:0] out\n);\n  always @* begin\n  out = $realtobits($bitstoreal(in1) + $bitstoreal(in2));\n  end\nendmodule\n\n"
+  },
+  {
+    "class":"logger.LogLevelAnnotation",
+    "globalLogLevel":{
+      
+    }
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/ParameterizedAdderSpec857385941"
+  }
+]

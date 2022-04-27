@@ -1,7 +1,6 @@
 package scie
 
 import chisel3._
-import params._
 
 class SCIEDecoderInterface extends Bundle{
   val insn = Input(UInt(32.W))

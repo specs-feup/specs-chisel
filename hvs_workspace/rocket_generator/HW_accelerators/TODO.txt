@@ -1,0 +1,2 @@
+--> Verificar o correto funcionamento de todos os tipos de filtros FIR dentro do Rocket-chip;
+--> Utilizando o Dsptools juntar todos os tipos de filtros num só.

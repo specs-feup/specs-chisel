@@ -1,0 +1,142 @@
+circuit SCIEUnpipelined :
+  module SCIEUnpipelined :
+    input clock : Clock
+    input reset : UInt<1>
+    input io_insn : UInt<32>
+    input io_rs1 : UInt<32>
+    input io_rs2 : UInt<32>
+    output io_rd : UInt<32>
+
+    reg coeffs_0 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_0) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_1 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_1) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_2 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_2) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_3 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_3) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_4 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_4) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_5 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_5) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_6 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_6) @[SCIEUnpipelined.scala 19:23]
+    reg coeffs_7 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), coeffs_7) @[SCIEUnpipelined.scala 19:23]
+    reg data_0 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_0) @[SCIEUnpipelined.scala 20:21]
+    reg data_1 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_1) @[SCIEUnpipelined.scala 20:21]
+    reg data_2 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_2) @[SCIEUnpipelined.scala 20:21]
+    reg data_3 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_3) @[SCIEUnpipelined.scala 20:21]
+    reg data_4 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_4) @[SCIEUnpipelined.scala 20:21]
+    reg data_5 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_5) @[SCIEUnpipelined.scala 20:21]
+    reg data_6 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_6) @[SCIEUnpipelined.scala 20:21]
+    reg data_7 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), data_7) @[SCIEUnpipelined.scala 20:21]
+    reg result : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), result) @[SCIEUnpipelined.scala 21:23]
+    node _T = bits(io_insn, 15, 0) @[SCIEUnpipelined.scala 23:15]
+    node _T_1 = eq(_T, UInt<15>("h700b")) @[SCIEUnpipelined.scala 23:23]
+    node _T_2 = bits(io_rs2, 2, 0)
+    node _coeffs_T_2 = io_rs1 @[SCIEUnpipelined.scala 24:{20,20}]
+    node _GEN_0 = mux(eq(UInt<1>("h0"), _T_2), _coeffs_T_2, coeffs_0) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_1 = mux(eq(UInt<1>("h1"), _T_2), _coeffs_T_2, coeffs_1) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_2 = mux(eq(UInt<2>("h2"), _T_2), _coeffs_T_2, coeffs_2) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_3 = mux(eq(UInt<2>("h3"), _T_2), _coeffs_T_2, coeffs_3) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_4 = mux(eq(UInt<3>("h4"), _T_2), _coeffs_T_2, coeffs_4) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_5 = mux(eq(UInt<3>("h5"), _T_2), _coeffs_T_2, coeffs_5) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_6 = mux(eq(UInt<3>("h6"), _T_2), _coeffs_T_2, coeffs_6) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _GEN_7 = mux(eq(UInt<3>("h7"), _T_2), _coeffs_T_2, coeffs_7) @[SCIEUnpipelined.scala 24:{20,20} 19:23]
+    node _T_3 = bits(io_insn, 15, 0) @[SCIEUnpipelined.scala 26:21]
+    node _T_4 = eq(_T_3, UInt<15>("h702b")) @[SCIEUnpipelined.scala 26:29]
+    node _T_5 = bits(io_insn, 15, 0) @[SCIEUnpipelined.scala 30:21]
+    node _T_6 = eq(_T_5, UInt<15>("h705b")) @[SCIEUnpipelined.scala 30:29]
+    node _result_T = mul(data_0, coeffs_0) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_1 = mul(data_1, coeffs_1) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_2 = mul(data_2, coeffs_2) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_3 = mul(data_3, coeffs_3) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_4 = mul(data_4, coeffs_4) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_5 = mul(data_5, coeffs_5) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_6 = mul(data_6, coeffs_6) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_7 = mul(data_7, coeffs_7) @[SCIEUnpipelined.scala 31:55]
+    node _result_T_8 = add(_result_T, _result_T_1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_9 = tail(_result_T_8, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_10 = add(_result_T_9, _result_T_2) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_11 = tail(_result_T_10, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_12 = add(_result_T_11, _result_T_3) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_13 = tail(_result_T_12, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_14 = add(_result_T_13, _result_T_4) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_15 = tail(_result_T_14, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_16 = add(_result_T_15, _result_T_5) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_17 = tail(_result_T_16, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_18 = add(_result_T_17, _result_T_6) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_19 = tail(_result_T_18, 1) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_20 = add(_result_T_19, _result_T_7) @[SCIEUnpipelined.scala 31:70]
+    node _result_T_21 = tail(_result_T_20, 1) @[SCIEUnpipelined.scala 31:70]
+    node _GEN_8 = mux(_T_6, _result_T_21, result) @[SCIEUnpipelined.scala 30:58 31:12 21:23]
+    node _GEN_9 = mux(_T_4, data_0, data_1) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_10 = mux(_T_4, data_1, data_2) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_11 = mux(_T_4, data_2, data_3) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_12 = mux(_T_4, data_3, data_4) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_13 = mux(_T_4, data_4, data_5) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_14 = mux(_T_4, data_5, data_6) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_15 = mux(_T_4, data_6, data_7) @[SCIEUnpipelined.scala 20:21 26:63 27:50]
+    node _GEN_16 = mux(_T_4, io_rs1, data_0) @[SCIEUnpipelined.scala 26:63 28:13 20:21]
+    node _GEN_17 = mux(_T_4, UInt<1>("h1"), _GEN_8) @[SCIEUnpipelined.scala 26:63 29:12]
+    node _GEN_18 = mux(_T_1, _GEN_0, coeffs_0) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_19 = mux(_T_1, _GEN_1, coeffs_1) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_20 = mux(_T_1, _GEN_2, coeffs_2) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_21 = mux(_T_1, _GEN_3, coeffs_3) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_22 = mux(_T_1, _GEN_4, coeffs_4) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_23 = mux(_T_1, _GEN_5, coeffs_5) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_24 = mux(_T_1, _GEN_6, coeffs_6) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_25 = mux(_T_1, _GEN_7, coeffs_7) @[SCIEUnpipelined.scala 19:23 23:58]
+    node _GEN_26 = mux(_T_1, UInt<1>("h1"), _GEN_17) @[SCIEUnpipelined.scala 23:58 25:12]
+    node _GEN_27 = mux(_T_1, data_1, _GEN_9) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_28 = mux(_T_1, data_2, _GEN_10) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_29 = mux(_T_1, data_3, _GEN_11) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_30 = mux(_T_1, data_4, _GEN_12) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_31 = mux(_T_1, data_5, _GEN_13) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_32 = mux(_T_1, data_6, _GEN_14) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_33 = mux(_T_1, data_7, _GEN_15) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _GEN_34 = mux(_T_1, data_0, _GEN_16) @[SCIEUnpipelined.scala 20:21 23:58]
+    node _coeffs_WIRE_0 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_1 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_2 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_3 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_4 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_5 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_6 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _coeffs_WIRE_7 = UInt<32>("h0") @[SCIEUnpipelined.scala 19:{31,31}]
+    node _data_WIRE_0 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_1 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_2 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_3 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_4 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_5 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_6 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    node _data_WIRE_7 = UInt<32>("h0") @[SCIEUnpipelined.scala 20:{29,29}]
+    io_rd <= result @[SCIEUnpipelined.scala 33:9]
+    coeffs_0 <= mux(reset, _coeffs_WIRE_0, _GEN_18) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_1 <= mux(reset, _coeffs_WIRE_1, _GEN_19) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_2 <= mux(reset, _coeffs_WIRE_2, _GEN_20) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_3 <= mux(reset, _coeffs_WIRE_3, _GEN_21) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_4 <= mux(reset, _coeffs_WIRE_4, _GEN_22) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_5 <= mux(reset, _coeffs_WIRE_5, _GEN_23) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_6 <= mux(reset, _coeffs_WIRE_6, _GEN_24) @[SCIEUnpipelined.scala 19:{23,23}]
+    coeffs_7 <= mux(reset, _coeffs_WIRE_7, _GEN_25) @[SCIEUnpipelined.scala 19:{23,23}]
+    data_0 <= mux(reset, _data_WIRE_0, _GEN_34) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_1 <= mux(reset, _data_WIRE_1, _GEN_27) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_2 <= mux(reset, _data_WIRE_2, _GEN_28) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_3 <= mux(reset, _data_WIRE_3, _GEN_29) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_4 <= mux(reset, _data_WIRE_4, _GEN_30) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_5 <= mux(reset, _data_WIRE_5, _GEN_31) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_6 <= mux(reset, _data_WIRE_6, _GEN_32) @[SCIEUnpipelined.scala 20:{21,21}]
+    data_7 <= mux(reset, _data_WIRE_7, _GEN_33) @[SCIEUnpipelined.scala 20:{21,21}]
+    result <= bits(mux(reset, UInt<32>("h0"), _GEN_26), 31, 0) @[SCIEUnpipelined.scala 21:{23,23}]
