@@ -53,8 +53,8 @@ class SCIESpec[T<:Data:Ring](testParams : TestParams, c: SCIEPipelined[T], fir_t
   val order = testParams.getInt("order")
   val data_size = testParams.getInt("data")
   var acc = 0.0
-  var input_coeffs = Array.fill(order)(Random.nextFloat)
-  var input_data = Array.fill(data_size)(Random.nextFloat)
+  var input_coeffs = Array.fill(order)(Random.nextFloat * 100 - 50)
+  var input_data = Array.fill(data_size)(Random.nextFloat * 100 - 50)
 
   fir_type match{
     case "DspReal" | "3" =>
@@ -110,7 +110,7 @@ class SCIESpec[T<:Data:Ring](testParams : TestParams, c: SCIEPipelined[T], fir_t
 
 
 class SCIETesterStage extends GenericTesterStage((params, _) => {
-  params.defaults ++= Seq("order" -> "4", "width" -> "32", "binarypoint" -> "0")
+  params.defaults ++= Seq("order" -> "5", "width" -> "32", "type" -> "0","binarypoint" -> "0")
 
   val testOptions = new DspTesterOptionsManager {
     dspTesterOptions = DspTesterOptions(
@@ -124,18 +124,18 @@ class SCIETesterStage extends GenericTesterStage((params, _) => {
   val binarypoint = params.getInt("binarypoint")
 
   fir_type match{
-    case "DspReal" => dsptools.Driver.execute(() => new SCIEPipelined(params, new DspReal), testOptions){ c =>
+    case "DspReal" | "3" => dsptools.Driver.execute(() => new SCIEPipelined(params, new DspReal), testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 
-    case "SInt" => dsptools.Driver.execute(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
+    case "SInt" | "1" => dsptools.Driver.execute(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
     (width))), testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 
-    case "UInt" => dsptools.Driver.execute(() => new SCIEPipelined(params, UInt(chisel3.internal.firrtl.Width
+    case "UInt" | "0" => dsptools.Driver.execute(() => new SCIEPipelined(params, UInt(chisel3.internal.firrtl.Width
     (width))), testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 
-    case "FixedPoint" => dsptools.Driver.execute(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width(width), binarypoint.BP)),
+    case "FixedPoint" | "2" => dsptools.Driver.execute(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width(width), binarypoint.BP)),
       testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 

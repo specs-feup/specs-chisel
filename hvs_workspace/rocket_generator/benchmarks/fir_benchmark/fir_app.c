@@ -35,6 +35,7 @@ int main(int argc, char *argv[]){
 	total_time_h = finish_time_h - start_time_h;
 	total_time_l = finish_time_l - start_time_l;
 	
+	printf("Result -> %d\n", res);
 	printf("%d \n", total_time_l);
 	
 

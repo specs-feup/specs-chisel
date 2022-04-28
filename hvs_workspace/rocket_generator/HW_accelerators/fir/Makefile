@@ -25,11 +25,11 @@ test:
 	sbt 'test:runMain scie.SCIETest --params "order=$(order),width=$(width),data=$(data),type=$(type),binarypoint=$(binarypoint)"'
 
 verilate: tb_$(MODULE).cpp
-		$(MAKE) Verilog order=$(order) width=$(width)
+		$(MAKE) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
 		@echo "\n### VERILATING ###\n"
 		verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp
 		make -C obj_dir -f V$(MODULE).mk V$(MODULE)
-		@./obj_dir/V$(MODULE) $(order) $(width)
+		@./obj_dir/V$(MODULE) $(order) $(width) $(type) $(binarypoint)
 
 .PHONY: waves
 waves: waveform.vcd

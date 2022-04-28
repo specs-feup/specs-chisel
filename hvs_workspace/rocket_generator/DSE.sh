@@ -4,21 +4,29 @@
 
 config=TinyConfig
 type=2
-binarypoint=16
+binarypoint=0
 width=32
-data=2000
+data=50
 
 order_array=(5 10 20 50 100 200 500 1000)
 
-file=./results/FixedPoint_order_results_bp16_nofpu.txt
+file=./results/test_file.txt
+
+sudo make build order=10 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
+sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
+sudo make clean
+
+sudo make build order=10 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
+sudo make simulate config=$config binary=baseline.riscv file=$file
+sudo make clean
 
 #Baseline loop
-echo "### BASELINE ###" >> $output_file
-for order in "${order_array[@]}"; do
-	sudo make build order=1000 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
-	sudo make simulate config=$config binary=baseline.riscv file=$file
-	sudo make clean
-done
+#echo "### BASELINE ###" >> $output_file
+#for order in "${order_array[@]}"; do
+#	sudo make build order=1000 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
+#	sudo make simulate config=$config binary=baseline.riscv file=$file
+#	sudo make clean
+#done
 #Accelerator loop
 #echo "### ACCELERATOR ###" >> $file
 #  for order in "${order_array[@]}"; do
