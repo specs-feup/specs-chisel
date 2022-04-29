@@ -53,8 +53,8 @@ class SCIESpec[T<:Data:Ring](testParams : TestParams, c: SCIEPipelined[T], fir_t
   val order = testParams.getInt("order")
   val data_size = testParams.getInt("data")
   var acc = 0.0
-  var input_coeffs = Array.fill(order)(Random.nextFloat * 100 - 50)
-  var input_data = Array.fill(data_size)(Random.nextFloat * 100 - 50)
+  var input_coeffs = Array.fill(order)(Random.nextFloat * 100)
+  var input_data = Array.fill(data_size)(Random.nextFloat * 100)
 
   fir_type match{
     case "DspReal" | "3" =>

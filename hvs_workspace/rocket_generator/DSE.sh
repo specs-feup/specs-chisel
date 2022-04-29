@@ -4,26 +4,26 @@
 
 config=TinyConfig
 type=2
-binarypoint=0
+binarypoint=16
 width=32
 data=50
 
 order_array=(5 10 20 50 100 200 500 1000)
 
-file=./results/test_file.txt
+file=./results/test.txt
 
-sudo make build order=10 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
-sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
-sudo make clean
-
-sudo make build order=10 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
+#Baseline loop
+echo "### BASELINE ###" >> $file
+sudo make build order=10 data=2000 width=$width config=$config type=$type binarypoint=$binarypoint
 sudo make simulate config=$config binary=baseline.riscv file=$file
 sudo make clean
 
-#Baseline loop
-#echo "### BASELINE ###" >> $output_file
+echo "### ACCELERATOR ###" >> $file
+sudo make build order=10 data=2000 width=$width config=$config type=$type binarypoint=$binarypoint
+sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
+sudo make clean
 #for order in "${order_array[@]}"; do
-#	sudo make build order=1000 data=$data width=$width config=$config type=$type binarypoint=$binarypoint
+#	sudo make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint
 #	sudo make simulate config=$config binary=baseline.riscv file=$file
 #	sudo make clean
 #done

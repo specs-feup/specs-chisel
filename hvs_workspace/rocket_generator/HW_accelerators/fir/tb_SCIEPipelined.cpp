@@ -9,7 +9,7 @@
 
 #define MAX_SIM_TIME 100
 vluint64_t sim_time = 0;
-int mod_type, order, width;
+int mod_type, order, width, binarypoint;
 
 using namespace std;
 
@@ -19,6 +19,10 @@ union value{
 	float fvalue;
 };
 
+uint32_t convert(float value){
+	return (uint32_t)(round(value * (1 << binarypoint)));
+}
+
 
 void dut_exec(VSCIEPipelined *dut){
 	dut->insn = 0x5b;
@@ -27,14 +31,14 @@ void dut_exec(VSCIEPipelined *dut){
 void dut_send_coeff(VSCIEPipelined *dut, union value *coeffs, int coeff_count){
         dut->insn = 0x0b;
 				dut->rs2 = coeff_count;
-				dut->rs1 = mod_type == 0 ? coeffs[dut->rs2].uvalue : mod_type == 1  ?  coeffs[dut->rs2].ivalue  : coeffs[dut->rs2].fvalue;
+				dut->rs1 = mod_type == 0 ? coeffs[dut->rs2].uvalue : mod_type == 1  ?  coeffs[dut->rs2].ivalue  : convert(coeffs[dut->rs2].fvalue);
 }
 
 
 void dut_send_data(VSCIEPipelined *dut, union value *data, int data_count){
     	  dut->insn = 0x2b;
 				dut->rs1 = data[data_count].fvalue;
-				dut->rs1 = mod_type == 0  ?  data[data_count].uvalue : mod_type == 1  ?  data[data_count].ivalue  :  data[data_count].fvalue;
+				dut->rs1 = mod_type == 0  ?  data[data_count].uvalue : mod_type == 1  ?  data[data_count].ivalue  :  convert(data[data_count].fvalue);
 }
 
 
@@ -44,7 +48,7 @@ int main(int argc, char** argv, char** env) {
 
     order = atoi(argv[1]);
     width = atoi(argv[2]);
-	//	int binarypoint = atoi(argv[4])
+		binarypoint = atoi(argv[4]);
 
 		mod_type = atoi(argv[3]);
 
@@ -69,8 +73,10 @@ int main(int argc, char** argv, char** env) {
 			break;
 			default:
 				for(int i = 0; i < order; i++){
-					coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
-					data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
+					coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
+					data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
+					//coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
+					//data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
 				}
 			break;
 		}
