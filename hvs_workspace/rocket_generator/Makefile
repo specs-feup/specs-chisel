@@ -20,12 +20,11 @@ verilog-clean:
 
 ### Calls emulator and benchmark Makefile ###
 build:
-	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type)
+	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
 	make -C $(hw_dir) verilog order=$(order) width=$(width) data=$(data) type=$(type) binarypoint=$(binarypoint)
 	make -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 build-debug:
-	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type)
 	make -C $(hw_dir) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
 	make debug -C $(emu_dir) CONFIG=$(base_name).$(config)
 

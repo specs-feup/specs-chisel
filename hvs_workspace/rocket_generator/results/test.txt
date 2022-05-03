@@ -1,0 +1,6 @@
+### BASELINE ###
+Res is --> 2492
+5838
+### ACCELERATOR ###
+Res is --> 2492
+1728 

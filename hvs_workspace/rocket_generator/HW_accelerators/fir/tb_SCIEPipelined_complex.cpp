@@ -13,11 +13,21 @@ int mod_type, order, width, binarypoint;
 
 using namespace std;
 
-union value{
-	int32_t ivalue;
-	uint32_t uvalue;
-	float fvalue;
+struct complex_int{
+	int16_t real_val;
+	int16_t imag_val;
 };
+
+struct complex_float{
+	float real_val;
+	float imag_val;
+};
+
+union value{
+	struct complex_int comp_int;
+	struct complex_float comp_fl;
+};
+
 
 uint32_t convert(float value){
 	return (uint32_t)(round(value * (1 << binarypoint)));
@@ -31,13 +41,15 @@ void dut_exec(VSCIEPipelined *dut){
 void dut_send_coeff(VSCIEPipelined *dut, union value *coeffs, int coeff_count){
         dut->insn = 0x0b;
 				dut->rs2 = coeff_count;
-				dut->rs1 = mod_type == 0 ? coeffs[dut->rs2].uvalue : mod_type == 1  ?  coeffs[dut->rs2].ivalue  : convert(coeffs[dut->rs2].fvalue);
+				dut->rs1_real = mod_type == 4 ? coeffs[dut->rs2].comp_int.real_val :  convert(coeffs[dut->rs2].comp_fl.real_val);
+				dut->rs1_imag = mod_type == 4 ? coeffs[dut->rs2].comp_int.imag_val :  convert(coeffs[dut->rs2].comp_fl.imag_val);
 }
 
 
 void dut_send_data(VSCIEPipelined *dut, union value *data, int data_count){
     	  dut->insn = 0x2b;
-				dut->rs1 = mod_type == 0  ?  data[data_count].uvalue : mod_type == 1  ?  data[data_count].ivalue  :  convert(data[data_count].fvalue);
+				dut->rs1_real = mod_type == 4 ? data[data_count].comp_int.real_val :  convert(data[data_count].comp_fl.real_val);
+				dut->rs1_imag = mod_type == 4 ? data[data_count].comp_int.imag_val : convert(data[data_count].comp_fl.imag_val);
 }
 
 
@@ -55,31 +67,20 @@ int main(int argc, char** argv, char** env) {
 
     srand(time(NULL));
 
-		//Types of data: 0 -> UInt, 1 -> SInt, 2 -> FixedPoint, 3 -> FP
-
 		switch(mod_type){
-			case 0:
+			case 4:
 				for(int i = 0; i < order; i++){
-					coeffs[i].uvalue = rand() % 100 + 1;
-					data[i].uvalue = rand() % 100 + 1;
+					coeffs[i].comp_int.real_val = rand() % 100 + 1 - 50;
+					coeffs[i].comp_int.imag_val = rand() % 100 + 1 - 50;
 				}
 			break;
-			case 1:
-				for(int i = 0; i < order; i++){
-					coeffs[i].ivalue = rand() % 100 + 1 - 50;
-					data[i].ivalue = rand() % 100 + 1 - 50;
-				}
-			break;
-			case 2:
-				for(int i = 0; i < order; i++){
-					coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
-					data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
-					//coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
-					//data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
-				}
-			break;
-			case 3:
-			//TODO --> Floating point
+			case 5:
+			for(int i = 0; i < order; i++){
+				coeffs[i].comp_fl.real_val = (float)rand()/(float)(RAND_MAX) * 100;
+				coeffs[i].comp_fl.imag_val = (float)rand()/(float)(RAND_MAX) * 100;
+				data[i].comp_fl.real_val = (float)rand()/(float)(RAND_MAX) * 100;
+				data[i].comp_fl.imag_val = (float)rand()/(float)(RAND_MAX) * 100;
+			}
 			break;
 		}
 

@@ -1,0 +1,4 @@
+#define DATA_MAX_REAL 1000
+#define DATA_MAX_IMAG 1000
+#define COEFF_MAX_REAL 500
+#define COEFF_MAX_IMAG 500

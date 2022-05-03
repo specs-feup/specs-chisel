@@ -9,8 +9,10 @@ em_dir = ../rocket-chip/emulator
 # Sources
 #--------------------------------------------------------------------
 
-bmarks = fir_benchmark \
-	baseline \
+bmarks = fir_benchmark_complex \
+		baseline_complex \
+		baseline \
+		fir_benchmark \
 
 #--------------------------------------------------------------------
 # Build rules
@@ -18,7 +20,7 @@ bmarks = fir_benchmark \
 
 RISCV_PREFIX ?= /opt/riscv/bin/riscv$(XLEN)-unknown-elf-
 RISCV_GCC ?= $(RISCV_PREFIX)gcc
-RISCV_GCC_OPTS ?= -march=rv32imac -mabi=ilp32 -DORDER=$(order) -DDATA=$(data) -DWIDTH=$(width) -DTYPE=$(type) -DPREALLOCATE=1 -mcmodel=medany -static -std=gnu99 -O0 -g -ffast-math -fno-common -fno-builtin-printf -I.
+RISCV_GCC_OPTS ?= -march=rv32imac -mabi=ilp32 -DORDER=$(order) -DDATA=$(data) -DWIDTH=$(width) -DTYPE=$(type) -DBINARYPOINT=$(binarypoint) -DPREALLOCATE=1 -mcmodel=medany -static -std=gnu99 -O0 -g -ffast-math -fno-common -fno-builtin-printf -I.
 RISCV_LINK ?= $(RISCV_GCC) -T $(src_dir)/common/test.ld $(incs)
 RISCV_LINK_OPTS ?= -static -nostdlib -nostartfiles -lm -lgcc -T $(src_dir)/common/test.ld
 RISCV_OBJDUMP ?= $(RISCV_PREFIX)objdump --disassemble-all --disassemble-zeroes --section=.text --section=.text.startup --section=.text.init --section=.data

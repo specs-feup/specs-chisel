@@ -18,18 +18,15 @@ class SCIEPipelineGenStage extends GenericTesterStage((params, _) => {
   val width = params.getInt("width")
   val binarypoint = params.getInt("binarypoint")
   fir_type match{
-    case "DspReal" | "3" => (new chisel3.stage.ChiselStage).execute(
-      Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
-      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, new DspReal))))
-
-    case "SInt" | "1" => (new chisel3.stage.ChiselStage).execute(
-      Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
-      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
-      (width))))))
 
     case "UInt" | "0" => (new chisel3.stage.ChiselStage).execute(
       Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
       Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, UInt(chisel3.internal.firrtl.Width
+      (width))))))
+
+    case "SInt" | "1" => (new chisel3.stage.ChiselStage).execute(
+      Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
+      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
       (width))))))
 
     case "FixedPoint" | "2" => (new chisel3.stage.ChiselStage).execute(
@@ -37,14 +34,24 @@ class SCIEPipelineGenStage extends GenericTesterStage((params, _) => {
       Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width
       (width), binarypoint.BP)))))
 
-    case "DspComplex-FixedPoint" | "4" => (new chisel3.stage.ChiselStage).execute(
+    /*case "DspReal" | "3" => (new chisel3.stage.ChiselStage).execute(
+     Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
+     Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, new DspReal))))*/
+
+    case "DspComplex" | "4" => (new chisel3.stage.ChiselStage).execute(
+      Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
+      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, DspComplex(SInt(chisel3.internal.firrtl.Width
+      (width/2)),SInt(chisel3.internal.firrtl.Width
+      (width/2)))))))
+
+    case "DspComplex-FixedPoint" | "5" => (new chisel3.stage.ChiselStage).execute(
       Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
       Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, DspComplex(FixedPoint(chisel3.internal.firrtl.Width
-      (width), binarypoint.BP), FixedPoint(chisel3.internal.firrtl.Width(width), binarypoint.BP))))))
+      (width/2), binarypoint.BP), FixedPoint(chisel3.internal.firrtl.Width(width/2), binarypoint.BP))))))
 
-    case "DspComplex-Real" | "5" => (new chisel3.stage.ChiselStage).execute(
+    /*case "DspComplex-Real" | "5" => (new chisel3.stage.ChiselStage).execute(
       Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
-      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, DspComplex(new DspReal, new DspReal)))))
+      Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, DspComplex(new DspReal, new DspReal)))))*/
   }
   })
 
