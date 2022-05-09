@@ -7,7 +7,7 @@ import chisel3.util.{BitPat, HasBlackBoxInline}
 import chisel3.experimental.fromIntToIntParam
 
 object SCIE {
-  val opcode = BitPat("b????????????????????????????1011")
+  val opcode = BitPat("b?????????????????????????0??1011")
   val iLen = 32
 }
 
@@ -118,6 +118,7 @@ class SCIEPipelinedInterface(xLen: Int) extends Bundle {
   val rs1_real = Input(UInt((xLen/2).W))
   val rs1_imag = Input(UInt((xLen/2).W))
   val rs2 = Input(UInt(xLen.W))
+  val reset = Input(Reset())
   val rd_real = Output(UInt((xLen/2).W))
   val rd_imag = Output(UInt((xLen/2).W))
 }

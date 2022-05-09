@@ -29,7 +29,7 @@ class SCIEPipelineGenStage extends GenericTesterStage((params, _) => {
       Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
       (width))))))
 
-    case "FixedPoint" | "2" => (new chisel3.stage.ChiselStage).execute(
+    case "FixedPoint" | "2" | "3" => (new chisel3.stage.ChiselStage).execute(
       Array("--emission-options=disableMemRandomization,disableRegisterRandomization","-X", "verilog"),
       Seq(ChiselGeneratorAnnotation(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width
       (width), binarypoint.BP)))))

@@ -3,28 +3,47 @@
 #Type 0 -> UInt, 1 -> SInt, 2 -> FixedPoint, 3 -> FP , 4 -> Complex, 5 -> Complex-FixedPoint
 
 config=TinyConfig
-type=0
-binarypoint=16
+type=3
+binarypoint=8
 width=32
-data=50
-
-order=2
 
 order_array=(5 10 20 50 100 200 500 1000)
+data_array=(50 100 200 500 1000 1500 2000)
 
-file=./results/test.txt
+file=./results/output.txt
 
+optimization_flag=-O0
 
-#Baseline loop
-#for i in 1 2 3 4; do
-  echo "### BASELINE ###" >> $file
-  sudo make clean
-  sudo make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint
-  sudo make simulate config=$config binary=baseline.riscv file=$file
+sudo make clean
 
-  echo "### ACCELERATOR ###" >> $file
-  sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
+#for data in "${data_array[@]}"; do
+#  sudo rm $file
+#  echo "### BASELINE ###" >> $file
+#  for order in "${order_array[@]}"; do
+#    sudo make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
+#    sudo make simulate config=$config binary=baseline.riscv file=$file
+#  done
+#  echo "### ACCELERATOR ###" >> $file
+#  for order in "${order_array[@]}"; do
+#      sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
+#  done
+#  ./plot.py order order_output_$data
 #done
+
+data=5
+order=5
+
+sudo rm $file
+echo "### BASELINE ###" >> $file
+sudo make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
+sudo make simulate config=$config binary=baseline.riscv file=$file
+
+type=2
+
+sudo make clean
+sudo make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
+sudo make simulate config=$config binary=baseline.riscv file=$file
+
 #echo "### ACCELERATOR ###" >> $file
 #sudo make simulate config=$config binary=fir_benchmark.riscv file=$file
 #for order in "${order_array[@]}"; do

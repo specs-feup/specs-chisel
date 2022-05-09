@@ -418,6 +418,7 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
       u.io.rs1_real := ex_rs(0)(31,16)
       u.io.rs1_imag := ex_rs(0)(15,0)
       u.io.rs2 := ex_rs(1)
+      u.io.reset := reset
       Cat(u.io.rd_real, u.io.rd_imag)
     }
 

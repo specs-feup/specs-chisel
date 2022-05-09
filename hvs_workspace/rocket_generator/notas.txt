@@ -1,1 +1,0 @@
---> Na execução do fir_benchmark.complex.riscv os números complexos extraídos do .h são, por vezes, errados. O problema provavelmente não é algoritmico pois foi efetuado um teste usando exatamente o mesmo método e obteve o resultado correto (VERIFICAR !!!!).

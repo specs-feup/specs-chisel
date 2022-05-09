@@ -10,13 +10,10 @@ verilog:
 	sbt 'runMain scie.SCIEPipelinedGen --params "order=$(order),width=$(width),type=$(type),binarypoint=$(binarypoint)"'
 	sbt 'runMain scie.SCIEUnpipelinedGen --params "width=$(width)"'
 	sbt 'runMain scie.SCIEDecoderGen'
-	#Parsing output (temporario)
 	@sed -i 's/io_//g' *.v 
 	../parse_scripts/strip_comment.py SCIEPipelined.v SCIEUnpipelined.v	
 	@sed -i 's/Pipelined/& #(parameter XLEN = 32)/' SCIEPipelined.v
 	@sed -i 's/pipelined/& #(parameter XLEN = 32)/' SCIEUnpipelined.v
-	@sed -i 's/  input         reset,//' SCIEPipelined.v	
-	@sed -i '0,/);/s//);\nreg reset = 0;/' SCIEPipelined.v
 	@if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
 		cp ./Complex_interface/RocketCore.scala $(rocket_dir); \
 		cp ./Complex_interface/SCIE.scala $(scie_dir); \

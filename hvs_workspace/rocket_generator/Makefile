@@ -20,12 +20,13 @@ verilog-clean:
 
 ### Calls emulator and benchmark Makefile ###
 build:
-	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
+	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint) optimization_flag=$(optimization_flag)
 	make -C $(hw_dir) verilog order=$(order) width=$(width) data=$(data) type=$(type) binarypoint=$(binarypoint)
 	make -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 build-debug:
-	make -C $(hw_dir) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
+	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
+	make -C $(hw_dir) verilog order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
 	make debug -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 .PHONY:clean
@@ -38,7 +39,7 @@ simulate:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)
 
 simulate-debug:
-	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug +verbose -v output.vcd $(emu_dir)/$(binary)
+	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug -v output.vcd $(emu_dir)/$(binary) >> $(file)
  	
 	
 

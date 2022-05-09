@@ -9,8 +9,8 @@ em_dir = ../rocket-chip/emulator
 # Sources
 #--------------------------------------------------------------------
 
-bmarks = fir_benchmark_complex \
-		baseline_complex \
+bmarks = baseline_complex \
+		fir_benchmark_complex \
 		baseline \
 		fir_benchmark \
 
@@ -20,7 +20,7 @@ bmarks = fir_benchmark_complex \
 
 RISCV_PREFIX ?= /opt/riscv/bin/riscv$(XLEN)-unknown-elf-
 RISCV_GCC ?= $(RISCV_PREFIX)gcc
-RISCV_GCC_OPTS ?= -march=rv32imac -mabi=ilp32 -DORDER=$(order) -DDATA=$(data) -DWIDTH=$(width) -DTYPE=$(type) -DBINARYPOINT=$(binarypoint) -DPREALLOCATE=1 -mcmodel=medany -static -std=gnu99 -O0 -g -ffast-math -fno-common -fno-builtin-printf -I.
+RISCV_GCC_OPTS ?= -march=rv32imafc -mabi=ilp32f -DORDER=$(order) -DDATA=$(data) -DWIDTH=$(width) -DTYPE=$(type) -DBINARYPOINT=$(binarypoint) -DPREALLOCATE=1 -mcmodel=medany -static -std=gnu99 $(optimization_flag) -g -ffast-math -fno-common -fno-builtin-printf -I.
 RISCV_LINK ?= $(RISCV_GCC) -T $(src_dir)/common/test.ld $(incs)
 RISCV_LINK_OPTS ?= -static -nostdlib -nostartfiles -lm -lgcc -T $(src_dir)/common/test.ld
 RISCV_OBJDUMP ?= $(RISCV_PREFIX)objdump --disassemble-all --disassemble-zeroes --section=.text --section=.text.startup --section=.text.init --section=.data
@@ -31,8 +31,12 @@ objs  :=
 
 define compile_template
 $(1).riscv: $(wildcard $(src_dir)/$(1)/*) $(wildcard $(src_dir)/common/*)
-	gcc rand_gen.c -o rand_gen -lm
-	./rand_gen $(type) $(binarypoint)
+	@if [ "$(type)" -eq 2 ] || [ "$(type)" -eq 3 ]; then \
+		gcc fixed_point_gen.c -o fixed_point_gen -lm -I. ; \
+		./fixed_point_gen $(width) $(binarypoint); \
+	fi
+	#gcc rand_gen.c -o rand_gen -lm
+	#./rand_gen $(type) $(binarypoint) $(width)
 	$$(RISCV_GCC) $$(incs) $$(RISCV_GCC_OPTS) -o $$@ $(wildcard $(src_dir)/$(1)/*.c) $(wildcard $(src_dir)/common/*.c) $(wildcard $(src_dir)/common/*.S) $$(RISCV_LINK_OPTS)
 	cp $(src_dir)/$(1).riscv $(em_dir)
 endef
@@ -65,4 +69,5 @@ all: riscv
 # Clean up
 
 clean:
-	rm -rf $(objs) $(junk) $(em_dir)/*.riscv *.h
+	rm -rf $(objs) $(junk) $(em_dir)/*.riscv
+	#rm -rf $(objs) $(junk) $(em_dir)/*.riscv *.h
