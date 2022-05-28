@@ -18,24 +18,24 @@ module SCIEPipelined #(parameter XLEN = 32)(
   reg [31:0] data_3;
   reg [31:0] data_4;
   reg [63:0] result;
-  wire [31:0] _GEN_6 = 3'h1 == rs2[2:0] ? coeffs_1 : coeffs_0;
-  wire [31:0] _GEN_7 = 3'h2 == rs2[2:0] ? coeffs_2 : _GEN_6;
-  wire [31:0] _GEN_8 = 3'h3 == rs2[2:0] ? coeffs_3 : _GEN_7;
-  wire [31:0] _GEN_9 = 3'h4 == rs2[2:0] ? coeffs_4 : _GEN_8;
-  wire [63:0] _result_T_1 = data_0 * coeffs_0;
-  wire [63:0] _result_T_2 = data_1 * coeffs_1;
-  wire [63:0] _result_T_3 = data_2 * coeffs_2;
-  wire [63:0] _result_T_4 = data_3 * coeffs_3;
-  wire [63:0] _result_T_5 = data_4 * coeffs_4;
-  wire [63:0] _result_T_7 = _result_T_1 + _result_T_2;
-  wire [63:0] _result_T_9 = _result_T_7 + _result_T_3;
-  wire [63:0] _result_T_11 = _result_T_9 + _result_T_4;
-  wire [63:0] _result_T_13 = _result_T_11 + _result_T_5;
-  wire [63:0] _GEN_10 = insn[6:0] == 7'h3b ? _result_T_13 : result;
+  wire [31:0] _GEN_6 = 3'h1 == rs2[2:0] ? $signed(coeffs_1) : $signed(coeffs_0);
+  wire [31:0] _GEN_7 = 3'h2 == rs2[2:0] ? $signed(coeffs_2) : $signed(_GEN_6);
+  wire [31:0] _GEN_8 = 3'h3 == rs2[2:0] ? $signed(coeffs_3) : $signed(_GEN_7);
+  wire [31:0] _GEN_9 = 3'h4 == rs2[2:0] ? $signed(coeffs_4) : $signed(_GEN_8);
+  wire [63:0] _result_T_2 = $signed(data_0) * $signed(coeffs_0);
+  wire [63:0] _result_T_3 = $signed(data_1) * $signed(coeffs_1);
+  wire [63:0] _result_T_4 = $signed(data_2) * $signed(coeffs_2);
+  wire [63:0] _result_T_5 = $signed(data_3) * $signed(coeffs_3);
+  wire [63:0] _result_T_6 = $signed(data_4) * $signed(coeffs_4);
+  wire [63:0] _result_T_9 = $signed(_result_T_2) + $signed(_result_T_3);
+  wire [63:0] _result_T_12 = $signed(_result_T_9) + $signed(_result_T_4);
+  wire [63:0] _result_T_15 = $signed(_result_T_12) + $signed(_result_T_5);
+  wire [63:0] _result_T_18 = $signed(_result_T_15) + $signed(_result_T_6);
+  wire [63:0] _GEN_10 = insn[6:0] == 7'h3b ? $signed(_result_T_18) : $signed(result);
   assign rd = result[31:0];
   always @(posedge clock) begin
     if (reset) begin
-      coeffs_0 <= 32'h0;
+      coeffs_0 <= 32'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
         if (3'h0 == rs2[2:0]) begin
@@ -44,7 +44,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      coeffs_1 <= 32'h0;
+      coeffs_1 <= 32'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
         if (3'h1 == rs2[2:0]) begin
@@ -53,7 +53,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      coeffs_2 <= 32'h0;
+      coeffs_2 <= 32'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
         if (3'h2 == rs2[2:0]) begin
@@ -62,7 +62,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      coeffs_3 <= 32'h0;
+      coeffs_3 <= 32'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
         if (3'h3 == rs2[2:0]) begin
@@ -71,7 +71,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      coeffs_4 <= 32'h0;
+      coeffs_4 <= 32'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
         if (3'h4 == rs2[2:0]) begin
@@ -80,7 +80,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      data_0 <= 32'h0;
+      data_0 <= 32'sh0;
     end else if (valid) begin
       if (!(insn[6:0] == 7'hb)) begin
         if (insn[6:0] == 7'h2b) begin
@@ -89,7 +89,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      data_1 <= 32'h0;
+      data_1 <= 32'sh0;
     end else if (valid) begin
       if (!(insn[6:0] == 7'hb)) begin
         if (insn[6:0] == 7'h2b) begin
@@ -98,7 +98,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      data_2 <= 32'h0;
+      data_2 <= 32'sh0;
     end else if (valid) begin
       if (!(insn[6:0] == 7'hb)) begin
         if (insn[6:0] == 7'h2b) begin
@@ -107,7 +107,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      data_3 <= 32'h0;
+      data_3 <= 32'sh0;
     end else if (valid) begin
       if (!(insn[6:0] == 7'hb)) begin
         if (insn[6:0] == 7'h2b) begin
@@ -116,7 +116,7 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      data_4 <= 32'h0;
+      data_4 <= 32'sh0;
     end else if (valid) begin
       if (!(insn[6:0] == 7'hb)) begin
         if (insn[6:0] == 7'h2b) begin
@@ -125,12 +125,12 @@ module SCIEPipelined #(parameter XLEN = 32)(
       end
     end
     if (reset) begin
-      result <= 64'h0;
+      result <= 64'sh0;
     end else if (valid) begin
       if (insn[6:0] == 7'hb) begin
-        result <= {{32'd0}, _GEN_9};
+        result <= {{32{_GEN_9[31]}},_GEN_9};
       end else if (insn[6:0] == 7'h2b) begin
-        result <= {{32'd0}, data_0};
+        result <= {{32{data_0[31]}},data_0};
       end else begin
         result <= _GEN_10;
       end

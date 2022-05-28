@@ -1,3 +1,5 @@
+
+SHELL := /bin/bash
 base_dir = .
 vsim_dir = $(base_dir)/vivado-risc-v/rocket-chip/vsim
 emu_dir = $(base_dir)/vivado-risc-v/rocket-chip/emulator
@@ -13,11 +15,13 @@ base_name = freechips.rocketchip.system
 ### Clones Vivado-risc-v and rocket-chip repository
 setup:
 	rm -rf vivado-risc-v #temporario
+	git config --global url.https://github.com/.insteadOf git://github.com/
 	git clone https://github.com/eugene-tarassov/vivado-risc-v.git
 	cd vivado-risc-v &&  make apt-install && make update-submodules && \
 	cd rocket-chip && git submodule update --init && export RISCV=`pwd` && \
-	git clone https://github.com/freechipsproject/rocket-tools && cd rocket-tools && \
-	git submodule update --init --recursive && export MAKEFLAGS="$MAKEFLAGS -j4" && ./build.sh && ./build-rv32ima.sh
+	git clone https://github.com/freechipsproject/rocket-tools && \
+	cd rocket-tools && \
+	git submodule update --init --recursive && export RISCV=`pwd` && export MAKEFLAGS="$MAKEFLAGS -j4" && ./build.sh && ./build-rv32ima.sh
 	cp $(base_dir)/repl_files/system/* $(rocket_scala_src)/system
 	cp $(base_dir)/repl_files/subsystem/* $(rocket_scala_src)/subsystem
 	cp $(base_dir)/repl_files/rocket/* $(rocket_scala_src)/rocket
@@ -37,12 +41,14 @@ verilog-clean:
 
 ## Standalone hardware accelerator FPGA implementation ###
 scie-analysis:
-	vivado -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs=$(board)
+	vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
 
 ### Rocket chip + SCIE + IO FPGA implementation ###
 implementation:
-	make CONFIG=$(config) BOARD=$(board) bitstream
-	./process_timing.py
+	source /tools/Xilinx/Vivado/2021.2/settings64.sh #TODO mudar para diferentes versoes 
+	vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
+	#make CONFIG=$(config) BOARD=$(board) bitstream
+	$(base_dir)/scripts/process_timing.py $(base_dir)/checkpoints >> $(file)
 	
 ### Calls emulator and benchmark Makefile ###
 build:
