@@ -44,8 +44,6 @@ int main(int argc, char *argv[]){
 					#endif
 			}
 		}
-		printf("Real part --> %d\n", (uint16_t)res_real); // so imprime a parte inteira
-		printf("Imag part --> %d\n", (uint16_t)res_imag);
 	//printf("Res is --> %d\n", (uint32_t)(((int32_t)res_real << 16) | ((int16_t)res_imag & 0xFFFF)));
 	}
 
@@ -54,8 +52,8 @@ int main(int argc, char *argv[]){
 		total_time_h = finish_time_h - start_time_h;
 		total_time_l = finish_time_l - start_time_l;
 
-	//	printf("Real part --> %d\n", (uint16_t)res_real); // so imprime a parte inteira
-	//	printf("Imag part --> %d\n", (uint16_t)res_imag);
+		printf("Real part --> %d\n", (uint16_t)res_real); // so imprime a parte inteira
+		printf("Imag part --> %d\n", (uint16_t)res_imag);
 	//	printf("Result is --> %d\n", (uint32_t)(((int32_t)res_real << 16) | ((int16_t)res_imag & 0xFFFF)));
 		printf("%d\n", total_time_l);
 	#endif

@@ -1,9 +1,9 @@
 MODULE:=SCIEPipelined
 
 base_dir = .
-vrsc_dir = $(base_dir)/../../rocket-chip/src/main/resources/vsrc
-rocket_dir = $(base_dir)/../../rocket-chip/src/main/scala/rocket
-scie_dir = $(base_dir)/../../rocket-chip/src/main/scala/scie
+vrsc_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/resources/vsrc
+rocket_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/scala/rocket
+scie_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/scala/scie
 
 verilog:
 	@echo "\n### GENERATING VERILOG ###\n"

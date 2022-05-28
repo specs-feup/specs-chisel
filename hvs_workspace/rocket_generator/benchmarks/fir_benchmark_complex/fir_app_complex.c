@@ -31,15 +31,15 @@ int main(int argc, char *argv[]){
 			data_complex = (uint32_t)(((int32_t)data_real[i] << 16) | ((uint32_t)data_imag[i] & 0xFFFF));
 			asm volatile("fir_data_st %0, %1" : "=r"(res) : "r"(data_complex));
 			asm volatile("fir_exec %0" : "=r"(res));
-			printf("Real part --> %d\n", (uint16_t)(res >> 16));
-			printf("Imag part --> %d\n", (uint16_t)res);
-			//printf("Res is --> %d\n", res);
 		}
 
 		asm volatile("csrr %0, mcycleh" : "=r"(finish_time_h));
 		asm volatile("csrr %0, mcycle" : "=r"(finish_time_l));
 		total_time_h = finish_time_h - start_time_h;
 		total_time_l = finish_time_l - start_time_l;
+
+		printf("Real part --> %d\n", (uint16_t)(res >> 16));
+		printf("Imag part --> %d\n", (uint16_t)res);
 
 		//printf("Result is --> %d\n", res);
 

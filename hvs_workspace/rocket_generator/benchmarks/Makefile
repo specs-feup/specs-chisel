@@ -3,7 +3,7 @@ XLEN ?= 64
 default: all
 
 src_dir = .
-em_dir = ../rocket-chip/emulator
+em_dir = ../vivado-risc-v/rocket-chip/emulator
 
 #--------------------------------------------------------------------
 # Sources
@@ -35,8 +35,6 @@ $(1).riscv: $(wildcard $(src_dir)/$(1)/*) $(wildcard $(src_dir)/common/*)
 		gcc fixed_point_gen.c -o fixed_point_gen -lm -I. ; \
 		./fixed_point_gen $(width) $(binarypoint); \
 	fi
-	#gcc rand_gen.c -o rand_gen -lm
-	#./rand_gen $(type) $(binarypoint) $(width)
 	$$(RISCV_GCC) $$(incs) $$(RISCV_GCC_OPTS) -o $$@ $(wildcard $(src_dir)/$(1)/*.c) $(wildcard $(src_dir)/common/*.c) $(wildcard $(src_dir)/common/*.S) $$(RISCV_LINK_OPTS)
 	cp $(src_dir)/$(1).riscv $(em_dir)
 endef

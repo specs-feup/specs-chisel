@@ -70,7 +70,6 @@ int main(int argc, char *argv[]){
 		asm volatile("csrr %0, mcycle" : "=r"(finish_time_l));
 		total_time_h = finish_time_h - start_time_h;
 		total_time_l = finish_time_l - start_time_l;	
-		printf("Res --> %d\n", (int)res);
 		printf("%d\n", total_time_l);
 	#endif
 
