@@ -49,13 +49,11 @@ def plot_graph(x_value):
     plt.savefig("./results/{}.png".format("_".join(file_info)), bbox_inches='tight')
 
     fig, ax = plt.subplots()
-    ax.set_title('')
     ax.plot(order, speedup, "--o")
     ax.set_xlabel('Filter order')
     ax.set_ylabel('Speedup')
     ax.grid(True)
     plt.ylim(0, 1000)
-    ax.grid(True)
     plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
 
     del file_info[-1]
