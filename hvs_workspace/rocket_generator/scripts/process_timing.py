@@ -1,50 +1,68 @@
-#!/usr/bin/python
+import os, csv
 
-import sys, re, os
+x_value=[]
+freqs=[]
+files = []
+file_info = []
 
-SELECTED_PERIOD = 5 #Depends on selected freq
+def getListOfFiles(dirName):
+    listOfFile = os.listdir(dirName)
+    for entry in listOfFile:
+        fullPath = os.path.join(dirName, entry)
+        if os.path.isdir(fullPath):
+            getListOfFiles(fullPath)
+        else:
+            files.append(fullPath)
 
-def terminate(error_message):
-	print(error_message)
-	exit(1)
-	
-def find_slack(file_to_read):
-	lines_to_process = []
-	with open(file_to_read, "r") as f:
-    		while f.next().strip() != 'Max Delay Paths':
-        		continue
-    		for _ in range(3):
-        		lines_to_process.append(f.next().strip())	
-        slack_string = re.search(r'-?([.\d]+)\s*(?:ns)', "".join(lines_to_process)).group()	
-	return float(slack_string[:-2])
+def process(file):
+    types = {
+    "type_0" : "_unsigned",
+    "type_1" : "_signed",
+    "type_2" : "_fixed-point"
+    }
+    file_dir = os.path.dirname(os.path.realpath(file))
+    os.system("touch ./results/tmp.csv")
+    files = os.listdir("./results")
+    type = file.split("/")[-3]
+    freq_file = os.path.join("./results/", "".join([file_name for file_name in files if types[type] in file_name and 'freqs' in file_name]))
+    with open(freq_file, "r") as f:
+        csvreader = csv.reader(f)
+        first_line=next(csvreader)
+        second_line=next(csvreader)
+        for row in csvreader:
+            freqs.append(int(float(row[1])))
+    f.close()
+    dummy_freq = 100
+    index = 0
+    with open("./results/tmp.csv", "w") as out_file:
+        with open(file, "r") as in_file:
+            csvreader = csv.reader(in_file)
+            csvwriter = csv.writer(out_file)
+            for count, row in enumerate(csvreader):
+                row_list = row[0].split("\t")
+                if count < 2:
+                    csvwriter.writerow(row)
+                else:
+                    if "BASELINE" in row_list:
+                        index = 0
+                        csvwriter.writerow(row)
+                    else:
+                        data_to_write = [str(row_list[0]) + "\t" + str(int(row_list[1]) * freqs[index]) + "\t" + str(int(row_list[2]) * dummy_freq)]
+                        csvwriter.writerow(data_to_write)
+                        out_file.flush()
+                        in_file.flush()
+                        index = index + 1
+    out_file.close()
+    in_file.close()
+    os.system("mv ./results/tmp.csv {}/time_count.csv".format(file_dir))
+    del file_info[:]
 
+def main():
+    dirName='./results'
+    getListOfFiles(dirName)
+    new_files = [file for file in files if "cycle" in file]
+    for file in new_files:
+        process(file)
 
-def read_files(checkpoint_dir):
-	impl_files = []
-	files = os.listdir(checkpoint_dir)
-	for file in files:
-		if "post_impl" in file: 
-			impl_files.append(file)
-	impl_files.sort(key=lambda x : int(''.join(filter(str.isdigit, x))))
-	return impl_files
-		
-
-def main(checkpoint_dir):
-	impl_files_list = read_files(checkpoint_dir)
-	for impl_file in impl_files_list:
-		file_path=""
-		file_path = "".join(checkpoint_dir + "/" + str(impl_file))
-		max_delay_slack = find_slack(file_path)
-		filter_order = re.search(r'\d+', file_path).group()		
-		max_freq=(1/(SELECTED_PERIOD - max_delay_slack)) * 1000 #In MHz 
-		print(filter_order + "\t" + str(max_freq))	
-	
-	#max_delay_slack = find_slack(file_to_read)
-	#filter_order = re.search(r'\d+', file_to_read).group()		
-	#max_freq=(1/(SELECTED_PERIOD - max_delay_slack)) * 1000 #In MHz 
-	#print(filter_order + "\t" + str(max_freq) + "\n")
-		
 if __name__ == "__main__":
-	if len(sys.argv) < 2: terminate("Usage: <command> <checkpoint_directory>")
-	#elif sys.argv[1][-4:] != ".rpt": terminate("Wrong file format (must be .rpt)")
-	else: main(sys.argv[1])	
+    main()

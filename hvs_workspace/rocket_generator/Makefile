@@ -1,12 +1,13 @@
 
 SHELL := /bin/bash
 base_dir = .
-vsim_dir = $(base_dir)/vivado-risc-v/rocket-chip/vsim
-emu_dir = $(base_dir)/vivado-risc-v/rocket-chip/emulator
+vivado_dir = $(base_dir)/vivado-risc-v
+vsim_dir = $(vivado_dir)/rocket-chip/vsim
+emu_dir = $(vivado_dir)/rocket-chip/emulator
 bench_dir = $(base_dir)/benchmarks
 hw_dir = $(base_dir)/HW_accelerators/fir
-rocket_scala_src = $(base_dir)/vivado-risc-v/rocket-chip/src/main/scala
-verilog_src_dir = $(base_dir)/vivado-risc-v/rocket-chip/src/main/resources/vrsc
+rocket_scala_src = $(vivado_dir)/rocket-chip/src/main/scala
+verilog_src_dir = $(vivado_dir)/rocket-chip/src/main/resources/vrsc
 
 export RISCV=$(abspath .)/vivado-risc-v/rocket-chip/rocket-tools
 
@@ -27,13 +28,12 @@ setup:
 	cp $(base_dir)/repl_files/rocket/* $(rocket_scala_src)/rocket
 	cp $(base_dir)/repl_files/scie/* $(rocket_scala_src)/scie
 	cp $(base_dir)/repl_files/Makefile $(base_dir)/vivado-risc-v
+	cp $(base_dir)/repl_files/vivado.tcl $(base_dir)/vivado-risc-v
+	cp $(base_dir)/repl_files/rocket.scala $(base_dir)/vivado-risc-v/src/main/scala
 
 ### Calls vsim Makefile ###
 verilog:
 	make -C $(hw_dir) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
-	#make -C $(vsim_dir) verilog CONFIG=$(base_name).$(config)
-	#cp $(wildcard *.v) $(vsim_dir) $(base_dir)/rocket-verilog
-	#cp SCIEPipelined.v SCIEUnpipelined.v SCIEDecoder.v plusarg.reader.v AsyncResetReg.v EICG_wrapper.v $(verilog_src_dir) $(base_dir)/rocket-verilog
 
 .PHONY:verilog-clean
 verilog-clean:
@@ -45,10 +45,10 @@ scie-analysis:
 
 ### Rocket chip + SCIE + IO FPGA implementation ###
 implementation:
-	source /tools/Xilinx/Vivado/2021.2/settings64.sh #TODO mudar para diferentes versoes 
-	vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
-	#make CONFIG=$(config) BOARD=$(board) bitstream
-	$(base_dir)/scripts/process_timing.py $(base_dir)/checkpoints >> $(file)
+	#source /tools/Xilinx/Vivado/2021.1/settings64.sh #TODO mudar para diferentes versoes 
+	#vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
+	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
+	$(base_dir)/scripts/process_timing_2.py $(order) >> $(file)
 	
 ### Calls emulator and benchmark Makefile ###
 build:
@@ -65,7 +65,9 @@ build-debug:
 clean:	
 	make -C $(emu_dir) clean
 	make -C $(bench_dir) clean
-	make -C $(hw_dir) clean	
+	make -C $(hw_dir) clean
+	make -C $(vivado_dir) clean
+	cd $(vivado_dir) && rm -rf workspace	
 	
 simulate:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)
