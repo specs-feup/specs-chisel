@@ -30,9 +30,9 @@ def process(file):
         first_line=next(csvreader)
         second_line=next(csvreader)
         for row in csvreader:
-            freqs.append(int(float(row[1])))
+            freqs.append(float(row[1]))
     f.close()
-    dummy_freq = 100
+    dummy_freq = 100.0
     index = 0
     with open("./results/tmp.csv", "w") as out_file:
         with open(file, "r") as in_file:
@@ -47,10 +47,8 @@ def process(file):
                         index = 0
                         csvwriter.writerow(row)
                     else:
-                        data_to_write = [str(row_list[0]) + "\t" + str(int(row_list[1]) * freqs[index]) + "\t" + str(int(row_list[2]) * dummy_freq)]
-                        csvwriter.writerow(data_to_write)
-                        out_file.flush()
-                        in_file.flush()
+			data_to_write = [str(row_list[0]) + "\t" + str(int(float(row_list[1]) * float(1/dummy_freq))) + "\t" + str(int(float(row_list[2]) * float(1/freqs[index])))]                 
+			csvwriter.writerow(data_to_write)
                         index = index + 1
     out_file.close()
     in_file.close()
