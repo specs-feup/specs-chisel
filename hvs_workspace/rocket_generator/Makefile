@@ -48,7 +48,8 @@ implementation:
 	#source /tools/Xilinx/Vivado/2021.1/settings64.sh #TODO mudar para diferentes versoes 
 	#vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
-	$(base_dir)/scripts/process_timing_2.py $(order) >> $(file)
+	$(base_dir)/scripts/find_max_freq.py $(order) $(selected_frequency) >> $(max_freq_file)	
+	$(base_dir)/scripts/process_timing.py
 	
 ### Calls emulator and benchmark Makefile ###
 build:

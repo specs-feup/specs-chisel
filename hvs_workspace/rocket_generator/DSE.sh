@@ -18,6 +18,7 @@ tmp_file=./results/tmp_file.txt #Workaround temporario pelo facto de print ter d
 
 max_freq_file=./results/max_freqs_order_$order.csv
 
+
 hw_accel_dir=./HW_accelerators/fir
 
 optimization_flag=-O0
@@ -31,7 +32,7 @@ rm $max_freq_file
 printf "### MAXIMUM SYSTEM FREQUENCIES ###\n" >> $max_freq_file
 printf "ORDER\tMAXIMUM FREQUENCY\n" >> $max_freq_file
 make verilog order=$order width=$width type=$type binarypoint=$binarypoint
-make implementation board=vc707 config=$config file=$max_freq_file order=$order
+make implementation board=vc707 config=$config max_freq_file=$max_freq_file selected_frequency=160 order=$order
 
 
 #for type in "${type_array[@]}"; do

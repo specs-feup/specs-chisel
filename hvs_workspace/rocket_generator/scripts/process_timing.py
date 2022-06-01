@@ -1,9 +1,13 @@
-import os, csv
+import os, csv, sys
 
 x_value=[]
 freqs=[]
 files = []
 file_info = []
+
+def terminate(error_message):
+	print(error_message)
+	sys.exit()
 
 def getListOfFiles(dirName):
     listOfFile = os.listdir(dirName)
@@ -14,7 +18,7 @@ def getListOfFiles(dirName):
         else:
             files.append(fullPath)
 
-def process(file):
+def process(file, baseline_frequency):
     types = {
     "type_0" : "_unsigned",
     "type_1" : "_signed",
@@ -32,7 +36,6 @@ def process(file):
         for row in csvreader:
             freqs.append(float(row[1]))
     f.close()
-    dummy_freq = 100.0
     index = 0
     with open("./results/tmp.csv", "w") as out_file:
         with open(file, "r") as in_file:
@@ -47,7 +50,7 @@ def process(file):
                         index = 0
                         csvwriter.writerow(row)
                     else:
-			data_to_write = [str(row_list[0]) + "\t" + str(int(float(row_list[1]) * float(1/dummy_freq))) + "\t" + str(int(float(row_list[2]) * float(1/freqs[index])))]                 
+			data_to_write = [str(row_list[0]) + "\t" + str(int(float(row_list[1]) * float(1/baseline_frequency))) + "\t" + str(int(float(row_list[2]) * float(1/freqs[index])))]                 
 			csvwriter.writerow(data_to_write)
                         index = index + 1
     out_file.close()
@@ -55,12 +58,13 @@ def process(file):
     os.system("mv ./results/tmp.csv {}/time_count.csv".format(file_dir))
     del file_info[:]
 
-def main():
+def main(baseline_frequency):
     dirName='./results'
     getListOfFiles(dirName)
     new_files = [file for file in files if "cycle" in file]
     for file in new_files:
-        process(file)
+        process(file, baseline_frequency)
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) < 2: terminate("Usage: <command> <baseline_frequency>")	
+    else: main(float(sys.argv[1]))
