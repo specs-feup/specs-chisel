@@ -25,7 +25,7 @@ case class RocketCoreParams(
   useAtomicsOnlyForIO: Boolean = false,
   useCompressed: Boolean = true,
   useRVE: Boolean = false,
-  useSCIE: Boolean = true,
+  useSCIE: Boolean = false,
   nLocalInterrupts: Int = 0,
   useNMI: Boolean = false,
   nBreakpoints: Int = 1,

@@ -31,6 +31,31 @@ setup:
 	cp $(base_dir)/repl_files/vivado.tcl $(base_dir)/vivado-risc-v
 	cp $(base_dir)/repl_files/rocket.scala $(base_dir)/vivado-risc-v/src/main/scala
 
+### File changes ###
+core-setup:
+	if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
+		cp ./interfaces/Complex_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
+		cp ./interfaces/Complex_interface/SCIE.scala $(rocket_scala_src)/scie; \
+	else \
+		cp ./interfaces/Standard_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
+		cp ./interfaces/Standard_interface/SCIE.scala $(rocket_scala_src)/scie; \
+	fi
+	if [ "$(order)" -eq 0 ]; then \
+		sed -i 's/useSCIE: Boolean = true,/useSCIE: Boolean = false,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
+		cp ./repl_files/baseline_tcl/vivado.tcl $(vivado_dir); \
+	else \
+		sed -i 's/useSCIE: Boolean = false,/useSCIE: Boolean = true,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
+		cp ./repl_files/accel_tcl/vivado.tcl $(vivado_dir); \
+	fi
+	#sed -i 's/useSCIE: Boolean = true,/useSCIE: Boolean = false,/g' $(rocket_scala_src)/rocket/RocketCore.scala
+	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEDecoder.v"] \##g' $(vivado_dir)/vivado.tcl
+	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEUnpipelined.v"] \##g' $(vivado_dir)/vivado.tcl
+	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEPipelined.v"] \##g' $(vivado_dir)/vivado.tcl
+	#if [ "$(order)" -neq 0]; then \
+	#	sed -i 's/useSCIE: Boolean = false,/useSCIE: Boolean = true,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
+	#	sed -i 's#[file normalize "../../board/fan-control.v"] \#& [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEDecoder.v"] [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEUnpipelined.v"] [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEPipelined.v"]#g' $(vivado_dir)/vivado.tcl; \				
+	#fi
+
 ### Calls vsim Makefile ###
 verilog:
 	make -C $(hw_dir) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
@@ -47,9 +72,9 @@ scie-analysis:
 implementation:
 	#source /tools/Xilinx/Vivado/2021.1/settings64.sh #TODO mudar para diferentes versoes 
 	#vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
+	#cd vivado-risc-v && rm -rf workspace && make clean
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
-	$(base_dir)/scripts/find_max_freq.py $(order) $(selected_frequency) >> $(max_freq_file)	
-	$(base_dir)/scripts/process_timing.py
+	$(base_dir)/scripts/find_max_freq.py $(order) $(selected_frequency) >> $(max_freqs_file)	
 	
 ### Calls emulator and benchmark Makefile ###
 build:

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import os, csv, sys
 
 x_value=[]
@@ -18,23 +19,21 @@ def getListOfFiles(dirName):
         else:
             files.append(fullPath)
 
-def process(file, baseline_frequency):
-    types = {
-    "type_0" : "_unsigned",
-    "type_1" : "_signed",
-    "type_2" : "_fixed-point"
-    }
+def process(file):
     file_dir = os.path.dirname(os.path.realpath(file))
     os.system("touch ./results/tmp.csv")
     files = os.listdir("./results")
-    type = file.split("/")[-3]
-    freq_file = os.path.join("./results/", "".join([file_name for file_name in files if types[type] in file_name and 'freqs' in file_name]))
+    data_type = file.split("/")[-3]
+    freq_file = os.path.join("./results/", "".join([file_name for file_name in files if data_type in file_name and 'freqs' in file_name]))
     with open(freq_file, "r") as f:
         csvreader = csv.reader(f)
         first_line=next(csvreader)
         second_line=next(csvreader)
+	row_list=next(csvreader)[0].split("\t")
+	baseline_frequency = float(row_list[1])
         for row in csvreader:
-            freqs.append(float(row[1]))
+	    row_list=row[0].split("\t")
+            freqs.append(float(row_list[1]))
     f.close()
     index = 0
     with open("./results/tmp.csv", "w") as out_file:
@@ -58,13 +57,11 @@ def process(file, baseline_frequency):
     os.system("mv ./results/tmp.csv {}/time_count.csv".format(file_dir))
     del file_info[:]
 
-def main(baseline_frequency):
+def main():
     dirName='./results'
     getListOfFiles(dirName)
     new_files = [file for file in files if "cycle" in file]
     for file in new_files:
-        process(file, baseline_frequency)
+        process(file)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2: terminate("Usage: <command> <baseline_frequency>")	
-    else: main(float(sys.argv[1]))
+if __name__ == "__main__":main()

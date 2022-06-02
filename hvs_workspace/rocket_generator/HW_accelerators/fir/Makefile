@@ -14,17 +14,7 @@ verilog:
 	../parse_scripts/strip_comment.py SCIEPipelined.v SCIEUnpipelined.v	
 	@sed -i 's/Pipelined/& #(parameter XLEN = 32)/' SCIEPipelined.v
 	@sed -i 's/pipelined/& #(parameter XLEN = 32)/' SCIEUnpipelined.v
-	@if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
-		cp ./Complex_interface/RocketCore.scala $(rocket_dir); \
-		cp ./Complex_interface/SCIE.scala $(scie_dir); \
-	else \
-		cp ./Standard_interface/RocketCore.scala $(rocket_dir); \
-		cp ./Standard_interface/SCIE.scala $(scie_dir); \
-	fi
 	cp *.v $(vrsc_dir)
-
-.PHONY: interface
-interface: 
 
 .PHONY: test
 test:

@@ -55,7 +55,7 @@ def plot_graph(values, y_value):
 		fig, ax = plt.subplots()
     		accel = ax.plot(order, values, "--o")
     		ax.grid(True)
-    		plt.savefig("./results/max_freqs_{}.png".format("_".join(file_info[1])), bbox_inches='tight')
+    		plt.savefig("./results/max_freqs_{}.png".format("_".join(file_info[0])), bbox_inches='tight')
 
         elif y_value == "time":
             fig, ax = plt.subplots()
@@ -146,10 +146,7 @@ def get_data(file_dir):
 def getFileInfo(file_dir):
 
     if "freqs" in file_dir:
-        if(types.keys()[types.values().index("unsigned")] in file_dir): file_info.append("unsigned")
-        elif(types.keys()[types.values().index("signed")]  in file_dir): file_info.append("signed")
-        elif(types.keys()[types.values().index("fixed_point")] in file_dir): file_info.append("fixed_point")
-        else: terminate("freqs file must be either unsigned, signed or fixed_point")
+        file_info.append(types[(file_dir.split("/")[-3])])
         get_freqs_data(file_dir)
         plot_graph(freqs, "freq")
     else:
@@ -161,7 +158,7 @@ def getFileInfo(file_dir):
         elif("time" in file_dir): file_info.append("time")
         else: terminate("Invalid type of file (freqs, cycle or time)")
 
-        file_info.append(types[(file_dir.split("/")[-3])])
+	file_info.append(file_dir.split("/")[-3])
 
         if("x_order" in file_dir): file_info.append("order")
         elif("x_data" in file_dir): file_info.append("data")
