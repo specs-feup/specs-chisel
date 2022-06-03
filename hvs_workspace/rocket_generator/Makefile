@@ -15,8 +15,12 @@ base_name = freechips.rocketchip.system
 
 ### Clones Vivado-risc-v and rocket-chip repository
 setup:
-	rm -rf vivado-risc-v #temporario
+	rm -rf vivado-risc-v #temporario		
+	git config --global url.https://git.qemu.org/git.insteadOf https://git.qemu-project.org
+	git config --global url.https://git.qemu.org/git.insteadOf git://git.qemu-project.org
 	git config --global url.https://github.com/.insteadOf git://github.com/
+	git config --global url.https://github.com/.insteadOf git@github.com:
+	git config --global url.https://anongit.freedesktop.org/git.insteadOf git://anongit.freedesktop.org
 	git clone https://github.com/eugene-tarassov/vivado-risc-v.git
 	cd vivado-risc-v &&  make apt-install && make update-submodules && \
 	cd rocket-chip && git submodule update --init && export RISCV=`pwd` && \
@@ -34,11 +38,11 @@ setup:
 ### File changes ###
 core-setup:
 	if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
-		cp ./interfaces/Complex_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
-		cp ./interfaces/Complex_interface/SCIE.scala $(rocket_scala_src)/scie; \
+		cp ./repl_files/interfaces/Complex_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
+		cp ./repl_files/interfaces/Complex_interface/SCIE.scala $(rocket_scala_src)/scie; \
 	else \
-		cp ./interfaces/Standard_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
-		cp ./interfaces/Standard_interface/SCIE.scala $(rocket_scala_src)/scie; \
+		cp ./repl_files/interfaces/Standard_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
+		cp ./repl_files/interfaces/Standard_interface/SCIE.scala $(rocket_scala_src)/scie; \
 	fi
 	if [ "$(order)" -eq 0 ]; then \
 		sed -i 's/useSCIE: Boolean = true,/useSCIE: Boolean = false,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
@@ -91,9 +95,7 @@ build-debug:
 clean:	
 	make -C $(emu_dir) clean
 	make -C $(bench_dir) clean
-	make -C $(hw_dir) clean
-	make -C $(vivado_dir) clean
-	cd $(vivado_dir) && rm -rf workspace	
+	make -C $(hw_dir) clean	
 	
 simulate:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)

@@ -64,6 +64,14 @@ class CustomTinyConfig extends Config(
  new WithRV32 ++
  new BaseConfig)
 
+class Rocket32t1 extends Config(
+ new WithNBreakpoints(8) ++
+ new With1TinyCore ++
+ new WithCoherentBusTopology ++
+ new WithRV32 ++
+ new BaseConfig)
+
+
 class TinyConfig extends Config(
   new WithNoMemPort ++
   new WithNMemoryChannels(0) ++

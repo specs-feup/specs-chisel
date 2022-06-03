@@ -4,12 +4,11 @@
 
 #config=CustomTinyConfig
 config=Rocket32t1
-#type=0
 binarypoint=0
 width=32
 
 optimization_array=(-O0 -O3)
-order_array=(0 5 10 20 50 100 200 500)
+order_array=(5 10 20 50 100 200 500)
 data_array=(20 50 100 200 500 1000 1500 2000)
 type_array=(0 1 2 3)
 type_verbose_array=(unsigned signed fixed-point floating-point)
@@ -18,15 +17,18 @@ tmp_file=./results/tmp_file.txt #Workaround temporario pelo facto de print ter d
 
 hw_accel_dir=./HW_accelerators/fir
 
-### Cycle calculation ###
+find ./results ! -name '.*' ! -type d -exec rm -- {} +
+find ./results ! -name '.*' ! -type d -exec rm -- {} +
+ 
+### Cycle calculation (with respect to filter order) ###
 for optimization_flag in "${optimization_array[@]}"; do
 for type in "${type_array[@]}"; do
 rm $tmp_file
-printf "### ${type_verbose_array[type]} VALUES (NO OPTIMIZATION) ###\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count_${type_verbose_array[type]}.csv
+printf "### ${type_verbose_array[type]} VALUES (NO OPTIMIZATION) ###\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count.csv
 for data in "${data_array[@]}"; do
-  printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count_${type_verbose_array[type]}.csv
+  printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count.csv
 	for order in "${order_array[@]}"; do
-		printf "$order\t" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count_${type}.csv
+		printf "$order\t" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_order/cycle_count.csv
     		make clean
 		make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
         	make simulate config=$config binary=baseline.riscv file=$tmp_file
@@ -41,6 +43,34 @@ for data in "${data_array[@]}"; do
 done
 done
 done
+
+
+### Cycle calculation (with respect to data input) ###
+for optimization_flag in "${optimization_array[@]}"; do
+for type in "${type_array[@]}"; do
+rm $tmp_file
+printf "### ${type_verbose_array[type]} VALUES (NO OPTIMIZATION) ###\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_data/cycle_count.csv
+for data in "${data_array[@]}"; do
+  printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_data/cycle_count.csv
+	for order in "${order_array[@]}"; do
+		printf "$order\t" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_data/cycle_count.csv
+    		make clean
+		make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
+        	make simulate config=$config binary=baseline.riscv file=$tmp_file
+        	make clean
+        	make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
+       	 	make simulate config=$config binary=fir_benchmark.riscv file=$tmp_file
+        	baseline_val=$(sed -n '1p' $tmp_file)
+        	accel_val=$(sed -n '2p' $tmp_file)
+        	printf "$baseline_val\t$accel_val\n" >> ./results/no_optimization/type_${type_verbose_array[type]}/x_data/cycle_count.csv
+        	rm $tmp_file
+	done
+done
+done
+done
+
+
+order_array=(0 5 10 20 50 100 200 500) #Para o workflow do vivado ordem 0 é considerado o baseline
 
 ### Frequency and total time calculation ###
 rm $max_freqs_file
