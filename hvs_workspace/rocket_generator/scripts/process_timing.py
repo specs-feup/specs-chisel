@@ -6,10 +6,6 @@ freqs=[]
 files = []
 file_info = []
 
-def terminate(error_message):
-	print(error_message)
-	sys.exit()
-
 def getListOfFiles(dirName):
     listOfFile = os.listdir(dirName)
     for entry in listOfFile:
@@ -21,9 +17,10 @@ def getListOfFiles(dirName):
 
 def process(file):
     file_dir = os.path.dirname(os.path.realpath(file))
+    print(file_dir)
     os.system("touch ./results/tmp.csv")
     files = os.listdir("./results")
-    data_type = file.split("/")[-3]
+    data_type = "_" + (file.split("/")[-2]).split("_")[-1]
     freq_file = os.path.join("./results/", "".join([file_name for file_name in files if data_type in file_name and 'freqs' in file_name]))
     with open(freq_file, "r") as f:
         csvreader = csv.reader(f)
@@ -49,7 +46,7 @@ def process(file):
                         index = 0
                         csvwriter.writerow(row)
                     else:
-			data_to_write = [str(row_list[0]) + "\t" + str(int(float(row_list[1]) * float(1/baseline_frequency))) + "\t" + str(int(float(row_list[2]) * float(1/freqs[index])))]                 
+			data_to_write = [str(row_list[0]) + "\t" + str(int(float(row_list[1]) * float(1/baseline_frequency))) + "\t" + str(int(float(row_list[2]) * float(1/freqs[index])))]
 			csvwriter.writerow(data_to_write)
                         index = index + 1
     out_file.close()

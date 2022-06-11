@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys, os, csv, re, matplotlib.pyplot as plt
 
 file_info=[]
@@ -10,12 +11,6 @@ speedup=[]
 time_baseline=[]
 time_accel=[]
 
-types = {
-    "type_0" : "unsigned",
-    "type_1" : "signed",
-    "type_2" : "fixed_point"
-}
-
 def terminate(error_message):
     print(error_message)
     sys.exit()
@@ -26,8 +21,9 @@ def get_freqs_data(file_dir):
         _ = next(csvreader)
         _ = next(csvreader)
         for row in csvreader:
-            order.append(int(row[0]))
-            freqs.append(float(row[1]))
+            row_list=row[0].split("\t")
+            order.append(int(row_list[0]))
+            freqs.append(float(row_list[1]))
     f.close()
 
 def plot_graph(values, y_value):
@@ -41,7 +37,7 @@ def plot_graph(values, y_value):
     		ax.set_xlabel('Filter order')
     		ax.set_ylabel('Performance (number of cycles)')
     		ax.grid(True)
-    		plt.savefig("./results/{}_cycles.png".format("_".join(file_info)), bbox_inches='tight')
+    		plt.savefig("./results/{}.png".format("_".join(file_info)), bbox_inches='tight')
 
     		fig, ax = plt.subplots()
     		ax.plot(values, speedup, "--o")
@@ -49,13 +45,13 @@ def plot_graph(values, y_value):
     		ax.set_ylabel('Speedup')
     		ax.grid(True)
     		plt.ylim(0, 1000)
-    		plt.savefig("./results/{}_speedup_cycles.png".format("_".join(file_info)), bbox_inches='tight')
+    		plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
 
         elif y_value == "freq":
 		fig, ax = plt.subplots()
-    		accel = ax.plot(order, values, "--o")
+    		_ = ax.plot(order, values, "--o")
     		ax.grid(True)
-    		plt.savefig("./results/max_freqs_{}.png".format("_".join(file_info[0])), bbox_inches='tight')
+    		plt.savefig("./results/max_freqs_{}.png".format(file_info[0]), bbox_inches='tight')
 
         elif y_value == "time":
             fig, ax = plt.subplots()
@@ -67,7 +63,7 @@ def plot_graph(values, y_value):
             ax.set_xlabel('Filter order')
             ax.set_ylabel('Performance (in microseconds)')
             ax.grid(True)
-            plt.savefig("./results/{}_time.png".format("_".join(file_info)), bbox_inches='tight')
+            plt.savefig("./results/{}.png".format("_".join(file_info)), bbox_inches='tight')
 
             fig, ax = plt.subplots()
             ax.plot(values, speedup, "--o")
@@ -75,7 +71,7 @@ def plot_graph(values, y_value):
             ax.set_ylabel('Speedup')
             ax.grid(True)
             #plt.ylim(0, 2000)
-            plt.savefig("./results/{}_speedup_time.png".format("_".join(file_info)), bbox_inches='tight')
+            plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
 
         else:
           terminate("Invalid y values")
@@ -144,25 +140,23 @@ def get_data(file_dir):
 
 
 def getFileInfo(file_dir):
-
     if "freqs" in file_dir:
-        file_info.append(types[(file_dir.split("/")[-3])])
+        file_info.append(((file_dir.split("/")[-1]).split("_")[-1]).split(".")[-2])
         get_freqs_data(file_dir)
         plot_graph(freqs, "freq")
     else:
-        if("no_optimization" in file_dir): file_info.append("no_optimization")
-        elif("optimization" in file_dir): file_info("optimization")
+        if("optimization_-O0" in file_dir): file_info.append("optimization_-O0")
+        elif("optimization_-O3" in file_dir): file_info.append("optimization_-O3")
         else: terminate("Invalid directory")
 
         if("cycle" in file_dir): file_info.append("cycle")
         elif("time" in file_dir): file_info.append("time")
         else: terminate("Invalid type of file (freqs, cycle or time)")
 
-	file_info.append(file_dir.split("/")[-3])
+        file_info.append((file_dir.split("/")[-2]).split("_")[-1])
 
-        if("x_order" in file_dir): file_info.append("order")
-        elif("x_data" in file_dir): file_info.append("data")
-        else: terminate("Invalid x value")
+        file_info.append(((file_dir.split("/")[-1]).split(".")[-2]).split("_")[-1])
+
 
         if(file_info[-1] == "order"): process_order_file(file_dir)
         else: process_data_file(file_dir)

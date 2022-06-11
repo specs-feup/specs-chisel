@@ -24,22 +24,22 @@ hw_accel_dir=./HW_accelerators/fir
 #make -C ./vivado-risc-v	clean
 #	rm -rf ./vivado-risc-v/workspace
 #	make core-setup type=$type order=$order
-#	if [ $order -ne 0 ]; then 
+#	if [ $order -ne 0 ]; then
 #		make verilog order=$order width=$width type=$type binarypoint=$binarypoint
 #	fi
 #	make implementation board=vc707 config=$config max_freqs_file=./dummy_output.txt selected_frequency=200.0 order=$order
 #	make -C ./vivado-risc-v CONFIG=$config BOARD=vc707 flash
 
- 
+
 ## Cycle calculation (with respect to filter order) ###
 #for optimization_flag in "${optimization_array[@]}"; do
 #for type in "${type_array[@]}"; do
 #rm $tmp_file
-#printf "### ${type_verbose_array[type]} VALUES (OPTIMIZATION ${optimization_flag}) ###\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/x_order/cycle_count.csv
+#printf "### ${type_verbose_array[type]} VALUES (OPTIMIZATION ${optimization_flag}) ###\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count.csv
 #for data in "${data_array[@]}"; do
- # printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/x_order/cycle_count.csv
+ # printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count.csv
 #	for order in "${order_array[@]}"; do
-#		printf "$order\t" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/x_order/cycle_count.csv
+#		printf "$order\t" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count.csv
  #   		make clean
 #		make build order=$order data=$data width=$width config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
  #       	make simulate config=$config binary=baseline.riscv file=$tmp_file
@@ -48,7 +48,7 @@ hw_accel_dir=./HW_accelerators/fir
     #   	 	make simulate config=$config binary=fir_benchmark.riscv file=$tmp_file
      #   	baseline_val=$(sed -n '1p' $tmp_file)
      #   	accel_val=$(sed -n '2p' $tmp_file)
-     #   	printf "$baseline_val\t$accel_val\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/x_order/cycle_count.csv
+     #   	printf "$baseline_val\t$accel_val\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count.csv
      #   	rm $tmp_file
 #	done
 #done
@@ -68,12 +68,11 @@ for order in "${order_array[@]}"; do
 	make -C ./vivado-risc-v	clean
 	rm -rf ./vivado-risc-v/workspace
 	make core-setup type=$type order=$order
-	if [ $order -ne 0 ]; then 
+	if [ $order -ne 0 ]; then
 		make verilog order=$order width=$width type=$type binarypoint=$binarypoint
 	fi
 	make implementation board=vc707 config=$config max_freqs_file=./results/max_freqs_${type_verbose_array[type]}.csv selected_frequency=200.0 order=$order
 done
 done
 
-./scripts/process_timing.py 200
-
+./scripts/process_timing.py
