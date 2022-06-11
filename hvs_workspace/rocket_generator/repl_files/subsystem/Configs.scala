@@ -165,7 +165,7 @@ class With1TinyCore extends Config((site, here, up) => {
   case RocketTilesKey => List(RocketTileParams(
       core = RocketCoreParams(
         useVM = false,
-        fpu = None,
+        fpu = Some(FPUParams(fLen=32)),
         mulDiv = Some(MulDivParams(mulUnroll = 8))),
       btb = None,
       dcache = Some(DCacheParams(

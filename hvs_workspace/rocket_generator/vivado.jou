@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Thu Jun  9 14:47:53 2022
+# Process ID: 121689
+# Current directory: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator
+# Command line: vivado
+# Log file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado.log
+# Journal file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.xpr
+open_bd_design {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.srcs/sources_1/bd/riscv/riscv.bd}
+update_compile_order -fileset sources_1
+update_module_reference riscv_RocketChip_0
+reset_run impl_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1

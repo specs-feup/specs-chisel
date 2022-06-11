@@ -1,0 +1,54 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Thu Jun  9 14:44:27 2022
+# Process ID: 117510
+# Current directory: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator
+# Command line: vivado
+# Log file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado.log
+# Journal file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2021.1/data/ip'.
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"namespace eval ::xilinx.com_signal_interrupt_1.0 { source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/interrupt_signal/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/AXIMM/busdef.tcl} "
+    (in namespace eval "::xilinx.com_interface_aximm_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_interface_aximm_1.0 { source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/AXIMM/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/gt_usrclk/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_gt_usrclk_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_gt_usrclk_1.0 { source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/gt_usrclk/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/gt_outclk/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_gt_outclk_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_gt_outclk_1.0 { source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/gt_outclk/busdef.tcl} }"
+ERROR: [BD 41-69] Error sourcing TCL script: 
+    while executing
+"source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/clock_signal/busdef.tcl} "
+    (in namespace eval "::xilinx.com_signal_clock_1.0" script line 1)
+    invoked from within
+"namespace eval ::xilinx.com_signal_clock_1.0 { source -notrace {/tools/Xilinx/Vivado/2021.1/data/rsb/busdef/clock_signal/busdef.tcl} }"
+WARNING: [IP_Flow 19-3664] IP 'riscv_RocketChip_0' generated file not found '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.gen/sources_1/bd/riscv/ip/riscv_RocketChip_0/riscv_RocketChip_0.dcp'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'riscv_RocketChip_0' generated file not found '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.gen/sources_1/bd/riscv/ip/riscv_RocketChip_0/riscv_RocketChip_0_stub.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'riscv_RocketChip_0' generated file not found '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.gen/sources_1/bd/riscv/ip/riscv_RocketChip_0/riscv_RocketChip_0_stub.vhdl'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'riscv_RocketChip_0' generated file not found '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.gen/sources_1/bd/riscv/ip/riscv_RocketChip_0/riscv_RocketChip_0_sim_netlist.v'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'riscv_RocketChip_0' generated file not found '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/vivado-risc-v/workspace/Rocket32t1/vivado-vc707-riscv/vc707-riscv.gen/sources_1/bd/riscv/ip/riscv_RocketChip_0/riscv_RocketChip_0_sim_netlist.vhdl'. Please regenerate to continue.
+INFO: [Common 17-344] 'open_project' was cancelled
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Jun  9 14:44:55 2022...
