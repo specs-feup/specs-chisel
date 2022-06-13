@@ -72,18 +72,15 @@ class SCIESpec[T<:Data:Ring](testParams : TestParams, c: SCIEPipelined[T], fir_t
   var input_data = Array.fill(data_size)(Random.nextFloat * 100)
 
   fir_type match{
-    //case "DspReal" | "3" =>
-
-    case "SInt" | "1" =>  input_coeffs = Array.fill(order)(Random.between(1, 101) - 50)
-      input_data = Array.fill(data_size)(Random.between(1, 101) - 50)
-      acc = 0
-
-    case "UInt" | "0" =>  input_coeffs = Array.fill(order)(Random.between(1, 101))
+    case "unsigned" | "0" =>  input_coeffs = Array.fill(order)(Random.between(1, 101))
       input_data = Array.fill(data_size)(Random.between(1, 101))
       acc = 0
 
-    case "FixedPoint" | "2" | "3" =>
+    case "signed" | "1" =>  input_coeffs = Array.fill(order)(Random.between(1, 101) - 50)
+      input_data = Array.fill(data_size)(Random.between(1, 101) - 50)
+      acc = 0
 
+    case "FixedPoint" | "2" | "3" =>
   }
 
   for(i <- 0 until order){
