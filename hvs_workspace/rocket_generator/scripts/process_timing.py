@@ -69,6 +69,7 @@ def process_order(baseline_frequency, file_dir, file):
 
 def process(file):
     file_dir = os.path.dirname(os.path.realpath(file))
+    print(file_dir)
     os.system("touch ./results/tmp.csv")
     files = os.listdir("./results")
     data_type = "_" + (file.split("/")[-2]).split("_")[-1]
@@ -85,7 +86,6 @@ def process(file):
     f.close()
     if "order" in file: process_order(baseline_frequency, file_dir, file)
     elif "data" in file: process_data(baseline_frequency, file_dir, file)
-    
 
 def main():
     dirName='./results'

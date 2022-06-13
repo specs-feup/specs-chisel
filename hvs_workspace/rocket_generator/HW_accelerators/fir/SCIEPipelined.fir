@@ -19,6 +19,7 @@ circuit SCIEPipelined :
     wire _coeffs_WIRE_4 : Fixed<32><<0>> @[SCIEPipelined.scala 20:76]
     node _coeffs_T_4 = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 20:76]
     _coeffs_WIRE_4 <= _coeffs_T_4 @[SCIEPipelined.scala 20:76]
+<<<<<<< HEAD
     wire _coeffs_WIRE_5 : Fixed<32><<0>> @[SCIEPipelined.scala 20:76]
     node _coeffs_T_5 = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 20:76]
     _coeffs_WIRE_5 <= _coeffs_T_5 @[SCIEPipelined.scala 20:76]
@@ -2007,6 +2008,16 @@ circuit SCIEPipelined :
     _coeffs_WIRE_500[499] <= _coeffs_WIRE_499 @[SCIEPipelined.scala 20:31]
     reg coeffs : Fixed<32><<0>>[500], clock with :
       reset => (reset, _coeffs_WIRE_500) @[SCIEPipelined.scala 20:23]
+=======
+    wire _coeffs_WIRE_5 : Fixed<32><<0>>[5] @[SCIEPipelined.scala 20:31]
+    _coeffs_WIRE_5[0] <= _coeffs_WIRE @[SCIEPipelined.scala 20:31]
+    _coeffs_WIRE_5[1] <= _coeffs_WIRE_1 @[SCIEPipelined.scala 20:31]
+    _coeffs_WIRE_5[2] <= _coeffs_WIRE_2 @[SCIEPipelined.scala 20:31]
+    _coeffs_WIRE_5[3] <= _coeffs_WIRE_3 @[SCIEPipelined.scala 20:31]
+    _coeffs_WIRE_5[4] <= _coeffs_WIRE_4 @[SCIEPipelined.scala 20:31]
+    reg coeffs : Fixed<32><<0>>[5], clock with :
+      reset => (reset, _coeffs_WIRE_5) @[SCIEPipelined.scala 20:23]
+>>>>>>> 89ed51f6c86d9ce8f1724427c0dbbf373cf1f681
     wire _data_WIRE : Fixed<32><<0>> @[SCIEPipelined.scala 21:74]
     node _data_T = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 21:74]
     _data_WIRE <= _data_T @[SCIEPipelined.scala 21:74]
@@ -2022,6 +2033,7 @@ circuit SCIEPipelined :
     wire _data_WIRE_4 : Fixed<32><<0>> @[SCIEPipelined.scala 21:74]
     node _data_T_4 = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 21:74]
     _data_WIRE_4 <= _data_T_4 @[SCIEPipelined.scala 21:74]
+<<<<<<< HEAD
     wire _data_WIRE_5 : Fixed<32><<0>> @[SCIEPipelined.scala 21:74]
     node _data_T_5 = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 21:74]
     _data_WIRE_5 <= _data_T_5 @[SCIEPipelined.scala 21:74]
@@ -4010,6 +4022,16 @@ circuit SCIEPipelined :
     _data_WIRE_500[499] <= _data_WIRE_499 @[SCIEPipelined.scala 21:29]
     reg data : Fixed<32><<0>>[500], clock with :
       reset => (reset, _data_WIRE_500) @[SCIEPipelined.scala 21:21]
+=======
+    wire _data_WIRE_5 : Fixed<32><<0>>[5] @[SCIEPipelined.scala 21:29]
+    _data_WIRE_5[0] <= _data_WIRE @[SCIEPipelined.scala 21:29]
+    _data_WIRE_5[1] <= _data_WIRE_1 @[SCIEPipelined.scala 21:29]
+    _data_WIRE_5[2] <= _data_WIRE_2 @[SCIEPipelined.scala 21:29]
+    _data_WIRE_5[3] <= _data_WIRE_3 @[SCIEPipelined.scala 21:29]
+    _data_WIRE_5[4] <= _data_WIRE_4 @[SCIEPipelined.scala 21:29]
+    reg data : Fixed<32><<0>>[5], clock with :
+      reset => (reset, _data_WIRE_5) @[SCIEPipelined.scala 21:21]
+>>>>>>> 89ed51f6c86d9ce8f1724427c0dbbf373cf1f681
     wire _result_WIRE : Fixed<32><<0>> @[SCIEPipelined.scala 22:52]
     node _result_T = asFixedPoint(UInt<32>("h0"), 0) @[SCIEPipelined.scala 22:52]
     _result_WIRE <= _result_T @[SCIEPipelined.scala 22:52]
@@ -4019,9 +4041,15 @@ circuit SCIEPipelined :
       node _T = bits(io.insn, 6, 0) @[SCIEPipelined.scala 26:19]
       node _T_1 = eq(_T, UInt<4>("hb")) @[SCIEPipelined.scala 26:26]
       when _T_1 : @[SCIEPipelined.scala 26:39]
+<<<<<<< HEAD
         node _T_2 = bits(io.rs2, 8, 0)
         coeffs[_T_2] <= io.rs1 @[SCIEPipelined.scala 27:24]
         node _result_T_1 = bits(io.rs2, 8, 0)
+=======
+        node _T_2 = bits(io.rs2, 2, 0)
+        coeffs[_T_2] <= io.rs1 @[SCIEPipelined.scala 27:24]
+        node _result_T_1 = bits(io.rs2, 2, 0)
+>>>>>>> 89ed51f6c86d9ce8f1724427c0dbbf373cf1f681
         result <= coeffs[_result_T_1] @[SCIEPipelined.scala 28:16]
       else :
         node _T_3 = bits(io.insn, 6, 0) @[SCIEPipelined.scala 29:25]
@@ -4031,6 +4059,7 @@ circuit SCIEPipelined :
           data[2] <= data[1] @[SCIEPipelined.scala 31:54]
           data[3] <= data[2] @[SCIEPipelined.scala 31:54]
           data[4] <= data[3] @[SCIEPipelined.scala 31:54]
+<<<<<<< HEAD
           data[5] <= data[4] @[SCIEPipelined.scala 31:54]
           data[6] <= data[5] @[SCIEPipelined.scala 31:54]
           data[7] <= data[6] @[SCIEPipelined.scala 31:54]
@@ -4526,6 +4555,8 @@ circuit SCIEPipelined :
           data[497] <= data[496] @[SCIEPipelined.scala 31:54]
           data[498] <= data[497] @[SCIEPipelined.scala 31:54]
           data[499] <= data[498] @[SCIEPipelined.scala 31:54]
+=======
+>>>>>>> 89ed51f6c86d9ce8f1724427c0dbbf373cf1f681
           data[0] <= io.rs1 @[SCIEPipelined.scala 32:15]
           result <= data[0] @[SCIEPipelined.scala 33:14]
         else :
@@ -4537,6 +4568,7 @@ circuit SCIEPipelined :
             node _result_T_4 = mul(data[2], coeffs[2]) @[FixedPointTypeClass.scala 43:59]
             node _result_T_5 = mul(data[3], coeffs[3]) @[FixedPointTypeClass.scala 43:59]
             node _result_T_6 = mul(data[4], coeffs[4]) @[FixedPointTypeClass.scala 43:59]
+<<<<<<< HEAD
             node _result_T_7 = mul(data[5], coeffs[5]) @[FixedPointTypeClass.scala 43:59]
             node _result_T_8 = mul(data[6], coeffs[6]) @[FixedPointTypeClass.scala 43:59]
             node _result_T_9 = mul(data[7], coeffs[7]) @[FixedPointTypeClass.scala 43:59]
@@ -6530,5 +6562,20 @@ circuit SCIEPipelined :
             node _result_T_1997 = tail(_result_T_1996, 1) @[FixedPointTypeClass.scala 21:58]
             node _result_T_1998 = asFixedPoint(_result_T_1997, 0) @[FixedPointTypeClass.scala 21:58]
             result <= _result_T_1998 @[SCIEPipelined.scala 36:14]
+=======
+            node _result_T_7 = add(_result_T_2, _result_T_3) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_8 = tail(_result_T_7, 1) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_9 = asFixedPoint(_result_T_8, 0) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_10 = add(_result_T_9, _result_T_4) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_11 = tail(_result_T_10, 1) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_12 = asFixedPoint(_result_T_11, 0) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_13 = add(_result_T_12, _result_T_5) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_14 = tail(_result_T_13, 1) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_15 = asFixedPoint(_result_T_14, 0) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_16 = add(_result_T_15, _result_T_6) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_17 = tail(_result_T_16, 1) @[FixedPointTypeClass.scala 21:58]
+            node _result_T_18 = asFixedPoint(_result_T_17, 0) @[FixedPointTypeClass.scala 21:58]
+            result <= _result_T_18 @[SCIEPipelined.scala 36:14]
+>>>>>>> 89ed51f6c86d9ce8f1724427c0dbbf373cf1f681
     io.rd <= result @[SCIEPipelined.scala 39:9]
 
