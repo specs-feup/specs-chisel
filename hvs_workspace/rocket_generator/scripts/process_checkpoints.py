@@ -1,10 +1,8 @@
 #!usr/bin/python
 import sys, os, csv, re
 
-files=[]
 file_info=[]
 SELECTED_FREQUENCY=200.0
-
 
 def terminate(error_message):
     print(error_message)
@@ -57,22 +55,19 @@ def output_to_freq(file):
     max_delay_slack=find_timing_info(file)
     max_freq=(1/(get_selected_period(SELECTED_FREQUENCY) - max_delay_slack)) * 1000 #In MHz
     with open("./results/max_freqs_{}.csv".format(file_info[0]), "a") as output_file:
-        csvwriter=csv.writer(output_file)
-        csvwriter.writerow("{}\t{}".format(file_info[1], str(max_freq)).split("\t"))
+        output_file.write(("{}\t{}".format(file_info[1], str(max_freq))))
     output_file.close()
 
 def output_to_utilisation(file):
     resources = find_utilisation_info(file)
     with open("./results/utilisation_{}.csv".format(file_info[0]), "a") as output_file:
-        csvwriter=csv.writer(output_file)
-        csvwriter.writerow(("{}\t{}\t{}\t{}\t{}".format(file_info[1], resources[0], resources[1], resources[2], resources[3])).split("\t"))
+        output_file.write("{}\t{}\t{}\t{}\t{}".format(file_info[1], resources[0], resources[1], resources[2], resources[3]))
     output_file.close()
 
 def output_to_power(file):
     design_power = find_power_info(file)
     with open("./results/power_{}.csv".format(file_info[0]), "a") as output_file:
-        csvwriter = csv.writer(output_file)
-        csvwriter.writerow("{}\t{}".format(file_info[1], design_power).split("\t"))
+        output_file.write("{}\t{}".format(file_info[1], design_power))
     output_file.close()
 
 def process(file):
@@ -83,10 +78,11 @@ def process(file):
     else: terminate("Invalid file (all files have to be either power, timing or utilisation rpt files)")
 
 def main():
+    files=[]
     dirName='./checkpoints'
-    files.append([entry for entry in os.listdir(dirName)])
-    #for file in files:
-    process("./checkpoints/post_impl_utilisation_unsigned_0.rpt")
+    files = [dirName + '/' + entry for entry in os.listdir(dirName)]
+    for file in files:
+        process(file)
 
 if __name__ == "__main__":
     main()
