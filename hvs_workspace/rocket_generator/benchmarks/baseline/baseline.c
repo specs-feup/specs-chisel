@@ -41,13 +41,13 @@ int main(int argc, char *argv[]){
 		total_time_h, total_time_l;
 	
 		#if TYPE == 3
-			float res;
+			static float res;
 		#else
-			uint32_t res;
+			static uint32_t res;
 		#endif
 
 		#if TYPE == 2
-			int64_t intermediate_res = 0;
+			static int64_t intermediate_res = 0;
 		#endif
 
 			asm volatile("csrr %0, mcycleh" : "=r"(start_time_h));

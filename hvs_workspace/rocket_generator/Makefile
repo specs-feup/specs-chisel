@@ -32,7 +32,7 @@ setup:
 	cp $(base_dir)/repl_files/rocket/* $(rocket_scala_src)/rocket
 	cp $(base_dir)/repl_files/scie/* $(rocket_scala_src)/scie
 	cp $(base_dir)/repl_files/Makefile $(base_dir)/vivado-risc-v
-	cp $(base_dir)/repl_files/vivado.tcl $(base_dir)/vivado-risc-v
+	cp $(base_dir)/repl_files/accel_tcl/vivado.tcl $(base_dir)/vivado-risc-v
 	cp $(base_dir)/repl_files/rocket.scala $(base_dir)/vivado-risc-v/src/main/scala
 
 ### File changes ###
@@ -78,7 +78,10 @@ implementation:
 	#vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
 	#cd vivado-risc-v && rm -rf workspace && make clean
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
-	$(base_dir)/scripts/find_max_freq.py $(order) $(selected_frequency) >> $(max_freqs_file)	
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_timing_summary_routed.rpt $(base_dir)/checkpoints/post_impl_timing_$(type)_$(order).rpt
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(base_dir)/checkpoints/post_impl_utilization_$(type)_$(order).rpt
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_power_routed.rpt $(base_dir)/checkpoints/post_impl_power_$(type)_$(order).rpt
+	$(base_dir)/scripts/find_max_freq.py $(order) $(type) $(selected_frequency) >> $(max_freqs_file)	
 	
 ### Calls emulator and benchmark Makefile ###
 build:
