@@ -1,4 +1,3 @@
-
 SHELL := /bin/bash
 base_dir = .
 vivado_dir = $(base_dir)/vivado-risc-v
@@ -15,7 +14,7 @@ base_name = freechips.rocketchip.system
 
 ### Clones Vivado-risc-v and rocket-chip repository
 setup:
-	rm -rf vivado-risc-v #temporario		
+	rm -rf vivado-risc-v #temporario
 	git config --global url.https://git.qemu.org/git.insteadOf https://git.qemu-project.org
 	git config --global url.https://git.qemu.org/git.insteadOf git://git.qemu-project.org
 	git config --global url.https://github.com/.insteadOf git://github.com/
@@ -35,8 +34,9 @@ setup:
 	cp $(base_dir)/repl_files/accel_tcl/vivado.tcl $(base_dir)/vivado-risc-v
 	cp $(base_dir)/repl_files/rocket.scala $(base_dir)/vivado-risc-v/src/main/scala
 
-### File changes ###
+### File replacements ###
 core-setup:
+	#Type 4 and 5 (complex numbers) not implemented
 	if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
 		cp ./repl_files/interfaces/Complex_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
 		cp ./repl_files/interfaces/Complex_interface/SCIE.scala $(rocket_scala_src)/scie; \
@@ -51,14 +51,6 @@ core-setup:
 		sed -i 's/useSCIE: Boolean = false,/useSCIE: Boolean = true,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
 		cp ./repl_files/accel_tcl/vivado.tcl $(vivado_dir); \
 	fi
-	#sed -i 's/useSCIE: Boolean = true,/useSCIE: Boolean = false,/g' $(rocket_scala_src)/rocket/RocketCore.scala
-	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEDecoder.v"] \##g' $(vivado_dir)/vivado.tcl
-	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEUnpipelined.v"] \##g' $(vivado_dir)/vivado.tcl
-	#sed -i 's#[file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEPipelined.v"] \##g' $(vivado_dir)/vivado.tcl
-	#if [ "$(order)" -neq 0]; then \
-	#	sed -i 's/useSCIE: Boolean = false,/useSCIE: Boolean = true,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
-	#	sed -i 's#[file normalize "../../board/fan-control.v"] \#& [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEDecoder.v"] [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEUnpipelined.v"] [file normalize "../../rocket-chip/src/main/resources/vsrc/SCIEPipelined.v"]#g' $(vivado_dir)/vivado.tcl; \				
-	#fi
 
 ### Calls vsim Makefile ###
 verilog:
@@ -68,24 +60,17 @@ verilog:
 verilog-clean:
 	make -C $(vsim_dir) clean
 
-## Standalone hardware accelerator FPGA implementation ###
-scie-analysis:
-	vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
-
 ### Rocket chip + SCIE + IO FPGA implementation ###
 implementation:
-	#source /tools/Xilinx/Vivado/2021.1/settings64.sh #TODO mudar para diferentes versoes 
-	#vivado -nolog -nojournal -mode batch -source $(base_dir)/tcl/scie-analysis.tcl -tclargs $(board)
-	#cd vivado-risc-v && rm -rf workspace && make clean
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
 	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_timing_summary_routed.rpt $(base_dir)/checkpoints/post_impl_timing_$(type)_$(order).rpt
 	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(base_dir)/checkpoints/post_impl_utilization_$(type)_$(order).rpt
 	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_power_routed.rpt $(base_dir)/checkpoints/post_impl_power_$(type)_$(order).rpt
-	$(base_dir)/scripts/find_max_freq.py $(order) $(type) $(selected_frequency) >> $(max_freqs_file)	
-	
+	$(base_dir)/scripts/find_max_freq.py $(order) $(type) $(selected_frequency) >> $(max_freqs_file)
+
 ### Calls emulator and benchmark Makefile ###
 build:
-	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint) optimization_flag=$(optimization_flag)
+	make -C $(bench_dir) order=$(order) data=$(data) type=$(type) binarypoint=$(binarypoint) optimization_flag=$(optimization_flag)
 	make -C $(hw_dir) verilog order=$(order) width=$(width) data=$(data) type=$(type) binarypoint=$(binarypoint)
 	make -C $(emu_dir) CONFIG=$(base_name).$(config)
 
@@ -95,13 +80,15 @@ build-debug:
 	make debug -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 .PHONY:clean
-clean:	
+clean:
 	make -C $(emu_dir) clean
 	make -C $(bench_dir) clean
-	make -C $(hw_dir) clean	
-	
+	make -C $(hw_dir) clean
+
+### Simulation ###
 simulate:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)
 
+### Simulation (waveform) ###
 simulate-debug:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug -v output.vcd $(emu_dir)/$(binary) >> $(file)

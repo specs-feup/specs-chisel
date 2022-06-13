@@ -1,31 +1,12 @@
 #include <stdint.h>
 #include <stdio.h>
-#if WIDTH == 8 
-	#if TYPE == 0  
-		#include "width_8/unsigned_values.h" 
-	#elif TYPE == 1 
-		#include "width_8/signed_values.h" 
-	#elif TYPE == 2 
-		#include "width_8/fixed_point_values.h" 
-	#else 
-		#include "width_8/float.h" 
-	#endif 
-#elif WIDTH == 16 
-	#if TYPE == 0  
-		#include "width_16/unsigned_values.h" 
-	#elif TYPE == 1 
-		#include "width_16/signed_values.h" 
-	#elif TYPE == 2 || TYPE == 3
-		#include "width_16/fixed_point_values.h" 
-	#endif 
-#elif WIDTH == 32 
-	#if TYPE == 0 
-		#include "width_32/unsigned_values.h" 
-	#elif TYPE == 1 
-		#include "width_32/signed_values.h" 
-	#elif TYPE == 2 || TYPE == 3
-		#include "width_32/fixed_point_values.h" 
-	#endif
+
+#if TYPE == 0 
+		#include "include/unsigned_values.h" 
+#elif TYPE == 1 
+		#include "include/signed_values.h" 
+#elif TYPE == 2 || TYPE == 3
+		#include "include/fixed_point_values.h" 
 #endif
 
 int main(int argc, char *argv[]){

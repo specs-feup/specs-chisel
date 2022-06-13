@@ -1,19 +1,11 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#if WIDTH == 8 
-	#if TYPE == 4 || TYPE == 5 
-		#include "width_8/complex_values.h" 
-	#endif 
-#elif WIDTH == 16 
-	#if TYPE == 4 || TYPE == 5 
-		#include "width_16/complex_values.h" 
-	#endif 
-#elif WIDTH == 32 
-	#if TYPE == 4 || TYPE == 5 
-		#include "width_32/complex_values.h" 
-	#endif 
-#endif
+
+#if TYPE == 4 || TYPE == 5 
+		#include "include/complex_values.h" 
+#endif 
+
 
 int main(int argc, char *argv[]){
 	#if TYPE == 4 || TYPE == 5

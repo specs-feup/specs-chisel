@@ -31,14 +31,8 @@ def process_data(baseline_frequency, file_dir, file):
                         	csvwriter.writerow(row)
                     	      else:
 				baseline_time=str(int(float(row_list[1]) * float(1/baseline_frequency)))
-				print freqs[index]
-                                print row_list[1]
-				print row_list[2]
 				accelerated_time=str(int(float(row_list[2]) * float(1/freqs[index])))
-				print baseline_time
- 				print accelerated_time
 				out_file.write("{}\t{}\t{}\n".format(str(row_list[0]), baseline_time, accelerated_time))
-				#csvwriter.writerow(("{}\t{}\t{}".format(str(row_list[0]), baseline_time, accelerated_time)).split("\t"))
     out_file.close()
     in_file.close()
     os.system("mv ./results/tmp.csv {}/time_count_{}.csv".format(file_dir, (file.split("_")[-1]).split(".")[-2]))

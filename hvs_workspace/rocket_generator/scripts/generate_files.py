@@ -57,11 +57,9 @@ def process_x_data(file_dir):
                 if data_index == len(data):
                     data_index = 0
 		    out_file.write("DATA(@order={})\tBASELINE\tACCELERATOR\n".format(order[order_index]))
-                    #csvwriter.writerow("DATA(@order={})\tBASELINE\tACCELERATOR\n".format(order[order_index]).split('\t'))
                     order_index = order_index + 1
                 else:
 		    out_file.write("{}\t{}\t{}\n".format(str(data[data_index]), str(baseline[index]), str(accelerated[index])))
-                    #csvwriter.writerow((str(data[data_index]) + "\t" + str(baseline[index]) + "\t" + str(accelerated[index])).split('\t'))
                     data_index = data_index + 1
                     index = index + 1
         out_file.close()
@@ -77,7 +75,6 @@ def main():
     for file in new_files:
         reorganize_values(file)
         process_x_data(file)
-        #os.system("mv {} {}".format(file, "." + file.split(".")[-2] +  "_order.csv"))
         del baseline[:]
         del accelerated[:]
 

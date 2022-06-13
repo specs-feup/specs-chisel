@@ -2,14 +2,13 @@
 import sys, os, csv, re
 
 file_info=[]
-SELECTED_FREQUENCY=200.0
 
 def terminate(error_message):
     print(error_message)
     sys.exit(1)
 
 def get_selected_period(selected_frequency):
-	return float((1/float(SELECTED_FREQUENCY)) * 1000)
+	return float((1/float(selected_frequency)) * 1000)
 
 def parse_file_info(file):
     file_info.append(((file.split("/")[-1]).split(".")[-2]).split("_")[-2])
@@ -51,9 +50,9 @@ def find_utilisation_info(file):
     f.close()
     return resources
 
-def output_to_freq(file):
+def output_to_freq(file, selected_frequency):
     max_delay_slack=find_timing_info(file)
-    max_freq=(1/(get_selected_period(SELECTED_FREQUENCY) - max_delay_slack)) * 1000 #In MHz
+    max_freq=(1/(get_selected_period(selected_frequency) - max_delay_slack)) * 1000 #In MHz
     with open("./results/max_freqs_{}.csv".format(file_info[0]), "a") as output_file:
         output_file.write(("{}\t{}\n".format(file_info[1], str(max_freq))))
     output_file.close()
@@ -82,7 +81,7 @@ def create_headers():
                 else: f.write("ORDER\tLUTS\tREGISTERS\tDSPs\tBRAM\n")
             f.close()
 
-def main():
+def main(selected_frequency):
     files=[]
     create_headers()
     dirName='./checkpoints'
@@ -92,7 +91,7 @@ def main():
     utilisation_files = sorted([file for file in files if "utilisation" in file or "utilization" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
     for timing_file in timing_files:
 		parse_file_info(timing_file)
-		output_to_freq(timing_file)
+		output_to_freq(timing_file, selected_frequency)
 		del file_info[:]
     for power_file in power_files:
 		parse_file_info(power_file)
@@ -104,4 +103,5 @@ def main():
 		del file_info[:]
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) < 2: terminate("Usage: <command> <selected_frequency>") 
+    main(sys.argv[1])
