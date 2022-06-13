@@ -22,6 +22,7 @@ def terminate(error_message):
     print(error_message)
     sys.exit()
 
+
 def get_power_data(file_dir):
     with open(file_dir, "r") as f:
         csvreader = csv.reader(f)
@@ -47,7 +48,6 @@ def get_utilisation_data(file_dir):
             dsps.append(row_list[3])
             bram.append(row_list[4])
     f.close()
-
 
 
 def get_freq_data(file_dir):

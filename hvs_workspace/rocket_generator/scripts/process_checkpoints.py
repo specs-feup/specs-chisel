@@ -70,25 +70,35 @@ def output_to_power(file):
         output_file.write("{}\t{}\n".format(int(file_info[1]), design_power))
     output_file.close()
 
+def create_headers():
+    file_types=["max_freqs", "power", "utilisation"]
+    data_types=["unsigned", "signed", "fixed-point"]
+    for file_type in file_types:
+        for data_type in data_types:
+            with open("./results/{}_{}.csv".format(file_type, data_type), "w") as f:
+                f.write("### {} {} file ###\n".format(file_type, data_type))
+                if file_type == "max_freqs": f.write("ORDER\tMAX_FREQS\n")
+                elif file_type == "power": f.write("ORDER\tPOWER\n")
+                else: f.write("ORDER\tLUTS\tREGISTERS\tDSPs\tBRAM\n")
+            f.close()
+
 def main():
     files=[]
+    create_headers()
     dirName='./checkpoints'
     files = [dirName + '/' + entry for entry in os.listdir(dirName)]
     timing_files = sorted([file for file in files if "timing" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
     power_files = sorted([file for file in files if "power" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
     utilisation_files = sorted([file for file in files if "utilisation" in file or "utilization" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
-    if timing_files:
-	for timing_file in timing_files:
+    for timing_file in timing_files:
 		parse_file_info(timing_file)
 		output_to_freq(timing_file)
 		del file_info[:]
-    if power_files:
-	for power_file in power_files:
+    for power_file in power_files:
 		parse_file_info(power_file)
                 output_to_power(power_file)
 		del file_info[:]
-    if utilisation_files:
-	for utilisation_file in utilisation_files:
+    for utilisation_file in utilisation_files:
 		parse_file_info(utilisation_file)
 		output_to_utilisation(utilisation_file)
 		del file_info[:]
