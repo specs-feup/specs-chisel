@@ -10,8 +10,8 @@ verilog:
 	sbt 'runMain scie.SCIEPipelinedGen --params "order=$(order),width=$(width),type=$(type),binarypoint=$(binarypoint)"'
 	sbt 'runMain scie.SCIEUnpipelinedGen --params "width=$(width)"'
 	sbt 'runMain scie.SCIEDecoderGen'
-	@sed -i 's/io_//g' *.v 
-	../parse_scripts/strip_comment.py SCIEPipelined.v SCIEUnpipelined.v	
+	@sed -i 's/io_//g' *.v
+	../parse_scripts/strip_comment.py SCIEPipelined.v SCIEUnpipelined.v
 	@sed -i 's/Pipelined/& #(parameter XLEN = 32)/' SCIEPipelined.v
 	@sed -i 's/pipelined/& #(parameter XLEN = 32)/' SCIEUnpipelined.v
 	cp *.v $(vrsc_dir)

@@ -87,8 +87,8 @@ clean:
 
 ### Simulation ###
 simulate:
-	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)
-
+	#$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary) >> $(file)
+	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config) $(emu_dir)/$(binary)
 ### Simulation (waveform) ###
 simulate-debug:
 	$(emu_dir)/emulator-$(base_name)-$(base_name).$(config)-debug -v output.vcd $(emu_dir)/$(binary) >> $(file)

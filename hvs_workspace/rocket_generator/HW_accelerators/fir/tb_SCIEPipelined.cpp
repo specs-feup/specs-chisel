@@ -25,7 +25,7 @@ uint32_t convert(float value){
 
 
 void dut_exec(VSCIEPipelined *dut){
-	dut->insn = 0x5b;
+	dut->insn = 0x3b;
 }
 
 void dut_send_coeff(VSCIEPipelined *dut, union value *coeffs, int coeff_count){
@@ -47,15 +47,14 @@ int main(int argc, char** argv, char** env) {
 
     order = atoi(argv[1]);
     width = atoi(argv[2]);
+			mod_type = atoi(argv[3]);
 		binarypoint = atoi(argv[4]);
-
-		mod_type = atoi(argv[3]);
 
 		union value coeffs[order], data[order];
 
     srand(time(NULL));
 
-		//Types of data: 0 -> UInt, 1 -> SInt, 2 -> FixedPoint, 3 -> FP
+		//Types of data: 0 -> UInt, 1 -> SInt, 2, 3 -> FixedPoint
 
 		switch(mod_type){
 			case 0:

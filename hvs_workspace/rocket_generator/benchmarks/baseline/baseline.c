@@ -14,17 +14,17 @@
 
 int main(int argc, char *argv[]){
 	#if TYPE == 0 || TYPE == 1 || TYPE == 2 || TYPE == 3
-		uint32_t start_time_h, start_time_l, finish_time_h, finish_time_l, \
+		static uint32_t start_time_h, start_time_l, finish_time_h, finish_time_l, \
 		total_time_h, total_time_l;
 	
 		#if TYPE == 3
-			static float res;
+			 static float res;
 		#else
-			static uint32_t res;
+			 static uint32_t res;
 		#endif
 
 		#if TYPE == 2
-			static int64_t intermediate_res = 0;
+			 static int64_t intermediate_res = 0;
 		#endif
 
 			asm volatile("csrr %0, mcycleh" : "=r"(start_time_h));
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]){
 		asm volatile("csrr %0, mcycleh" : "=r"(finish_time_h));
 		asm volatile("csrr %0, mcycle" : "=r"(finish_time_l));
 		total_time_h = finish_time_h - start_time_h;
-		total_time_l = finish_time_l - start_time_l;	
+		total_time_l = finish_time_l - start_time_l;
 		printf("%d\n", total_time_l);
 	#endif
 

@@ -50,7 +50,7 @@ class SCIESpecComplex[T<:DspComplex[_]](testParams : TestParams, c: SCIEPipeline
     poke(c.io.valid, false.B)
     step(1)
     poke(c.io.valid, true.B)
-    poke(c.io.insn, "h5b".U)
+    poke(c.io.insn, "h3b".U)
     step(1)
     for(j <- 0 until order){
       if(i - j >= 0)
@@ -102,7 +102,7 @@ class SCIESpec[T<:Data:Ring](testParams : TestParams, c: SCIEPipelined[T], fir_t
     poke(c.io.valid, false.B)
     step(1)
     poke(c.io.valid, true.B)
-    poke(c.io.insn, "h5b".U)
+    poke(c.io.insn, "h3b".U)
     step(1)
     for(j <- 0 until order){
       if(i - j >= 0)
@@ -132,15 +132,15 @@ class SCIETesterStage extends GenericTesterStage((params, _) => {
   val binarypoint = params.getInt("binarypoint")
 
   fir_type match{
-    case "UInt" | "0" => dsptools.Driver.execute(() => new SCIEPipelined(params, UInt(chisel3.internal.firrtl.Width
+    case "unsigned" | "0" => dsptools.Driver.execute(() => new SCIEPipelined(params, UInt(chisel3.internal.firrtl.Width
     (width))), testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 
-    case "SInt" | "1" => dsptools.Driver.execute(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
+    case "signed" | "1" => dsptools.Driver.execute(() => new SCIEPipelined(params, SInt(chisel3.internal.firrtl.Width
     (width))), testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 
-    case "FixedPoint" | "2" => dsptools.Driver.execute(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width(width), binarypoint.BP)),
+    case "fixed-point" | "2" => dsptools.Driver.execute(() => new SCIEPipelined(params, FixedPoint(chisel3.internal.firrtl.Width(width), binarypoint.BP)),
       testOptions){ c =>
       new SCIESpec(params, c, fir_type)}
 

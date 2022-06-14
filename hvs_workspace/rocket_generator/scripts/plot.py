@@ -88,12 +88,16 @@ def plot_graph(values, y_value):
         elif y_value == "power":
             fig, ax = plt.subplots()
             _ = ax.plot(order, values, "--o")
+	    ax.set_xlabel('Filter order')
+    	    ax.set_ylabel('Power (W)')
             ax.grid(True)
             plt.savefig("./results/power_{}.png".format(file_info[0]), bbox_inches='tight')
 
         elif y_value == "freq":
             fig, ax = plt.subplots()
             _ = ax.plot(order, values, "--o")
+	    ax.set_xlabel('Filter order')
+    	    ax.set_ylabel('Maximum frequency (MHz)')
             ax.grid(True)
             plt.savefig("./results/max_freqs_{}.png".format(file_info[0]), bbox_inches='tight')
 
@@ -114,7 +118,7 @@ def plot_graph(values, y_value):
             ax.set_xlabel('Filter order')
             ax.set_ylabel('Speedup')
             ax.grid(True)
-            #plt.ylim(0, 2000)
+            plt.ylim(0, 1000)
             plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
 
         else:

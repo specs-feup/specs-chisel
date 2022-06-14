@@ -11,8 +11,10 @@
 
 int main(int argc, char *argv[]){
 	#if TYPE == 0 || TYPE == 1 || TYPE == 2 || TYPE == 3
-		uint32_t start_time_h, start_time_l, finish_time_h, finish_time_l, \
-		total_time_h, total_time_l, res;
+		static uint32_t start_time_h, start_time_l, finish_time_h, finish_time_l, \
+		total_time_h, total_time_l;
+
+		static uint32_t res;
 
 		asm volatile("csrr %0, mcycleh" : "=r"(start_time_h));
 		asm volatile("csrr %0, mcycle" : "=r"(start_time_l));
