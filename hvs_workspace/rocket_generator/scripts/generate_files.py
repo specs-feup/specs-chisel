@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import csv, os, re, subprocess
+import csv, os, re, subprocess, sys
 
 files = []
 order=[]
@@ -54,7 +54,7 @@ def process_x_data(file_dir):
             data_index = 0
             order_index = 1
             while index < len(baseline):
-                if data_index == len(data):
+                if data_index == len(data) and order_index < len(order):
                     data_index = 0
 		    out_file.write("DATA(@order={})\tBASELINE\tACCELERATOR\n".format(order[order_index]))
                     order_index = order_index + 1
@@ -67,8 +67,8 @@ def process_x_data(file_dir):
 
 
 
-def main():
-    dirName='./results'
+def main(target):
+    dirName='./accelerators/{}/results'.format(target)
     getListOfFiles(dirName)
     new_files = [file for file in files if "cycle" in file and "data" not in file]
     get_values(new_files[0])
@@ -79,4 +79,8 @@ def main():
         del accelerated[:]
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: <command> <target>")
+        sys.exit(1)
+    main(sys.argv[1])

@@ -1,0 +1,31 @@
+#Place arguments here of cycle measurements. (target, config, binarypoint, data width and design space exploration variables - outer loop to inner most loop. Order is important ! )
+
+target=fir
+
+config=Rocket32t1
+
+binarypoint=0
+
+width=32
+
+optimization_flag=(-O0)
+
+type=(0)
+
+data=(5 10)
+
+order=(5 10)
+
+Vivado workflow (design space variables used for Vivado workflow - outer loop to inner most loop)
+
+type=(0)
+
+order=(0 5)
+
+
+#Format:
+
+#<Single values> (e.g. target=fir)
+
+#<array values> (e.g order=(5 10 20))
+

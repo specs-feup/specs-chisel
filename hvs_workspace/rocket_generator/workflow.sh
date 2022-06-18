@@ -1,78 +1,42 @@
 #!/bin/bash
-
-#Type 0 -> UInt, 1 -> SInt, 2 -> FixedPoint, 3 -> FP , 4 -> FloatingPoint
-
+type_verbose_array=(unsigned signed fixed-point floating-point)
+target=fir
 config=Rocket32t1
 binarypoint=0
+width=32
+optimization_flag=(-O0)
+type=(0)
+tmp_file=./../../accelerators/fir/results/tmp_file.txt
 
-optimization_array=(-O0 -O3)
-order_array=(5 10 20 50 100 200 500)
-data_array=(20 50 100 200 500 1000 1500 2000)
-type_array=(0 1 2 3)
-type_verbose_array=(unsigned signed fixed-point floating-point)
+find ./accelerators/fir/results ! -name '.*' ! -type d -exec rm -- {} +
 
-tmp_file=./results/tmp_file.txt #Temporary workaround
+### Cycle calculation (with respect to ###
+for loop_0_var in "${optimization_flag[@]}"; do
+	rm ./accelerators/fir/results/tmp_file.txt
+	for loop_1_var in "${type[@]}"; do
+		printf "### ${type_verbose_array[$loop_1_var]} VALUES (${loop_0_var}) ###\n" >> ./accelerators/fir/results/${loop_0_var}/${type_verbose_array[$loop_1_var]}/cycle_count_type.csv
+				make -C ./accelerators/fir clean
+					make -C ./accelerators/fir functional_workflow optimization_flag=$loop_0_var type=$loop_1_var target=fir config=Rocket32t1 binarypoint=0 width=32 file=$tmp_file baseline_binary=baseline.riscv accelerated_binary=fir_benchmark.riscv
+					baseline_var=$(sed -n '1p' ./accelerators/fir/results/tmp_file.txt)
+					accel_var=$(sed -n '2p' ./accelerators/fir/results/tmp_file.txt)
+					printf "$loop_1_var\t$baseline_var\t$accel_var\n" >> ./accelerators/fir/results/${loop_0_var}/${type_verbose_array[loop_1_var]}/cycle_count_type.csv
+					rm ./accelerators/fir/results/tmp_file.txt
+		done
+	done
 
-type=0
-order=10
-data=20
-optimization_flag=-O0
+./scripts/generate_files.py fir
 
-make clean
-make build order=$order data=$data width=32 config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
-make simulate config=$config binary=baseline.riscv file=$tmp_file
-#make clean
-#make build order=$order data=$data width=32 config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
-make simulate config=$config binary=fir_benchmark.riscv file=$tmp_file
-
-
-
-#find ./results ! -name '.*' ! -type d -exec rm -- {} +
-#find ./results ! -name '.*' ! -type d -exec rm -- {} +
-
-### Cycle calculation (with respect to filter order) ###
-#for optimization_flag in "${optimization_flag[@]}"; do
-#	rm $tmp_file
-#	printf "### ${type_verbose_array[type]} VALUES (OPTIMIZATION ${optimization_flag}) ###\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count_order.csv
-#	for type in "${type_array}"; do
-#			for data in "${data_array}"; do
-#				printf "ORDER(@data=$data)\tBASELINE\tACCELERATOR\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count_order.csv
-#				for order in "${order[@]}"; do
-#					make clean
-#					make build order=$order data=$data width=32 config=$config type=$type binarypoint=$binarypoint optimization_flag=$optimization_flag
-#					make simulate config=$config binary=baseline.riscv file=$tmp_file
-#					make simulate config=$config binary=fir_benchmark.riscv file=$tmp_file
-#					baseline_val=$(sed -n '1p' $tmp_file)
-#				  accel_val=$(sed -n '2p' $tmp_file)
-#				  printf "$baseline_val\t$accel_val\n" >> ./results/optimization_${optimization_flag}/type_${type_verbose_array[type]}/cycle_count_order.csv
-#				  rm $tmp_file
-#				done
- #     done
-#	done
-#done
-
-#./scripts/generate_files.py
-
-########################################################
-
-#order_array=(0 5 10 20 50 100 200 500) #For Vivado workflow order 0 is the baseline
-#selected_frequency= 200.0 #Chosen frequency for synthesis
+type=(0)
+order=(0 5)
+selected_frequency=200.0
 
 ## frequency, area and power measurements ###
-#rm ./results/*.csv
-#for type in "${type_array[@]}"; do
-#printf "### MAXIMUM SYSTEM FREQUENCIES ###\n" >> ./results/max_freqs_${type_verbose_array[type]}.csv
-#printf "ORDER\tMAXIMUM FREQUENCY\n" >> ./results/max_freqs_${type_verbose_array[type]}.csv
-#	for order in "${order_array[@]}"; do
-#		make -C ./vivado-risc-v	clean
-#		rm -rf ./vivado-risc-v/workspace
-#		make core-setup type=$type order=$order
-#		if [ $order -ne 0 ]; then
-#			make verilog order=$order width=32 type=$type binarypoint=$binarypoint
-#		fi
-#			make implementation board=vc707 config=$config max_freqs_file=./results/max_freqs_${type_verbose_array[type]}.csv type=${type_verbose_array[type]} selected_frequency=$selected_frequency order=$order
-#		done
-#done
+rm ./accelerators/fir/results/*.csv
+for loop_0_var in "${type[@]}"; do
+	printf "### MAXIMUM FREQUENCIES ###\n" >> ./accelerators/fir/results/max_freqs_${type_verbose_array[$loop_0_var]}
+	printf "order\tMAXIMUM FREQUENCY\n" >> ./accelerators/fir/results/max_freqs_${type_verbose_array[$loop_0_var]}
+	for loop_1_var in "${order[@]}"; do
+		make -C ./accelerators/fir vivado_workflow type=$loop_0_var order=$loop_1_var board=vc707 config=Rocket32t1 selected_frequency=200.0 file=./accelerators/fir/results/max_freqs_${loop_0_var}.csv
+		done
+	done
 
-#./scripts/process_checkpoints.py $selected_frequency
-#./scripts/process_timing.py
