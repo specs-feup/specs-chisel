@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 main_dir = ./../..
+scripts_dir= $(main_dir)/scripts
 vivado_dir = $(main_dir)/vivado-risc-v
 vsim_dir = $(vivado_dir)/rocket-chip/vsim
 emu_dir = $(vivado_dir)/rocket-chip/emulator
@@ -25,10 +26,9 @@ verilog-clean:
 ### Rocket chip + SCIE + IO FPGA implementation ###
 implementation:
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) bitstream
-	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_timing_summary_routed.rpt $(base_dir)/checkpoints/post_impl_timing_$(type)_$(order).rpt
-	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(base_dir)/checkpoints/post_impl_utilization_$(type)_$(order).rpt
-	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_power_routed.rpt $(base_dir)/checkpoints/post_impl_power_$(type)_$(order).rpt
-	$(base_dir)/scripts/find_max_freq.py $(order) $(type) $(selected_frequency) >> $(max_freqs_file)
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_timing_summary_routed.rpt $(main_dir)/checkpoints/post_impl_timing_$(type_verbose)_$(order).rpt
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(main_dir)/checkpoints/post_impl_utilization_$(type_verbose)_$(order).rpt
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_power_routed.rpt $(main_dir)/checkpoints/post_impl_power_$(type_verbose)_$(order).rpt
 
 ### Calls emulator and benchmark Makefile ###
 build:
@@ -74,10 +74,10 @@ core-setup:
 
 
 vivado_workflow:
-	$(MAKE) -C $(vivado_dir) clean
+	make -C $(vivado_dir) clean
 	rm -rf $(vivado_dir)/workspace
-	$(MAKE) core-setup type=$(type) order=$(order)
+	$(MAKE) core-setup order=$(order)
 	@if [ "$(order)" -ne 0 ]; then \
-		$(MAKE) verilog order=$(order) width=32 type=$(type) binarypoint=0; \
+		$(MAKE) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint); \
 	fi
-	$(MAKE) implementation board=$(board) config=$config max_freqs_file=$(file) type=${type_verbose_array[type]} selected_frequency=$selected_frequency order=$order
+	$(MAKE) implementation board=$(board) config=$(config) max_freqs_file=$(file) type=$(type) type_verbose=$(type_verbose) order=$(order)

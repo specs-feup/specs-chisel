@@ -61,7 +61,7 @@ def get_freq_data(file_dir):
             freqs.append(float(row_list[1]))
     f.close()
 
-def plot_graph(values, y_value):
+def plot_graph(values, y_value, target):
 	if y_value == "cycle":
     		fig, ax = plt.subplots()
     		baseline = ax.plot(values, baseline_values, "--o", label='Baseline')
@@ -72,7 +72,7 @@ def plot_graph(values, y_value):
     		ax.set_xlabel('Filter order')
     		ax.set_ylabel('Performance (number of cycles)')
     		ax.grid(True)
-    		plt.savefig("./results/{}.png".format("_".join(file_info)), bbox_inches='tight')
+    		plt.savefig("./accelerators/{}/results/{}.png".format(target, "_".join(file_info), bbox_inches='tight')
 
     		fig, ax = plt.subplots()
     		ax.plot(values, speedup, "--o")
@@ -80,7 +80,7 @@ def plot_graph(values, y_value):
     		ax.set_ylabel('Speedup')
     		ax.grid(True)
     		plt.ylim(0, 1000)
-    		plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
+    		plt.savefig("./accelerators/{}/results/{}_speedup.png".format(target, "_".join(file_info), bbox_inches='tight')
 
         elif y_value == "utilisation":
             pass
@@ -91,7 +91,7 @@ def plot_graph(values, y_value):
 	    ax.set_xlabel('Filter order')
     	    ax.set_ylabel('Power (W)')
             ax.grid(True)
-            plt.savefig("./results/power_{}.png".format(file_info[0]), bbox_inches='tight')
+            plt.savefig("./accelerators/{}/results/power_{}.png".format(target, file_info[0]), bbox_inches='tight')
 
         elif y_value == "freq":
             fig, ax = plt.subplots()
@@ -99,7 +99,7 @@ def plot_graph(values, y_value):
 	    ax.set_xlabel('Filter order')
     	    ax.set_ylabel('Maximum frequency (MHz)')
             ax.grid(True)
-            plt.savefig("./results/max_freqs_{}.png".format(file_info[0]), bbox_inches='tight')
+            plt.savefig("./accelerators/{}/results/max_freqs_{}.png".format(target, file_info[0]), bbox_inches='tight')
 
         elif y_value == "time":
             fig, ax = plt.subplots()
@@ -111,7 +111,7 @@ def plot_graph(values, y_value):
             ax.set_xlabel('Filter order')
             ax.set_ylabel('Performance (in microseconds)')
             ax.grid(True)
-            plt.savefig("./results/{}.png".format("_".join(file_info)), bbox_inches='tight')
+            plt.savefig("./accelerators/{}/results/{}.png".format(target, "_".join(file_info)), bbox_inches='tight')
 
             fig, ax = plt.subplots()
             ax.plot(values, speedup, "--o")
@@ -119,7 +119,7 @@ def plot_graph(values, y_value):
             ax.set_ylabel('Speedup')
             ax.grid(True)
             plt.ylim(0, 1000)
-            plt.savefig("./results/{}_speedup.png".format("_".join(file_info)), bbox_inches='tight')
+            plt.savefig("./accelerators/{}/results/{}_speedup.png".format(target, "_".join(file_info), bbox_inches='tight')
 
         else:
           terminate("Invalid y values")
@@ -136,7 +136,7 @@ def plot_graph(values, y_value):
 	del dsps[:]
 	del bram[:]
 
-def process_order_file(file_dir):
+def process_order_file(file_dir, target):
     with open(file_dir, "r") as f:
         csvreader = csv.reader(f)
         _ = next(csvreader)
@@ -145,20 +145,20 @@ def process_order_file(file_dir):
         for row in csvreader:
             row_list=row[0].split("\t")
             if "ORDER" in row_list[0]:
-                if file_info[1] == "cycle": plot_graph(order, "cycle")
-                else: plot_graph(order, "time")
+                if file_info[1] == "cycle": plot_graph(order, "cycle", target)
+                else: plot_graph(order, "time", target)
                 file_info.append("@data={}".format(re.search(r'\d+', row_list[0]).group()))
             else:
                 order.append(int(row_list[0]))
                 baseline_values.append(int(row_list[1]))
                 accel_values.append(int(row_list[2]))
                 speedup.append(int(int(row_list[1])/int(row_list[2])))
-    if file_info[1] == "cycle": plot_graph(order, "cycle")
-    else: plot_graph(order, "time")
+    if file_info[1] == "cycle": plot_graph(order, "cycle", target)
+    else: plot_graph(order, "time", target)
     f.close()
 
 
-def process_data_file(file_dir):
+def process_data_file(file_dir, target):
     with open(file_dir, "r") as f:
         csvreader = csv.reader(f)
         _ = next(csvreader)
@@ -167,35 +167,35 @@ def process_data_file(file_dir):
         for row in csvreader:
             row_list=row[0].split("\t")
             if "DATA" in row_list[0]:
-                if file_info[1] == "cycle": plot_graph(data, "cycle")
-                else: plot_graph(data, "time")
+                if file_info[1] == "cycle": plot_graph(data, "cycle", target)
+                else: plot_graph(data, "time", target)
                 file_info.append("@order={}".format(re.search(r'\d+', row_list[0]).group()))
             else:
                 data.append(int(row_list[0]))
                 baseline_values.append(int(row_list[1]))
                 accel_values.append(int(row_list[2]))
                 speedup.append(int(int(row_list[1])/int(row_list[2])))
-    if file_info[1] == "cycle": plot_graph(data, "cycle")
-    else: plot_graph(data, "time")
+    if file_info[1] == "cycle": plot_graph(data, "cycle", target)
+    else: plot_graph(data, "time", target)
     f.close()
 
 
-def getFileInfo(file_dir):
+def getFileInfo(file_dir, target):
     if "freqs" in file_dir:
         file_info.append(((file_dir.split("/")[-1]).split("_")[-1]).split(".")[-2])
         get_freq_data(file_dir)
-        plot_graph(freqs, "freq")
+        plot_graph(freqs, "freq", target)
     elif "utilisation" in file_dir or "utilization" in file_dir:
         file_info.append(((file_dir.split("/")[-1]).split("_")[-1]).split(".")[-2])
         get_utilisation_data(file_dir)
-        plot_graph(freqs, "utilisation")
+        plot_graph(freqs, "utilisation", target)
     elif "power" in file_dir:
         file_info.append(((file_dir.split("/")[-1]).split("_")[-1]).split(".")[-2])
         get_power_data(file_dir)
-        plot_graph(power, "power")
+        plot_graph(power, "power", target)
     else:
-        if("optimization_-O0" in file_dir): file_info.append("optimization_-O0")
-        elif("optimization_-O3" in file_dir): file_info.append("optimization_-O3")
+        if("-O0" in file_dir): file_info.append("optimization_-O0")
+        elif("-O3" in file_dir): file_info.append("optimization_-O3")
         else: terminate("Invalid directory")
 
         if("cycle" in file_dir): file_info.append("cycle")
@@ -207,15 +207,16 @@ def getFileInfo(file_dir):
         file_info.append(((file_dir.split("/")[-1]).split(".")[-2]).split("_")[-1])
 
 
-        if(file_info[-1] == "order"): process_order_file(file_dir)
-        else: process_data_file(file_dir)
+        if(file_info[-1] == "order"): process_order_file(file_dir, target)
+        else: process_data_file(file_dir, target)
 
 
 
 def main(file_to_read):
+    target=file_to_read.split("/")[2]
     file_dir=os.path.abspath(file_to_read)
-    getFileInfo(file_dir)
+    getFileInfo(file_dir, target)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2: terminate("Usage: <command> <file_to_plot>")
+    if len(sys.argv) < 2: terminate("Usage: <command> <file_to_plot> <accelerator_target>")
     main(sys.argv[1])

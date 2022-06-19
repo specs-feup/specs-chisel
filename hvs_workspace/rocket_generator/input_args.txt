@@ -1,4 +1,6 @@
-#Place arguments here of cycle measurements. (target, config, binarypoint, data width and design space exploration variables - outer loop to inner most loop. Order is important ! )
+#Place arguments here for functional workflow. (target, config, binarypoint, data width and design space exploration variables - outer loop to inner most loop. Order is important ! )
+
+#example:
 
 target=fir
 
@@ -12,9 +14,9 @@ optimization_flag=(-O0)
 
 type=(0)
 
-data=(5 10)
+data=(5)
 
-order=(5 10)
+order=(5)
 
 Vivado workflow (design space variables used for Vivado workflow - outer loop to inner most loop)
 
@@ -22,10 +24,10 @@ type=(0)
 
 order=(0 5)
 
-
 #Format:
 
 #<Single values> (e.g. target=fir)
 
 #<array values> (e.g order=(5 10 20))
 
+#NOTE: Only change the arguments. Comments are used for data parsing

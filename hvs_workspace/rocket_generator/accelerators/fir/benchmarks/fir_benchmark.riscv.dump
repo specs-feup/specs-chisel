@@ -200,7 +200,7 @@ Disassembly of section .text:
 80001088:	97ba                	add	a5,a5,a4
 8000108a:	439c                	lw	a5,0(a5)
 8000108c:	fec42703          	lw	a4,-20(s0)
-80001090:	00e7870b          	fir_coeff_st	a4,a5,a4
+80001090:	00e7f70b          	fir_coeff_st	a4,a5,a4
 80001094:	00005797          	auipc	a5,0x5
 80001098:	cfc78793          	addi	a5,a5,-772 # 80005d90 <res.4>
 8000109c:	c398                	sw	a4,0(a5)
@@ -208,7 +208,7 @@ Disassembly of section .text:
 800010a2:	0785                	addi	a5,a5,1
 800010a4:	fef42623          	sw	a5,-20(s0)
 800010a8:	fec42703          	lw	a4,-20(s0)
-800010ac:	47a5                	li	a5,9
+800010ac:	4791                	li	a5,4
 800010ae:	fce7d6e3          	bge	a5,a4,8000107a <main+0x32>
 800010b2:	fe042423          	sw	zero,-24(s0)
 800010b6:	a82d                	j	800010f0 <main+0xa8>
@@ -218,11 +218,11 @@ Disassembly of section .text:
 800010c4:	078a                	slli	a5,a5,0x2
 800010c6:	97ba                	add	a5,a5,a4
 800010c8:	439c                	lw	a5,0(a5)
-800010ca:	0007872b          	fir_data_st	a4,a5
+800010ca:	0007f72b          	fir_data_st	a4,a5
 800010ce:	00005797          	auipc	a5,0x5
 800010d2:	cc278793          	addi	a5,a5,-830 # 80005d90 <res.4>
 800010d6:	c398                	sw	a4,0(a5)
-800010d8:	0000073b          	fir_exec	a4
+800010d8:	0000773b          	fir_exec	a4
 800010dc:	00005797          	auipc	a5,0x5
 800010e0:	cb478793          	addi	a5,a5,-844 # 80005d90 <res.4>
 800010e4:	c398                	sw	a4,0(a5)
@@ -230,7 +230,7 @@ Disassembly of section .text:
 800010ea:	0785                	addi	a5,a5,1
 800010ec:	fef42423          	sw	a5,-24(s0)
 800010f0:	fe842703          	lw	a4,-24(s0)
-800010f4:	47a5                	li	a5,9
+800010f4:	4791                	li	a5,4
 800010f6:	fce7d1e3          	bge	a5,a4,800010b8 <main+0x70>
 800010fa:	b8002773          	csrr	a4,mcycleh
 800010fe:	00005797          	auipc	a5,0x5
@@ -2741,7 +2741,7 @@ Disassembly of section .data:
 8000308e:	0000                	unimp
 80003090:	0024                	addi	s1,sp,8
 80003092:	0000                	unimp
-80003094:	0000000b          	fir_coeff_st	zero,zero,zero
+80003094:	0000000b          	.4byte	0xb
 80003098:	0000001b          	.4byte	0x1b
 8000309c:	0058                	addi	a4,sp,4
 8000309e:	0000                	unimp
@@ -2763,7 +2763,7 @@ Disassembly of section .data:
 800030be:	0000                	unimp
 800030c0:	0019                	c.nop	6
 800030c2:	0000                	unimp
-800030c4:	0000002b          	fir_data_st	zero,zero
+800030c4:	0000002b          	.4byte	0x2b
 800030c8:	003a                	c.slli	zero,0xe
 800030ca:	0000                	unimp
 800030cc:	001d                	c.nop	7
@@ -2824,7 +2824,7 @@ Disassembly of section .data:
 8000314e:	0000                	unimp
 80003150:	0052                	c.slli	zero,0x14
 80003152:	0000                	unimp
-80003154:	0000002b          	fir_data_st	zero,zero
+80003154:	0000002b          	.4byte	0x2b
 80003158:	000d                	c.nop	3
 8000315a:	0000                	unimp
 8000315c:	0000005b          	.4byte	0x5b
@@ -2834,7 +2834,7 @@ Disassembly of section .data:
 80003166:	0000                	unimp
 80003168:	001e                	c.slli	zero,0x7
 8000316a:	0000                	unimp
-8000316c:	0000003b          	fir_exec	zero
+8000316c:	0000003b          	.4byte	0x3b
 80003170:	0000001b          	.4byte	0x1b
 80003174:	000a                	c.slli	zero,0x2
 80003176:	0000                	unimp
@@ -2982,7 +2982,7 @@ Disassembly of section .data:
 800032c8:	005a                	c.slli	zero,0x16
 800032ca:	0000                	unimp
 800032cc:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
-800032d0:	0000000b          	fir_coeff_st	zero,zero,zero
+800032d0:	0000000b          	.4byte	0xb
 800032d4:	0061                	c.nop	24
 800032d6:	0000                	unimp
 800032d8:	005d                	c.nop	23
@@ -3030,7 +3030,7 @@ Disassembly of section .data:
 80003338:	0054                	addi	a3,sp,4
 8000333a:	0000                	unimp
 8000333c:	0000002f          	.4byte	0x2f
-80003340:	0000003b          	fir_exec	zero
+80003340:	0000003b          	.4byte	0x3b
 80003344:	0019                	c.nop	6
 80003346:	0000                	unimp
 80003348:	0052                	c.slli	zero,0x14
@@ -3048,7 +3048,7 @@ Disassembly of section .data:
 80003362:	0000                	unimp
 80003364:	00000027          	.4byte	0x27
 80003368:	0000004f          	fnmadd.s	ft0,ft0,ft0,ft0,rne
-8000336c:	0000003b          	fir_exec	zero
+8000336c:	0000003b          	.4byte	0x3b
 80003370:	002d                	c.nop	11
 80003372:	0000                	unimp
 80003374:	005e                	c.slli	zero,0x17
@@ -3088,7 +3088,7 @@ Disassembly of section .data:
 800033c2:	0000                	unimp
 800033c4:	0000000f          	fence	unknown,unknown
 800033c8:	00000037          	lui	zero,0x0
-800033cc:	0000003b          	fir_exec	zero
+800033cc:	0000003b          	.4byte	0x3b
 800033d0:	005c                	addi	a5,sp,4
 800033d2:	0000                	unimp
 800033d4:	00000043          	fmadd.s	ft0,ft0,ft0,ft0,rne
@@ -3109,7 +3109,7 @@ Disassembly of section .data:
 800033f6:	0000                	unimp
 800033f8:	0032                	c.slli	zero,0xc
 800033fa:	0000                	unimp
-800033fc:	0000003b          	fir_exec	zero
+800033fc:	0000003b          	.4byte	0x3b
 80003400:	000d                	c.nop	3
 80003402:	0000                	unimp
 80003404:	0020                	addi	s0,sp,8
@@ -3251,7 +3251,7 @@ Disassembly of section .data:
 80003536:	0000                	unimp
 80003538:	001e                	c.slli	zero,0x7
 8000353a:	0000                	unimp
-8000353c:	0000002b          	fir_data_st	zero,zero
+8000353c:	0000002b          	.4byte	0x2b
 80003540:	0025                	c.nop	9
 80003542:	0000                	unimp
 80003544:	0032                	c.slli	zero,0xc
@@ -3272,7 +3272,7 @@ Disassembly of section .data:
 8000356c:	003c                	addi	a5,sp,8
 8000356e:	0000                	unimp
 80003570:	00000063          	beqz	zero,80003570 <data+0x6c8>
-80003574:	0000002b          	fir_data_st	zero,zero
+80003574:	0000002b          	.4byte	0x2b
 80003578:	0038                	addi	a4,sp,8
 8000357a:	0000                	unimp
 8000357c:	002d                	c.nop	11
@@ -3330,7 +3330,7 @@ Disassembly of section .data:
 80003604:	000c                	.2byte	0xc
 80003606:	0000                	unimp
 80003608:	00000047          	fmsub.s	ft0,ft0,ft0,ft0,rne
-8000360c:	0000002b          	fir_data_st	zero,zero
+8000360c:	0000002b          	.4byte	0x2b
 80003610:	0040                	addi	s0,sp,4
 80003612:	0000                	unimp
 80003614:	00000013          	nop
@@ -3352,7 +3352,7 @@ Disassembly of section .data:
 80003636:	0000                	unimp
 80003638:	0008                	.2byte	0x8
 8000363a:	0000                	unimp
-8000363c:	0000000b          	fir_coeff_st	zero,zero,zero
+8000363c:	0000000b          	.4byte	0xb
 80003640:	0000000f          	fence	unknown,unknown
 80003644:	0000000f          	fence	unknown,unknown
 80003648:	0019                	c.nop	6
@@ -3396,7 +3396,7 @@ Disassembly of section .data:
 8000369e:	0000                	unimp
 800036a0:	003d                	c.nop	15
 800036a2:	0000                	unimp
-800036a4:	0000002b          	fir_data_st	zero,zero
+800036a4:	0000002b          	.4byte	0x2b
 800036a8:	003e                	c.slli	zero,0xf
 800036aa:	0000                	unimp
 800036ac:	0025                	c.nop	9
@@ -3461,7 +3461,7 @@ Disassembly of section .data:
 8000373a:	0000                	unimp
 8000373c:	000c                	.2byte	0xc
 8000373e:	0000                	unimp
-80003740:	0000002b          	fir_data_st	zero,zero
+80003740:	0000002b          	.4byte	0x2b
 80003744:	00000017          	auipc	zero,0x0
 80003748:	005d                	c.nop	23
 8000374a:	0000                	unimp
@@ -3627,13 +3627,13 @@ Disassembly of section .data:
 800038ca:	0000                	unimp
 800038cc:	003e                	c.slli	zero,0xf
 800038ce:	0000                	unimp
-800038d0:	0000003b          	fir_exec	zero
+800038d0:	0000003b          	.4byte	0x3b
 800038d4:	0000001b          	.4byte	0x1b
 800038d8:	004d                	c.nop	19
 800038da:	0000                	unimp
 800038dc:	001e                	c.slli	zero,0x7
 800038de:	0000                	unimp
-800038e0:	0000000b          	fir_coeff_st	zero,zero,zero
+800038e0:	0000000b          	.4byte	0xb
 800038e4:	0031                	c.nop	12
 800038e6:	0000                	unimp
 800038e8:	000e                	c.slli	zero,0x3
@@ -3884,7 +3884,7 @@ Disassembly of section .data:
 80003b02:	0000                	unimp
 80003b04:	000e                	c.slli	zero,0x3
 80003b06:	0000                	unimp
-80003b08:	0000000b          	fir_coeff_st	zero,zero,zero
+80003b08:	0000000b          	.4byte	0xb
 80003b0c:	005f 0000 0049      	.byte	0x5f, 0x00, 0x00, 0x00, 0x49, 0x00
 80003b12:	0000                	unimp
 80003b14:	00000013          	nop
@@ -3926,10 +3926,10 @@ Disassembly of section .data:
 80003b64:	00000063          	beqz	zero,80003b64 <data+0xcbc>
 80003b68:	002c                	addi	a1,sp,8
 80003b6a:	0000                	unimp
-80003b6c:	0000003b          	fir_exec	zero
+80003b6c:	0000003b          	.4byte	0x3b
 80003b70:	0002                	c.slli64	zero
 80003b72:	0000                	unimp
-80003b74:	0000000b          	fir_coeff_st	zero,zero,zero
+80003b74:	0000000b          	.4byte	0xb
 80003b78:	003c                	addi	a5,sp,8
 80003b7a:	0000                	unimp
 80003b7c:	0016                	c.slli	zero,0x5
@@ -3947,7 +3947,7 @@ Disassembly of section .data:
 80003b94:	00000013          	nop
 80003b98:	004c                	addi	a1,sp,4
 80003b9a:	0000                	unimp
-80003b9c:	0000002b          	fir_data_st	zero,zero
+80003b9c:	0000002b          	.4byte	0x2b
 80003ba0:	000d                	c.nop	3
 80003ba2:	0000                	unimp
 80003ba4:	0059                	c.nop	22
@@ -3956,7 +3956,7 @@ Disassembly of section .data:
 80003baa:	0000                	unimp
 80003bac:	0036                	c.slli	zero,0xd
 80003bae:	0000                	unimp
-80003bb0:	0000003b          	fir_exec	zero
+80003bb0:	0000003b          	.4byte	0x3b
 80003bb4:	002c                	addi	a1,sp,8
 80003bb6:	0000                	unimp
 80003bb8:	0062                	c.slli	zero,0x18
@@ -4077,7 +4077,7 @@ Disassembly of section .data:
 80003cbc:	0008                	.2byte	0x8
 80003cbe:	0000                	unimp
 80003cc0:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
-80003cc4:	0000003b          	fir_exec	zero
+80003cc4:	0000003b          	.4byte	0x3b
 80003cc8:	0024                	addi	s1,sp,8
 80003cca:	0000                	unimp
 80003ccc:	004d                	c.nop	19
@@ -4092,7 +4092,7 @@ Disassembly of section .data:
 80003cde:	0000                	unimp
 80003ce0:	004e                	c.slli	zero,0x13
 80003ce2:	0000                	unimp
-80003ce4:	0000000b          	fir_coeff_st	zero,zero,zero
+80003ce4:	0000000b          	.4byte	0xb
 80003ce8:	0032                	c.slli	zero,0xc
 80003cea:	0000                	unimp
 80003cec:	000a                	c.slli	zero,0x2
@@ -4146,7 +4146,7 @@ Disassembly of section .data:
 80003d5c:	0064                	addi	s1,sp,12
 80003d5e:	0000                	unimp
 80003d60:	00000003          	lb	zero,0(zero) # 0 <threadsense.5>
-80003d64:	0000002b          	fir_data_st	zero,zero
+80003d64:	0000002b          	.4byte	0x2b
 80003d68:	003d                	c.nop	15
 80003d6a:	0000                	unimp
 80003d6c:	0051                	c.nop	20
@@ -4158,8 +4158,8 @@ Disassembly of section .data:
 80003d78:	0028                	addi	a0,sp,8
 80003d7a:	0000                	unimp
 80003d7c:	00000007          	.4byte	0x7
-80003d80:	0000000b          	fir_coeff_st	zero,zero,zero
-80003d84:	0000003b          	fir_exec	zero
+80003d80:	0000000b          	.4byte	0xb
+80003d84:	0000003b          	.4byte	0x3b
 80003d88:	002d                	c.nop	11
 80003d8a:	0000                	unimp
 80003d8c:	00000063          	beqz	zero,80003d8c <data+0xee4>
@@ -4205,9 +4205,9 @@ Disassembly of section .data:
 80003dea:	0000                	unimp
 80003dec:	0035                	c.nop	13
 80003dee:	0000                	unimp
-80003df0:	0000002b          	fir_data_st	zero,zero
+80003df0:	0000002b          	.4byte	0x2b
 80003df4:	0000004f          	fnmadd.s	ft0,ft0,ft0,ft0,rne
-80003df8:	0000003b          	fir_exec	zero
+80003df8:	0000003b          	.4byte	0x3b
 80003dfc:	0006                	c.slli	zero,0x1
 80003dfe:	0000                	unimp
 80003e00:	0025                	c.nop	9
@@ -4259,7 +4259,7 @@ Disassembly of section .data:
 80003e64:	00000043          	fmadd.s	ft0,ft0,ft0,ft0,rne
 80003e68:	0022                	c.slli	zero,0x8
 80003e6a:	0000                	unimp
-80003e6c:	0000002b          	fir_data_st	zero,zero
+80003e6c:	0000002b          	.4byte	0x2b
 80003e70:	0062                	c.slli	zero,0x18
 80003e72:	0000                	unimp
 80003e74:	002d                	c.nop	11
@@ -4290,7 +4290,7 @@ Disassembly of section .data:
 80003eae:	0000                	unimp
 80003eb0:	0055                	c.nop	21
 80003eb2:	0000                	unimp
-80003eb4:	0000000b          	fir_coeff_st	zero,zero,zero
+80003eb4:	0000000b          	.4byte	0xb
 80003eb8:	004e                	c.slli	zero,0x13
 80003eba:	0000                	unimp
 80003ebc:	0002                	c.slli64	zero
@@ -4339,7 +4339,7 @@ Disassembly of section .data:
 80003f22:	0000                	unimp
 80003f24:	0061                	c.nop	24
 80003f26:	0000                	unimp
-80003f28:	0000000b          	fir_coeff_st	zero,zero,zero
+80003f28:	0000000b          	.4byte	0xb
 80003f2c:	0010                	.2byte	0x10
 80003f2e:	0000                	unimp
 80003f30:	0008                	.2byte	0x8
@@ -4386,7 +4386,7 @@ Disassembly of section .data:
 80003f8a:	0000                	unimp
 80003f8c:	0002                	c.slli64	zero
 80003f8e:	0000                	unimp
-80003f90:	0000003b          	fir_exec	zero
+80003f90:	0000003b          	.4byte	0x3b
 80003f94:	005f 0000 0063      	.byte	0x5f, 0x00, 0x00, 0x00, 0x63, 0x00
 80003f9a:	0000                	unimp
 80003f9c:	005a                	c.slli	zero,0x16
@@ -4423,7 +4423,7 @@ Disassembly of section .data:
 80003fe0:	00000043          	fmadd.s	ft0,ft0,ft0,ft0,rne
 80003fe4:	0021                	c.nop	8
 80003fe6:	0000                	unimp
-80003fe8:	0000002b          	fir_data_st	zero,zero
+80003fe8:	0000002b          	.4byte	0x2b
 80003fec:	002c                	addi	a1,sp,8
 80003fee:	0000                	unimp
 80003ff0:	0005                	c.nop	1
@@ -4490,7 +4490,7 @@ Disassembly of section .data:
 8000407e:	0000                	unimp
 80004080:	0010                	.2byte	0x10
 80004082:	0000                	unimp
-80004084:	0000000b          	fir_coeff_st	zero,zero,zero
+80004084:	0000000b          	.4byte	0xb
 80004088:	0025                	c.nop	9
 8000408a:	0000                	unimp
 8000408c:	0000000f          	fence	unknown,unknown
@@ -4604,7 +4604,7 @@ Disassembly of section .data:
 80004186:	0000                	unimp
 80004188:	0024                	addi	s1,sp,8
 8000418a:	0000                	unimp
-8000418c:	0000003b          	fir_exec	zero
+8000418c:	0000003b          	.4byte	0x3b
 80004190:	003a                	c.slli	zero,0xe
 80004192:	0000                	unimp
 80004194:	0026                	c.slli	zero,0x9
@@ -4617,7 +4617,7 @@ Disassembly of section .data:
 800041a2:	0000                	unimp
 800041a4:	0001                	nop
 800041a6:	0000                	unimp
-800041a8:	0000003b          	fir_exec	zero
+800041a8:	0000003b          	.4byte	0x3b
 800041ac:	0034                	addi	a3,sp,8
 800041ae:	0000                	unimp
 800041b0:	003e                	c.slli	zero,0xf
@@ -4708,7 +4708,7 @@ Disassembly of section .data:
 80004268:	005a                	c.slli	zero,0x16
 8000426a:	0000                	unimp
 8000426c:	00000033          	add	zero,zero,zero
-80004270:	0000002b          	fir_data_st	zero,zero
+80004270:	0000002b          	.4byte	0x2b
 80004274:	0010                	.2byte	0x10
 80004276:	0000                	unimp
 80004278:	0055                	c.nop	21
@@ -4763,7 +4763,7 @@ Disassembly of section .data:
 800042e8:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
 800042ec:	003a                	c.slli	zero,0xe
 800042ee:	0000                	unimp
-800042f0:	0000000b          	fir_coeff_st	zero,zero,zero
+800042f0:	0000000b          	.4byte	0xb
 800042f4:	00000013          	nop
 800042f8:	003d                	c.nop	15
 800042fa:	0000                	unimp
@@ -4818,7 +4818,7 @@ Disassembly of section .data:
 80004370:	00000033          	add	zero,zero,zero
 80004374:	0008                	.2byte	0x8
 80004376:	0000                	unimp
-80004378:	0000002b          	fir_data_st	zero,zero
+80004378:	0000002b          	.4byte	0x2b
 8000437c:	0061                	c.nop	24
 8000437e:	0000                	unimp
 80004380:	005a                	c.slli	zero,0x16
@@ -4846,7 +4846,7 @@ Disassembly of section .data:
 800043ac:	0025                	c.nop	9
 800043ae:	0000                	unimp
 800043b0:	0000000f          	fence	unknown,unknown
-800043b4:	0000003b          	fir_exec	zero
+800043b4:	0000003b          	.4byte	0x3b
 800043b8:	0009                	c.nop	2
 800043ba:	0000                	unimp
 800043bc:	00000013          	nop
@@ -4887,7 +4887,7 @@ Disassembly of section .data:
 8000440a:	0000                	unimp
 8000440c:	0021                	c.nop	8
 8000440e:	0000                	unimp
-80004410:	0000000b          	fir_coeff_st	zero,zero,zero
+80004410:	0000000b          	.4byte	0xb
 80004414:	003c                	addi	a5,sp,8
 80004416:	0000                	unimp
 80004418:	0045                	c.nop	17
@@ -5000,7 +5000,7 @@ Disassembly of section .data:
 8000451a:	0000                	unimp
 8000451c:	0044                	addi	s1,sp,4
 8000451e:	0000                	unimp
-80004520:	0000003b          	fir_exec	zero
+80004520:	0000003b          	.4byte	0x3b
 80004524:	001c                	.2byte	0x1c
 80004526:	0000                	unimp
 80004528:	0016                	c.slli	zero,0x5
@@ -5137,10 +5137,10 @@ Disassembly of section .data:
 80004658:	0054                	addi	a3,sp,4
 8000465a:	0000                	unimp
 8000465c:	0000003f 00000014 	.8byte	0x140000003f
-80004664:	0000002b          	fir_data_st	zero,zero
+80004664:	0000002b          	.4byte	0x2b
 80004668:	002c                	addi	a1,sp,8
 8000466a:	0000                	unimp
-8000466c:	0000002b          	fir_data_st	zero,zero
+8000466c:	0000002b          	.4byte	0x2b
 80004670:	00000047          	fmsub.s	ft0,ft0,ft0,ft0,rne
 80004674:	0016                	c.slli	zero,0x5
 80004676:	0000                	unimp
@@ -5172,9 +5172,9 @@ Disassembly of section .data:
 800046b6:	0000                	unimp
 800046b8:	0051                	c.nop	20
 800046ba:	0000                	unimp
-800046bc:	0000003b          	fir_exec	zero
+800046bc:	0000003b          	.4byte	0x3b
 800046c0:	00000047          	fmsub.s	ft0,ft0,ft0,ft0,rne
-800046c4:	0000002b          	fir_data_st	zero,zero
+800046c4:	0000002b          	.4byte	0x2b
 800046c8:	00000053          	fadd.s	ft0,ft0,ft0,rne
 800046cc:	000d                	c.nop	3
 800046ce:	0000                	unimp
@@ -5193,7 +5193,7 @@ Disassembly of section .data:
 800046ea:	0000                	unimp
 800046ec:	00000053          	fadd.s	ft0,ft0,ft0,rne
 800046f0:	0000005b          	.4byte	0x5b
-800046f4:	0000003b          	fir_exec	zero
+800046f4:	0000003b          	.4byte	0x3b
 800046f8:	001a                	c.slli	zero,0x6
 800046fa:	0000                	unimp
 800046fc:	0038                	addi	a4,sp,8
@@ -5350,7 +5350,7 @@ Disassembly of section .data:
 8000486a:	0000                	unimp
 8000486c:	001f 0000 0055      	.byte	0x1f, 0x00, 0x00, 0x00, 0x55, 0x00
 80004872:	0000                	unimp
-80004874:	0000002b          	fir_data_st	zero,zero
+80004874:	0000002b          	.4byte	0x2b
 80004878:	0054                	addi	a3,sp,4
 8000487a:	0000                	unimp
 8000487c:	00000007          	.4byte	0x7
@@ -5423,7 +5423,7 @@ Disassembly of section .data:
 80004916:	0000                	unimp
 80004918:	005a                	c.slli	zero,0x16
 8000491a:	0000                	unimp
-8000491c:	0000000b          	fir_coeff_st	zero,zero,zero
+8000491c:	0000000b          	.4byte	0xb
 80004920:	0012                	c.slli	zero,0x4
 80004922:	0000                	unimp
 80004924:	0021                	c.nop	8
@@ -5477,7 +5477,7 @@ Disassembly of section .data:
 80004998:	0000004f          	fnmadd.s	ft0,ft0,ft0,ft0,rne
 8000499c:	001f 0000 003c      	.byte	0x1f, 0x00, 0x00, 0x00, 0x3c, 0x00
 800049a2:	0000                	unimp
-800049a4:	0000000b          	fir_coeff_st	zero,zero,zero
+800049a4:	0000000b          	.4byte	0xb
 800049a8:	00000013          	nop
 800049ac:	004a                	c.slli	zero,0x12
 800049ae:	0000                	unimp
@@ -5521,7 +5521,7 @@ Disassembly of section .data:
 80004a04:	0042                	c.slli	zero,0x10
 80004a06:	0000                	unimp
 80004a08:	00000027          	.4byte	0x27
-80004a0c:	0000003b          	fir_exec	zero
+80004a0c:	0000003b          	.4byte	0x3b
 80004a10:	005d                	c.nop	23
 80004a12:	0000                	unimp
 80004a14:	0011                	c.nop	4
@@ -5532,7 +5532,7 @@ Disassembly of section .data:
 80004a1e:	0000                	unimp
 80004a20:	001c                	.2byte	0x1c
 80004a22:	0000                	unimp
-80004a24:	0000003b          	fir_exec	zero
+80004a24:	0000003b          	.4byte	0x3b
 80004a28:	001d                	c.nop	7
 80004a2a:	0000                	unimp
 80004a2c:	005d                	c.nop	23
@@ -5564,7 +5564,7 @@ Disassembly of section .data:
 80004a66:	0000                	unimp
 80004a68:	0039                	c.nop	14
 80004a6a:	0000                	unimp
-80004a6c:	0000003b          	fir_exec	zero
+80004a6c:	0000003b          	.4byte	0x3b
 80004a70:	0001                	nop
 80004a72:	0000                	unimp
 80004a74:	0055                	c.nop	21
@@ -5627,7 +5627,7 @@ Disassembly of section .data:
 80004af2:	0000                	unimp
 80004af4:	002a                	c.slli	zero,0xa
 80004af6:	0000                	unimp
-80004af8:	0000003b          	fir_exec	zero
+80004af8:	0000003b          	.4byte	0x3b
 80004afc:	0036                	c.slli	zero,0xd
 80004afe:	0000                	unimp
 80004b00:	003e                	c.slli	zero,0xf
@@ -5644,7 +5644,7 @@ Disassembly of section .data:
 80004b16:	0000                	unimp
 80004b18:	0042                	c.slli	zero,0x10
 80004b1a:	0000                	unimp
-80004b1c:	0000000b          	fir_coeff_st	zero,zero,zero
+80004b1c:	0000000b          	.4byte	0xb
 80004b20:	001a                	c.slli	zero,0x6
 80004b22:	0000                	unimp
 80004b24:	001a                	c.slli	zero,0x6
@@ -5753,7 +5753,7 @@ Disassembly of section .data:
 80004c0a:	0000                	unimp
 80004c0c:	0051                	c.nop	20
 80004c0e:	0000                	unimp
-80004c10:	0000000b          	fir_coeff_st	zero,zero,zero
+80004c10:	0000000b          	.4byte	0xb
 80004c14:	0015                	c.nop	5
 80004c16:	0000                	unimp
 80004c18:	00000047          	fmsub.s	ft0,ft0,ft0,ft0,rne
@@ -5787,7 +5787,7 @@ Disassembly of section .data:
 80004c56:	0000                	unimp
 80004c58:	0055                	c.nop	21
 80004c5a:	0000                	unimp
-80004c5c:	0000002b          	fir_data_st	zero,zero
+80004c5c:	0000002b          	.4byte	0x2b
 80004c60:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
 80004c64:	004a                	c.slli	zero,0x12
 80004c66:	0000                	unimp
@@ -5828,8 +5828,8 @@ Disassembly of section .data:
 80004cb2:	0000                	unimp
 80004cb4:	00000017          	auipc	zero,0x0
 80004cb8:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
-80004cbc:	0000002b          	fir_data_st	zero,zero
-80004cc0:	0000002b          	fir_data_st	zero,zero
+80004cbc:	0000002b          	.4byte	0x2b
+80004cc0:	0000002b          	.4byte	0x2b
 80004cc4:	0022                	c.slli	zero,0x8
 80004cc6:	0000                	unimp
 80004cc8:	0030                	addi	a2,sp,8
@@ -5880,17 +5880,17 @@ Disassembly of section .data:
 80004d32:	0000                	unimp
 80004d34:	0040                	addi	s0,sp,4
 80004d36:	0000                	unimp
-80004d38:	0000000b          	fir_coeff_st	zero,zero,zero
+80004d38:	0000000b          	.4byte	0xb
 80004d3c:	0004                	.2byte	0x4
 80004d3e:	0000                	unimp
 80004d40:	0062                	c.slli	zero,0x18
 80004d42:	0000                	unimp
-80004d44:	0000003b          	fir_exec	zero
+80004d44:	0000003b          	.4byte	0x3b
 80004d48:	0025                	c.nop	9
 80004d4a:	0000                	unimp
 80004d4c:	0058                	addi	a4,sp,4
 80004d4e:	0000                	unimp
-80004d50:	0000002b          	fir_data_st	zero,zero
+80004d50:	0000002b          	.4byte	0x2b
 80004d54:	003c                	addi	a5,sp,8
 80004d56:	0000                	unimp
 80004d58:	003d                	c.nop	15
@@ -6026,7 +6026,7 @@ Disassembly of section .data:
 80004e86:	0000                	unimp
 80004e88:	0056                	c.slli	zero,0x15
 80004e8a:	0000                	unimp
-80004e8c:	0000003b          	fir_exec	zero
+80004e8c:	0000003b          	.4byte	0x3b
 80004e90:	0014                	.2byte	0x14
 80004e92:	0000                	unimp
 80004e94:	0000000f          	fence	unknown,unknown
@@ -6071,7 +6071,7 @@ Disassembly of section .data:
 80004ef2:	0000                	unimp
 80004ef4:	0055                	c.nop	21
 80004ef6:	0000                	unimp
-80004ef8:	0000000b          	fir_coeff_st	zero,zero,zero
+80004ef8:	0000000b          	.4byte	0xb
 80004efc:	004a                	c.slli	zero,0x12
 80004efe:	0000                	unimp
 80004f00:	000d                	c.nop	3
@@ -6215,7 +6215,7 @@ Disassembly of section .data:
 8000503e:	0000                	unimp
 80005040:	003d                	c.nop	15
 80005042:	0000                	unimp
-80005044:	0000002b          	fir_data_st	zero,zero
+80005044:	0000002b          	.4byte	0x2b
 80005048:	0026                	c.slli	zero,0x9
 8000504a:	0000                	unimp
 8000504c:	0035                	c.nop	13
@@ -6252,7 +6252,7 @@ Disassembly of section .data:
 8000508e:	0000                	unimp
 80005090:	0058                	addi	a4,sp,4
 80005092:	0000                	unimp
-80005094:	0000002b          	fir_data_st	zero,zero
+80005094:	0000002b          	.4byte	0x2b
 80005098:	00000053          	fadd.s	ft0,ft0,ft0,rne
 8000509c:	001c                	.2byte	0x1c
 8000509e:	0000                	unimp
@@ -6499,7 +6499,7 @@ Disassembly of section .data:
 800052da:	0000                	unimp
 800052dc:	0041                	c.nop	16
 800052de:	0000                	unimp
-800052e0:	0000003b          	fir_exec	zero
+800052e0:	0000003b          	.4byte	0x3b
 800052e4:	0036                	c.slli	zero,0xd
 800052e6:	0000                	unimp
 800052e8:	0030                	addi	a2,sp,8
@@ -6511,7 +6511,7 @@ Disassembly of section .data:
 800052f6:	0000                	unimp
 800052f8:	000c                	.2byte	0xc
 800052fa:	0000                	unimp
-800052fc:	0000000b          	fir_coeff_st	zero,zero,zero
+800052fc:	0000000b          	.4byte	0xb
 80005300:	0041                	c.nop	16
 80005302:	0000                	unimp
 80005304:	0031                	c.nop	12
@@ -6574,7 +6574,7 @@ Disassembly of section .data:
 80005382:	0000                	unimp
 80005384:	004e                	c.slli	zero,0x13
 80005386:	0000                	unimp
-80005388:	0000003b          	fir_exec	zero
+80005388:	0000003b          	.4byte	0x3b
 8000538c:	0005                	c.nop	1
 8000538e:	0000                	unimp
 80005390:	001e                	c.slli	zero,0x7
@@ -6741,7 +6741,7 @@ Disassembly of section .data:
 800054f4:	00000053          	fadd.s	ft0,ft0,ft0,rne
 800054f8:	002e                	c.slli	zero,0xb
 800054fa:	0000                	unimp
-800054fc:	0000003b          	fir_exec	zero
+800054fc:	0000003b          	.4byte	0x3b
 80005500:	0018                	.2byte	0x18
 80005502:	0000                	unimp
 80005504:	00000027          	.4byte	0x27
@@ -6807,7 +6807,7 @@ Disassembly of section .data:
 8000559a:	0000                	unimp
 8000559c:	001d                	c.nop	7
 8000559e:	0000                	unimp
-800055a0:	0000003b          	fir_exec	zero
+800055a0:	0000003b          	.4byte	0x3b
 800055a4:	0000002f          	.4byte	0x2f
 800055a8:	0062                	c.slli	zero,0x18
 800055aa:	0000                	unimp
@@ -6819,7 +6819,7 @@ Disassembly of section .data:
 800055b6:	0000                	unimp
 800055b8:	0019                	c.nop	6
 800055ba:	0000                	unimp
-800055bc:	0000000b          	fir_coeff_st	zero,zero,zero
+800055bc:	0000000b          	.4byte	0xb
 800055c0:	005d                	c.nop	23
 800055c2:	0000                	unimp
 800055c4:	0006                	c.slli	zero,0x1
@@ -6858,7 +6858,7 @@ Disassembly of section .data:
 8000560a:	0000                	unimp
 8000560c:	0018                	.2byte	0x18
 8000560e:	0000                	unimp
-80005610:	0000000b          	fir_coeff_st	zero,zero,zero
+80005610:	0000000b          	.4byte	0xb
 80005614:	003e                	c.slli	zero,0xf
 80005616:	0000                	unimp
 80005618:	0004                	.2byte	0x4
@@ -6950,7 +6950,7 @@ Disassembly of section .data:
 800056d8:	005f 0000 0040      	.byte	0x5f, 0x00, 0x00, 0x00, 0x40, 0x00
 800056de:	0000                	unimp
 800056e0:	0000004b          	fnmsub.s	ft0,ft0,ft0,ft0,rne
-800056e4:	0000003b          	fir_exec	zero
+800056e4:	0000003b          	.4byte	0x3b
 800056e8:	0002                	c.slli64	zero
 800056ea:	0000                	unimp
 800056ec:	000a                	c.slli	zero,0x2
@@ -7036,7 +7036,7 @@ Disassembly of section .data:
 800057b2:	0000                	unimp
 800057b4:	004a                	c.slli	zero,0x12
 800057b6:	0000                	unimp
-800057b8:	0000003b          	fir_exec	zero
+800057b8:	0000003b          	.4byte	0x3b
 800057bc:	0055                	c.nop	21
 800057be:	0000                	unimp
 800057c0:	000a                	c.slli	zero,0x2
@@ -7053,7 +7053,7 @@ Disassembly of section .data:
 800057d8:	0039                	c.nop	14
 800057da:	0000                	unimp
 800057dc:	00000053          	fadd.s	ft0,ft0,ft0,rne
-800057e0:	0000002b          	fir_data_st	zero,zero
+800057e0:	0000002b          	.4byte	0x2b
 800057e4:	001c                	.2byte	0x1c
 800057e6:	0000                	unimp
 800057e8:	004c                	addi	a1,sp,4
@@ -7203,7 +7203,7 @@ Disassembly of section .data:
 8000593c:	0000001b          	.4byte	0x1b
 80005940:	004c                	addi	a1,sp,4
 80005942:	0000                	unimp
-80005944:	0000000b          	fir_coeff_st	zero,zero,zero
+80005944:	0000000b          	.4byte	0xb
 80005948:	000a                	c.slli	zero,0x2
 8000594a:	0000                	unimp
 8000594c:	0041                	c.nop	16
@@ -7465,7 +7465,7 @@ Disassembly of section .data:
 80005b7e:	0000                	unimp
 80005b80:	001c                	.2byte	0x1c
 80005b82:	0000                	unimp
-80005b84:	0000002b          	fir_data_st	zero,zero
+80005b84:	0000002b          	.4byte	0x2b
 80005b88:	0058                	addi	a4,sp,4
 80005b8a:	0000                	unimp
 80005b8c:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
@@ -7546,11 +7546,11 @@ Disassembly of section .data:
 80005c34:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
 80005c38:	001d                	c.nop	7
 80005c3a:	0000                	unimp
-80005c3c:	0000000b          	fir_coeff_st	zero,zero,zero
+80005c3c:	0000000b          	.4byte	0xb
 80005c40:	00000053          	fadd.s	ft0,ft0,ft0,rne
 80005c44:	0059                	c.nop	22
 80005c46:	0000                	unimp
-80005c48:	0000003b          	fir_exec	zero
+80005c48:	0000003b          	.4byte	0x3b
 80005c4c:	0036                	c.slli	zero,0xd
 80005c4e:	0000                	unimp
 80005c50:	0010                	.2byte	0x10
@@ -7650,7 +7650,7 @@ Disassembly of section .data:
 80005d1a:	0000                	unimp
 80005d1c:	0034                	addi	a3,sp,8
 80005d1e:	0000                	unimp
-80005d20:	0000003b          	fir_exec	zero
+80005d20:	0000003b          	.4byte	0x3b
 80005d24:	0038                	addi	a4,sp,8
 80005d26:	0000                	unimp
 80005d28:	00000033          	add	zero,zero,zero
@@ -7682,7 +7682,7 @@ Disassembly of section .data:
 80005d60:	00000033          	add	zero,zero,zero
 80005d64:	00000023          	sb	zero,0(zero) # 0 <threadsense.5>
 80005d68:	00000033          	add	zero,zero,zero
-80005d6c:	0000003b          	fir_exec	zero
+80005d6c:	0000003b          	.4byte	0x3b
 80005d70:	0019                	c.nop	6
 80005d72:	0000                	unimp
 80005d74:	0039                	c.nop	14
