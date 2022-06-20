@@ -20,6 +20,7 @@ setup:
 	git config --global url.https://github.com/.insteadOf git://github.com/
 	git config --global url.https://github.com/.insteadOf git@github.com:
 	git config --global url.https://anongit.freedesktop.org/git.insteadOf git://anongit.freedesktop.org
+	git config --global url.https://github.com/rth7680/qemu-palcode.git.insteadOf git://github.com/rth7680/qemu-palcode.git
 	git clone https://github.com/eugene-tarassov/vivado-risc-v.git
 	cd vivado-risc-v &&  make apt-install && make update-submodules && \
 	cd rocket-chip && git submodule update --init && export RISCV=`pwd` && \
