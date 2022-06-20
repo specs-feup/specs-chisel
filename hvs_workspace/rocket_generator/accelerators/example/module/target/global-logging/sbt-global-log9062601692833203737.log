@@ -1,0 +1,87 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.6.2 (Private Build Java 11.0.15)
+[debug] Load.defaultLoad until apply took 1662.634271ms
+[debug]           Load.loadUnit: plugins took 184.478911ms
+[debug]           Load.loadUnit: defsScala took 0.266966ms
+[debug] [Loading] Scanning directory /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 145.127098 ms
+[debug]               Load.resolveProject(fir-build) took 218.527558ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id fir-build, base: /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project, plugins: List(<none>))) took 417.4042ms
+[debug] [Loading] Done in /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project, returning: (fir-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 479.963178ms
+[debug]           Load.loadUnit: cleanEvalClasses took 1.637444ms
+[debug]         Load.loadUnit(file:/home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project/, ...) took 676.753385ms
+[debug]       Load.apply: load took 1362.229721ms
+[debug]       Load.apply: resolveProjects took 7.833158ms
+[debug]       Load.apply: finalTransforms took 174.170392ms
+[debug]       Load.apply: config.delegates took 51.65922ms
+[debug]       Load.apply: Def.make(settings)... took 1113.980644ms
+[debug]       Load.apply: structureIndex took 180.265638ms
+[debug]       Load.apply: mkStreams took 1.89012ms
+[info] loading project definition from /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 5004.499336ms
+[debug]     Load.loadUnit: defsScala took 0.016517ms
+[debug] [Loading] Scanning directory /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir
+[debug]       Load.loadUnit: mkEval took 27.034553ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 4.16402 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 6.788013ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir, plugins: List(<none>))) took 13.916338ms
+[debug] [Loading] Done in /home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 543.973698ms
+[debug]     Load.loadUnit: cleanEvalClasses took 14.119728ms
+[debug]   Load.loadUnit(file:/home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/, ...) took 5566.737214ms
+[debug] Load.apply: load took 5597.591789ms
+[debug] Load.apply: resolveProjects took 0.48955ms
+[debug] Load.apply: finalTransforms took 38.925212ms
+[debug] Load.apply: config.delegates took 1.004708ms
+[debug] Load.apply: Def.make(settings)... took 150.356153ms
+[debug] Load.apply: structureIndex took 33.377353ms
+[debug] Load.apply: mkStreams took 0.004064ms
+[info] set current project to scie (in build file:/home/henrique/Desktop/specs-chisel/hvs_workspace/rocket_generator/HW_accelerators/fir/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(runMain scie.SCIEPipelinedGen --params "order=5,width=32,type=0,binarypoint=0", None, None)
+[debug] Evaluating tasks: Compile / runMain
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true

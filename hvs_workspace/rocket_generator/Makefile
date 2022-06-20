@@ -15,7 +15,7 @@ base_name = freechips.rocketchip.system
 
 ### Clones Vivado-risc-v and rocket-chip repository
 setup:
-	#rm -rf vivado-risc-v #temporario	
+	rm -rf vivado-risc-v #temporario
 	git config --global url.https://git.qemu.org/git.insteadOf https://git.qemu-project.org
 	git config --global url.https://git.qemu.org/git.insteadOf git://git.qemu-project.org
 	git config --global url.https://github.com/.insteadOf git://github.com/
@@ -23,10 +23,10 @@ setup:
 	git config --global url.https://anongit.freedesktop.org/git.insteadOf git://anongit.freedesktop.org
 	git config --global url.https://github.com/riscv.insteadOf git://github.com/riscv
 	git config --global url.https://github.com/rth7680/qemu-palcode.git.insteadOf git://github.com/rth7680/qemu-palcode.git
-	#git clone https://github.com/eugene-tarassov/vivado-risc-v.git
-	#cd vivado-risc-v &&  make apt-install && make update-submodules && \
-	#cd rocket-chip && git submodule update --init && export RISCV=`pwd` && \
-	#git clone https://github.com/freechipsproject/rocket-tools && \
+	git clone https://github.com/eugene-tarassov/vivado-risc-v.git
+	cd vivado-risc-v &&  make apt-install && make update-submodules && \
+	cd rocket-chip && git submodule update --init && export RISCV=`pwd` && \
+	git clone https://github.com/freechipsproject/rocket-tools && \
 	cd ./vivado-risc-v/rocket-chip/rocket-tools && \
 	git submodule update --init --recursive && export RISCV=`pwd` && export MAKEFLAGS="$MAKEFLAGS -j4" && ./build.sh && ./build-rv32ima.sh
 	cp $(base_dir)/repl_files/system/* $(rocket_scala_src)/system
@@ -36,7 +36,14 @@ setup:
 	cp $(base_dir)/repl_files/Makefile $(base_dir)/vivado-risc-v
 	cp $(base_dir)/repl_files/accel_tcl/vivado.tcl $(base_dir)/vivado-risc-v
 	cp $(base_dir)/repl_files/rocket.scala $(base_dir)/vivado-risc-v/src/main/scala
+	cp $(base_dir)/repl_files/rocket-freq $(base_dir)/vivado-risc-v/board
+
+### Building workflow bash file
 build:
+	@echo "### BUILDING WORKFLOW ###\n"
 	./scripts/builder.py
+
+### Running workflow bash file
 implementation:
+	@echo "### STARTING WORKFLOW ###\n"
 	bash workflow.sh

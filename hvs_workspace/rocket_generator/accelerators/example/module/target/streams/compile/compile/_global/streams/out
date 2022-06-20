@@ -1,0 +1,6 @@
+[0m[[0m[31merror[0m] [0m[0m/home/henrique/Desktop/specs-chisel_2/hvs_workspace/rocket_generator/accelerators/example/module/src/main/scala/scie/SCIEGen.scala:17:21: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Int(1)[0m
+[0m[[0m[31merror[0m] [0m[0m required: String[0m
+[0m[[0m[31merror[0m] [0m[0m    case "signed" | 1 => (new chisel3.stage.ChiselStage).execute([0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

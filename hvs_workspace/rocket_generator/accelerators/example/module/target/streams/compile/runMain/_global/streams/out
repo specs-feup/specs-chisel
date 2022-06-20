@@ -1,0 +1,11 @@
+[0m[[0m[31merror[0m] [0m[0mjava.lang.IllegalArgumentException: requirement failed: Vec hardware values are not allowed to be empty[0m
+[0m[[0m[31merror[0m] [0m[0m	at ... ()[0m
+[0m[[0m[31merror[0m] [0m[0m	at scie.SCIEPipelined.$anonfun$coeffs$2(SCIEPipelined.scala:20)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.prefix$.apply(prefix.scala:48)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scie.SCIEPipelined.$anonfun$coeffs$1(SCIEPipelined.scala:20)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.plugin.package$.autoNameRecursively(package.scala:33)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scie.SCIEPipelined.<init>(SCIEPipelined.scala:20)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scie.SCIEPipelineGenStage$$anonfun$$lessinit$greater$2.$anonfun$new$2(SCIEGen.scala:24)[0m
+[0m[[0m[31merror[0m] [0m[0m	at ... ()[0m
+[0m[[0m[31merror[0m] [0m[0m	at ... (Stack trace trimmed to user code only. Rerun with --full-stacktrace to see the full stack trace)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrunMain[0m) java.lang.IllegalArgumentException: requirement failed: Vec hardware values are not allowed to be empty[0m

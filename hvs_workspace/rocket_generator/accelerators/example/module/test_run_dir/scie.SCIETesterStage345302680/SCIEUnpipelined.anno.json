@@ -1,0 +1,27 @@
+[
+  {
+    "class":"firrtl.stage.FirrtlFileAnnotation",
+    "file":"test_run_dir/scie.SCIETesterStage345302680/SCIEUnpipelined.lo.fir"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.LowFirrtlEmitter"
+  },
+  {
+    "class":"logger.LogLevelAnnotation",
+    "globalLogLevel":{
+      
+    }
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/scie.SCIETesterStage345302680"
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~SCIEUnpipelined|SCIEUnpipelined>io_rd",
+    "sources":[
+      "~SCIEUnpipelined|SCIEUnpipelined>io_rs1"
+    ]
+  }
+]

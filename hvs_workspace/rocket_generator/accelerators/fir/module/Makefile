@@ -18,14 +18,13 @@ verilog:
 
 .PHONY: test
 test:
-	@echo "\n### PEEKPOKETESTER ###\n"
+	@echo "\n### CHISELTESTER ###\n"
 	sbt 'test:runMain scie.SCIETest --params "order=$(order),width=$(width),data=$(data),type=$(type),binarypoint=$(binarypoint)"'
 
 verilate: tb_$(MODULE).cpp
 		$(MAKE) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
 		@echo "\n### VERILATING ###\n"
 		verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp; \
-		#verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp
 		make -C obj_dir -f V$(MODULE).mk V$(MODULE)
 		@./obj_dir/V$(MODULE) $(order) $(width) $(type) $(binarypoint)
 

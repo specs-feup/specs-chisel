@@ -63,7 +63,7 @@ int main(int argc, char** argv, char** env) {
 
 		mod_type = atoi(argv[3]);
 
-		union value coeffs[order], data[order];
+		union value coeffs[order], data[DATA_COUNT];
 
     srand(time(NULL));
 
@@ -73,11 +73,18 @@ int main(int argc, char** argv, char** env) {
 					coeffs[i].comp_int.real_val = rand() % 100 + 1 - 50;
 					coeffs[i].comp_int.imag_val = rand() % 100 + 1 - 50;
 				}
+				for(int i = 0; i < DATA_COUNT; i++){
+					data[i].comp_int.real_val = rand() % 100 + 1 - 50;
+					data[i].comp_int.imag_val = rand() % 100 + 1 - 50;
+				}
 			break;
 			case 5:
 			for(int i = 0; i < order; i++){
 				coeffs[i].comp_fl.real_val = (float)rand()/(float)(RAND_MAX) * 100;
 				coeffs[i].comp_fl.imag_val = (float)rand()/(float)(RAND_MAX) * 100;
+
+			}
+			for(int i = 0; i < DATA_COUNT; i++){
 				data[i].comp_fl.real_val = (float)rand()/(float)(RAND_MAX) * 100;
 				data[i].comp_fl.imag_val = (float)rand()/(float)(RAND_MAX) * 100;
 			}
@@ -98,7 +105,7 @@ int main(int argc, char** argv, char** env) {
     	  if(coeff_count < order && dut->clock == 0){
 					dut_send_coeff(dut, coeffs, coeff_count++);
 				}
-    	  else if(data_count < order && dut->clock == 0)
+    	  else if(data_count < DATA_COUNT && dut->clock == 0)
 					dut_send_data(dut, data, data_count++);
 				else if(dut->clock == 0) dut_exec(dut);
 				dut->clock ^= 1;

@@ -1,0 +1,6 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/henrique/Desktop/specs-chisel_2/hvs_workspace/rocket_generator/accelerators/example/module/src/test/scala/scieTest.scala:22:63: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method nextFloat,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    case "fixed-point" | "2" => Array.fill(data_size)((Random.nextFloat * 100) - 50.0)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m

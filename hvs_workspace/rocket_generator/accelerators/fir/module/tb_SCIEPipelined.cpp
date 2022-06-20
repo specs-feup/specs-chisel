@@ -6,6 +6,7 @@
 #include <verilated_vcd_c.h>
 #include "./obj_dir/VSCIEPipelined.h"
 #include "./obj_dir/VSCIEPipelined__Syms.h"
+#define DATA_COUNT 5
 
 #define MAX_SIM_TIME 100
 vluint64_t sim_time = 0;
@@ -50,7 +51,7 @@ int main(int argc, char** argv, char** env) {
 			mod_type = atoi(argv[3]);
 		binarypoint = atoi(argv[4]);
 
-		union value coeffs[order], data[order];
+		union value coeffs[order], data[DATA_COUNT];
 
     srand(time(NULL));
 
@@ -60,25 +61,26 @@ int main(int argc, char** argv, char** env) {
 			case 0:
 				for(int i = 0; i < order; i++){
 					coeffs[i].uvalue = rand() % 100 + 1;
+				}
+				for(int i = 0; i < DATA_COUNT; i++){
 					data[i].uvalue = rand() % 100 + 1;
 				}
 			break;
 			case 1:
 				for(int i = 0; i < order; i++){
 					coeffs[i].ivalue = rand() % 100 + 1 - 50;
+				}
+				for(int i = 0; i < DATA_COUNT; i++){
 					data[i].ivalue = rand() % 100 + 1 - 50;
 				}
 			break;
 			case 2:
 				for(int i = 0; i < order; i++){
 					coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
-					data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
-					//coeffs[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
-					//data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100 - 50;
 				}
-			break;
-			case 3:
-			//TODO --> Floating point
+				for(int i = 0; i < DATA_COUNT; i++){
+					data[i].fvalue = (float)rand()/(float)(RAND_MAX) * 100;
+				}
 			break;
 		}
 
@@ -96,7 +98,7 @@ int main(int argc, char** argv, char** env) {
     	  if(coeff_count < order && dut->clock == 0){
 					dut_send_coeff(dut, coeffs, coeff_count++);
 				}
-    	  else if(data_count < order && dut->clock == 0)
+    	  else if(data_count < DATA_COUNT && dut->clock == 0)
 					dut_send_data(dut, data, data_count++);
 				else if(dut->clock == 0) dut_exec(dut);
 				dut->clock ^= 1;
