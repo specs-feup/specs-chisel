@@ -14,7 +14,7 @@ type_verbose_array=(unsigned signed fixed-point floating-point)
 tmp_file=./results/tmp_file.txt #Temporary workaround
 
 
-#find ./results ! -name '.*' ! -type d -exec rm -- {} +
+find ./results ! -name '.*' ! -type d -exec rm -- {} +
 
 ### Cycle calculation (with respect to filter order) ###
 for optimization_flag in "${optimization_flag[@]}"; do
@@ -41,8 +41,8 @@ done
 
 ########################################################
 
-#order_array=(0 5 10 20 50 100 200 500) #For Vivado workflow order 0 is the baseline
-#selected_frequency= 200.0 #Chosen frequency for synthesis
+order_array=(0 5 10 20 50 100 200 500) #For Vivado workflow order 0 is the baseline
+selected_frequency= 200.0 #Chosen frequency for synthesis
 
 ## frequency, area and power measurements ###
 rm ./results/*.csv
