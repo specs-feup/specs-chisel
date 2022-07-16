@@ -4,6 +4,7 @@ base_dir = .
 vrsc_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/resources/vsrc
 rocket_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/scala/rocket
 scie_dir = $(base_dir)/../../vivado-risc-v/rocket-chip/src/main/scala/scie
+power_dir = $(base_dir)/../../power_eval
 
 verilog:
 	@echo "\n### GENERATING VERILOG ###\n"
@@ -15,6 +16,7 @@ verilog:
 	@sed -i 's/Pipelined/& #(parameter XLEN = 32)/' SCIEPipelined.v
 	@sed -i 's/pipelined/& #(parameter XLEN = 32)/' SCIEUnpipelined.v
 	cp *.v $(vrsc_dir)
+	cp SCIEPipelined.v $(power_dir)/src/SCIEPipelined_type=$(type)_order=$(order).v
 
 .PHONY: test
 test:
@@ -24,11 +26,7 @@ test:
 verilate: tb_$(MODULE).cpp
 		$(MAKE) verilog order=$(order) width=$(width) type=$(type) binarypoint=$(binarypoint)
 		@echo "\n### VERILATING ###\n"
-		@if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
-			verilator --trace -cc $(MODULE).v --exe tb_$(MODULE)_complex.cpp; \
-		else \
-			verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp; \
-		fi
+		verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp; \
 		#verilator --trace -cc $(MODULE).v --exe tb_$(MODULE).cpp
 		make -C obj_dir -f V$(MODULE).mk V$(MODULE)
 		@./obj_dir/V$(MODULE) $(order) $(width) $(type) $(binarypoint)

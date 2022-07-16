@@ -285,8 +285,6 @@ $(synthesis): $(proj_time)
 	echo "reset_run synth_1" >>$(proj_path)/make-synthesis.tcl
 	echo "launch_runs -jobs $(MAX_THREADS) synth_1" >>$(proj_path)/make-synthesis.tcl
 	echo "wait_on_run synth_1" >>$(proj_path)/make-synthesis.tcl
-	#echo "open_run synth_1" >>$(proj_path)/make-synthesis.tcl
-	#echo "report_timing_summary -file ../checkpoints/post_synth_$(ORDER).rpt" >>$(proj_path)/make-synthesis.tcl
 	$(vivado) -source $(proj_path)/make-synthesis.tcl
 	if find $(proj_path) -name "*.log" -exec cat {} \; | grep 'ERROR: ' ; then exit 1 ; fi
 
@@ -296,8 +294,8 @@ $(bitstream): $(synthesis)
 	echo "reset_run impl_1" >>$(proj_path)/make-bitstream.tcl
 	echo "launch_runs -to_step write_bitstream -jobs $(MAX_THREADS) impl_1" >>$(proj_path)/make-bitstream.tcl
 	echo "wait_on_run impl_1" >>$(proj_path)/make-bitstream.tcl
-	#echo "open_run impl_1" >>$(proj_path)/make-bitstream.tcl
-	#echo "report_timing_summary -file ../checkpoints/post_impl_$(ORDER).rpt" >>$(proj_path)/make-bitstream.tcl
+	echo "set_operating_conditions -process maximum"
+	echo "report power -file ./workspace/$(CONFIG)/vivado-$(BOARD)-riscv/$(BOARD)-riscv.runs/impl_1/power_report_worst_case.rpt"
 	$(vivado) -source $(proj_path)/make-bitstream.tcl
 	if find $(proj_path) -name "*.log" -exec cat {} \; | grep 'ERROR: ' ; then exit 1 ; fi
 

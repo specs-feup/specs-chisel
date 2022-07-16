@@ -1,0 +1,185 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Jul  8 21:46:20 2022
+# Process ID: 73286
+# Current directory: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src
+# Command line: vivado
+# Log file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/vivado.log
+# Journal file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.xpr
+update_compile_order -fileset sources_1
+launch_simulation -mode post-synthesis -type functional
+reset_run synth_1
+launch_runs synth_1 -jobs 24
+wait_on_run synth_1
+close_design
+launch_simulation -mode post-synthesis -type functional
+source base_tb.tcl
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top scie_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source scie_tb.tcl
+close_sim
+launch_simulation
+source scie_tb.tcl
+close_sim
+launch_simulation
+source scie_tb.tcl
+close_sim
+launch_simulation
+source scie_tb.tcl
+export_ip_user_files -of_objects  [get_files /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_10.v] -no_script -reset -force -quiet
+remove_files  /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_10.v
+add_files -norecurse /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_5.v
+reset_run synth_1
+update_compile_order -fileset sources_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1
+open_run impl_1
+set_property -name {xsim.simulate.saif} -value {base.saif} -objects [get_filesets sim_1]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top base_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation -mode post-implementation -type functional
+source base_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_1}
+close_sim
+launch_simulation -mode post-implementation -type functional
+source base_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_2}
+close_sim
+launch_simulation -mode post-implementation -type functional
+source base_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_3}
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top scie_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+current_sim simulation_8
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+current_design synth_1
+close_design
+launch_simulation -mode post-synthesis -type functional
+source scie_tb.tcl
+current_wave_config {Untitled 12}
+add_wave {{/scie_tb/system_top/muldiv}} 
+current_sim simulation_11
+close_sim
+current_sim simulation_8
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+current_sim simulation_12
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+relaunch_sim
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+current_sim simulation_12
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+relaunch_sim
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_4}
+export_ip_user_files -of_objects  [get_files /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_5.v] -no_script -reset -force -quiet
+remove_files  /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_5.v
+add_files -norecurse /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/src/SCIEPipelined_20.v
+update_compile_order -fileset sources_1
+close_sim
+current_sim simulation_12
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+reset_run synth_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1
+refresh_design
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+relaunch_sim
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_1}
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top base_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+current_sim simulation_8
+close_sim
+launch_simulation -mode post-implementation -type functional
+source base_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_2}
+close_sim
+launch_simulation -mode post-implementation -type functional
+source base_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_3}
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top scie_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+current_sim simulation_21
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_4}
+close_sim
+launch_simulation -mode post-implementation -type functional
+source scie_tb.tcl
+read_saif {/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.sim/sim_1/impl/func/xsim/base.saif}
+report_power -name {power_5}
+close_sim
+current_sim simulation_23
+close_sim
+current_sim simulation_12
+close_sim
+current_sim simulation_5
+close_sim
+close_sim

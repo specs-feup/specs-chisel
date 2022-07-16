@@ -17,7 +17,7 @@ def getListOfFiles(dirName):
 
 def process_data(baseline_frequency, file_dir, file):
     index = 0
-    with open("./results/tmp.csv", "w") as out_file:
+    with open("./results/timing/tmp.csv", "w") as out_file:
         	with open(file, "r") as in_file:
             		csvreader = csv.reader(in_file)
             		csvwriter = csv.writer(out_file)
@@ -35,13 +35,13 @@ def process_data(baseline_frequency, file_dir, file):
 				out_file.write("{}\t{}\t{}\n".format(str(row_list[0]), baseline_time, accelerated_time))
     out_file.close()
     in_file.close()
-    os.system("mv ./results/tmp.csv {}/time_count_{}.csv".format(file_dir, (file.split("_")[-1]).split(".")[-2]))
+    os.system("mv ./results/timing/tmp.csv {}/time_count_{}.csv".format(file_dir, (file.split("_")[-1]).split(".")[-2]))
     del file_info[:]
 
 
 def process_order(baseline_frequency, file_dir, file):
     index = 0
-    with open("./results/tmp.csv", "w") as out_file:
+    with open("./results/timing/tmp.csv", "w") as out_file:
         	with open(file, "r") as in_file:
             		csvreader = csv.reader(in_file)
             		csvwriter = csv.writer(out_file)
@@ -61,18 +61,21 @@ def process_order(baseline_frequency, file_dir, file):
                         			index = index + 1
     out_file.close()
     in_file.close()
-    os.system("mv ./results/tmp.csv {}/time_count_{}.csv".format(file_dir, (file.split("_")[-1]).split(".")[-2]))
+    os.system("mv ./results/timing/tmp.csv {}/time_count_{}.csv".format(file_dir, (file.split("_")[-1]).split(".")[-2]))
     del file_info[:]
 
 
 
 def process(file):
+    print file
     file_dir = os.path.dirname(os.path.realpath(file))
-    os.system("touch ./results/tmp.csv")
-    files = os.listdir("./results")
+    print file_dir
+    os.system("touch ./results/timing/tmp.csv")
+    files = os.listdir("./results/freqs")
     data_type = "_" + (file.split("/")[-2]).split("_")[-1]
-    freq_file = os.path.join("./results/", "".join([file_name for file_name in files if data_type in file_name and 'freqs' in file_name]))
-    if freq_file != "./results/":
+    freq_file = os.path.join("./results/freqs", "".join([file_name for file_name in files if data_type in file_name and 'max_freqs' in file_name]))
+    print freq_file
+    if freq_file != "./results/freqs":
     	with open(freq_file, "r") as f:
         	csvreader = csv.reader(f)
         	first_line=next(csvreader)
@@ -88,7 +91,7 @@ def process(file):
 
 
 def main():
-    dirName='./results'
+    dirName='./results/timing'
     getListOfFiles(dirName)
     new_files = [file for file in files if "cycle" in file]
     for file in new_files:

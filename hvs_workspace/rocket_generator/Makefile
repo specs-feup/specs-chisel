@@ -37,14 +37,6 @@ setup:
 
 ### File replacements ###
 core-setup:
-	#Type 4 and 5 (complex numbers) not implemented
-	if [ "$(type)" -eq 4 ] || [ "$(type)" -eq 5 ]; then \
-		cp ./repl_files/interfaces/Complex_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
-		cp ./repl_files/interfaces/Complex_interface/SCIE.scala $(rocket_scala_src)/scie; \
-	else \
-		cp ./repl_files/interfaces/Standard_interface/RocketCore.scala $(rocket_scala_src)/rocket; \
-		cp ./repl_files/interfaces/Standard_interface/SCIE.scala $(rocket_scala_src)/scie; \
-	fi
 	if [ "$(order)" -eq 0 ]; then \
 		sed -i 's/useSCIE: Boolean = true,/useSCIE: Boolean = false,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
 		cp ./repl_files/baseline_tcl/vivado.tcl $(vivado_dir); \
@@ -52,6 +44,11 @@ core-setup:
 		sed -i 's/useSCIE: Boolean = false,/useSCIE: Boolean = true,/g' $(rocket_scala_src)/rocket/RocketCore.scala; \
 		cp ./repl_files/accel_tcl/vivado.tcl $(vivado_dir); \
 	fi
+	if [ "$(type)" -eq 3 ]; then \
+		sed -i 's/fpu = Some(FPUParams(fLen=32))\n,//g' $(rocket_scala_src)/subsystem/Configs.scala; \
+	else \
+		sed -i 's/useVM = false,\n/useVM = false,\nfpu = Some(FPUParams(fLen=32)),\n/g' $(rocket_scala_src)/subsystem/Configs.scala; \
+	fi	
 
 ### Calls vsim Makefile ###
 verilog:
@@ -61,13 +58,17 @@ verilog:
 verilog-clean:
 	make -C $(vsim_dir) clean
 
-### Rocket chip + SCIE + IO FPGA implementation ###
-implementation:
+### Max frequency finding ###
+freq_implementation:
 	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
 	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_timing_summary_routed.rpt $(base_dir)/checkpoints/post_impl_timing_$(type)_$(order).rpt
-	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(base_dir)/checkpoints/post_impl_utilization_$(type)_$(order).rpt
+	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_utilization_placed.rpt $(base_dir)/checkpoints/post_impl_utilization_$(type)_$(order).rpt	
+
+### Power ###
+power_implementation:
+	make -C $(vivado_dir) CONFIG=$(config) BOARD=$(board) ORDER=$(order) bitstream
 	cp $(vivado_dir)/workspace/$(config)/vivado-$(board)-riscv/$(board)-riscv.runs/impl_1/riscv_wrapper_power_routed.rpt $(base_dir)/checkpoints/post_impl_power_$(type)_$(order).rpt
-	$(base_dir)/scripts/find_max_freq.py $(order) $(type) $(selected_frequency) >> $(max_freqs_file)
+	mv $(base_dir)/vivado-risc-v/power_report_worst_case.rpt $(base_dir)/checkpoints/post_impl_power_worst_case_$(type)_$(order).rpt
 
 ### Calls emulator and benchmark Makefile ###
 build:
@@ -76,7 +77,7 @@ build:
 	make -C $(emu_dir) CONFIG=$(base_name).$(config)
 
 build-debug:
-	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
+	make -C $(bench_dir) order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint) optimization_flag=$(optimization_flag)
 	make -C $(hw_dir) verilog order=$(order) data=$(data) width=$(width) type=$(type) binarypoint=$(binarypoint)
 	make debug -C $(emu_dir) CONFIG=$(base_name).$(config)
 

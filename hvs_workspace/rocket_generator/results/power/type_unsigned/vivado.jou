@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Jul 11 10:51:19 2022
+# Process ID: 80885
+# Current directory: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned
+# Command line: vivado
+# Log file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned/vivado.log
+# Journal file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+reset_run synth_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1

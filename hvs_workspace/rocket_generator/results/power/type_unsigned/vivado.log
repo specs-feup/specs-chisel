@@ -1,0 +1,30 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Jul 11 10:51:19 2022
+# Process ID: 80885
+# Current directory: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned
+# Command line: vivado
+# Log file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned/vivado.log
+# Journal file: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/results/scie/type_unsigned/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.xpr
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+reset_run synth_1
+launch_runs impl_1 -jobs 24
+[Mon Jul 11 10:52:23 2022] Launched synth_1...
+Run output will be captured here: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.runs/synth_1/runme.log
+[Mon Jul 11 10:52:23 2022] Launched impl_1...
+Run output will be captured here: /home/specs/Desktop/specs-chisel/hvs_workspace/rocket_generator/power_eval/project/project.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Jul 11 10:56:00 2022...

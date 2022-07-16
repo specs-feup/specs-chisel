@@ -25,17 +25,6 @@ def find_timing_info(file):
     slack_string = re.search(r'-?([.\d]+)\s*', "".join(lines_to_process)).group()
     return float(slack_string[:-2])
 
-def find_power_info(file):
-    lines_to_process=[]
-    with open(file, "r") as f:
-        while f.next().strip() != '| Name                   | Power (W) |':
-            continue
-        for _ in range(7):
-            lines_to_process.append(f.next().strip())
-    f.close()
-    design_power = re.search(r'([.\d]+)\s*', "".join(lines_to_process)).group()
-    return design_power
-
 def find_utilisation_info(file):
     relevant_info=["Slice LUTs", "Slice Registers", "Block RAM Tile", "DSPs"]
     resources=[]
@@ -53,31 +42,28 @@ def find_utilisation_info(file):
 def output_to_freq(file, selected_frequency):
     max_delay_slack=find_timing_info(file)
     max_freq=(1/(get_selected_period(selected_frequency) - max_delay_slack)) * 1000 #In MHz
-    with open("./results/max_freqs_{}.csv".format(file_info[0]), "a") as output_file:
+    with open("./results/freqs/max_freqs_{}.csv".format(file_info[0]), "a") as output_file:
         output_file.write(("{}\t{}\n".format(file_info[1], str(max_freq))))
     output_file.close()
 
 def output_to_utilisation(file):
     resources = find_utilisation_info(file)
-    with open("./results/utilisation_{}.csv".format(file_info[0]), "a") as output_file:
+    with open("./results/resources/utilisation_{}.csv".format(file_info[0]), "a") as output_file:
         output_file.write("{}\t{}\t{}\t{}\t{}\n".format(file_info[1], resources[0], resources[1], resources[2], resources[3]))
     output_file.close()
 
-def output_to_power(file):
-    design_power = find_power_info(file)
-    with open("./results/power_{}.csv".format(file_info[0]), "a") as output_file:
-        output_file.write("{}\t{}\n".format(int(file_info[1]), design_power))
-    output_file.close()
 
 def create_headers():
-    file_types=["max_freqs", "power", "utilisation"]
-    data_types=["unsigned", "signed", "fixed-point"]
+    file_types=["max_freqs", "utilisation"]
+    data_types=["unsigned", "signed", "fixed_point"]
     for file_type in file_types:
         for data_type in data_types:
-            with open("./results/{}_{}.csv".format(file_type, data_type), "w") as f:
+	    file_type_str=""
+	    if file_type == "max_freqs": file_type_str="freqs"
+	    else: file_type_str="resources"	
+            with open("./results/{}/{}_{}.csv".format(file_type_str,file_type, data_type), "w") as f:
                 f.write("### {} {} file ###\n".format(file_type, data_type))
                 if file_type == "max_freqs": f.write("ORDER\tMAX_FREQS\n")
-                elif file_type == "power": f.write("ORDER\tPOWER\n")
                 else: f.write("ORDER\tLUTS\tREGISTERS\tDSPs\tBRAM\n")
             f.close()
 
@@ -87,15 +73,10 @@ def main(selected_frequency):
     dirName='./checkpoints'
     files = [dirName + '/' + entry for entry in os.listdir(dirName)]
     timing_files = sorted([file for file in files if "timing" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
-    power_files = sorted([file for file in files if "power" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
     utilisation_files = sorted([file for file in files if "utilisation" in file or "utilization" in file], key=lambda x: int((x.split("_")[-1]).split(".")[-2]))
     for timing_file in timing_files:
 		parse_file_info(timing_file)
 		output_to_freq(timing_file, selected_frequency)
-		del file_info[:]
-    for power_file in power_files:
-		parse_file_info(power_file)
-                output_to_power(power_file)
 		del file_info[:]
     for utilisation_file in utilisation_files:
 		parse_file_info(utilisation_file)
@@ -103,5 +84,5 @@ def main(selected_frequency):
 		del file_info[:]
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2: terminate("Usage: <command> <selected_frequency>") 
+    if len(sys.argv) < 2: terminate("Usage: <command> <selected_frequency>")
     main(sys.argv[1])
