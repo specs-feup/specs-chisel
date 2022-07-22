@@ -135,3 +135,6 @@ for type in "${type_array[@]:1}"; do
 	done
 done
 
+./scripts/process_energy.py
+
+
